@@ -1,5 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f0491c9 (Initial commit)
 
 # Godot-specific ignores
 .import/
@@ -13,3 +17,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+<<<<<<< HEAD
+=======
+=======
+/android/
+>>>>>>> 26d7008 (Initial commit for project)
+>>>>>>> f0491c9 (Initial commit)
