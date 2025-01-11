@@ -2,7 +2,6 @@ extends Node2D
 
 # Player and enemy nodes
 @export var Player: PackedScene
-@export var Enemy: PackedScene
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
