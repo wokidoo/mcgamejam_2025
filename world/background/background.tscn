@@ -11,6 +11,8 @@ noise_type = 4
 domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_105hu"]
+width = 1920
+height = 1080
 seamless = true
 color_ramp = SubResource("Gradient_81bab")
 noise = SubResource("FastNoiseLite_nmeh7")
@@ -23,7 +25,7 @@ shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_105hu")
 [node name="Background" type="CanvasLayer"]
 layer = -1
 script = ExtResource("1_wrqg5")
-shift_coefficient = 1000.0
+shift_coefficient = 1.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_4kv0f")
