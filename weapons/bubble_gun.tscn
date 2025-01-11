@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://6sjwsecexfcr"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_a1d2k"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_ebsom"]
+[ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="2_jbxkt"]
+
+[node name="BubbleGun" type="Node2D"]
+script = ExtResource("1_a1d2k")
+weapon_name = "Bubble Gun"
+texture = ExtResource("2_ebsom")
+speed = 600.0
+range = 1500.0
+deviation = 0.174533
+area = 0.5
+
+[node name="SourceEmitterWC" parent="." instance=ExtResource("2_jbxkt")]

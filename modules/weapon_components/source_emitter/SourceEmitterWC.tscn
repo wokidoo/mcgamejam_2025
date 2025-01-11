@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb32whtauc0wq"]
+
+[ext_resource type="Script" path="res://modules/weapon_components/source_emitter/source_emitter_WC.gd" id="1_8lxq1"]
+[ext_resource type="PackedScene" uid="uid://8qv1dmqiqmic" path="res://modules/damage_sources/basic_projectile.tscn" id="2_ulgbh"]
+
+[node name="SourceEmitterWC" type="Node2D"]
+script = ExtResource("1_8lxq1")
+source_scene = ExtResource("2_ulgbh")
+parent_trigger_signal = "on_attack"

@@ -1,0 +1,16 @@
+extends CharacterBody2D
+
+
+@export var MAX_SPEED :float = 1500.0
+@export var DECELERATION :float = 100.0
+var direction: Vector2
+
+func _physics_process(delta):
+	# Get the input direction and handle the movement/deceleration.
+	direction = Input.get_vector("move_left", "move_right","move_up","move_down")
+	# If direction is not null, change velocity
+	if not direction.is_zero_approx():
+		velocity = direction * MAX_SPEED
+	else:
+		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
+	move_and_slide()
