@@ -14,7 +14,7 @@ distance = -2.48114
 [node name="Khang-level" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("melee_hit_box", "melee_cooldown") instance=ExtResource("1_d0pys")]
-MAX_SPEED = 500.0
+MAX_SPEED = 1000.0
 DECELERATION = 150.0
 melee_hit_box = NodePath("ShapeCast2D")
 MELEE_ATTACK_SPEED = 5.0
@@ -37,6 +37,8 @@ visible = false
 
 [node name="== LEVEL ==" type="Node2D" parent="."]
 script = ExtResource("4_60gon")
+
+[node name="Difficulty Timer" type="Timer" parent="== LEVEL =="]
 
 [node name="- Level Border -" type="StaticBody2D" parent="== LEVEL =="]
 
@@ -84,7 +86,7 @@ scale = Vector2(1.4047, -0.0246511)
 texture = ExtResource("4_pq3a6")
 
 [node name="anchor" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(-465, 236)
+position = Vector2(-385, 124)
 texture = ExtResource("4_pq3a6")
 
 [node name="anchor2" type="Sprite2D" parent="== LEVEL =="]
@@ -98,7 +100,5 @@ texture = ExtResource("4_pq3a6")
 [node name="anchor4" type="Sprite2D" parent="== LEVEL =="]
 position = Vector2(1504, -1319)
 texture = ExtResource("4_pq3a6")
-
-[node name="Difficulty Timer" type="Timer" parent="== LEVEL =="]
 
 [connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]
