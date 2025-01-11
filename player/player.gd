@@ -21,19 +21,3 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
 	move_and_slide()
-	
-	#Melee
-	if(Input.is_action_pressed("melee") and canAttack):
-		canAttack = false
-		print("Beginning Attack")
-		melee_cooldown.start()
-		if melee_hit_box.is_colliding():
-			for i in melee_hit_box.get_colliders():
-				continue
-				#if i.is_in_group("Enemies"):
-					#deal damage
-
-
-func _on_melee_cooldown_timeout() -> void:
-	print("Ready to Attack")
-	canAttack = true

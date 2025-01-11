@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=6 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
-[ext_resource type="Texture2D" uid="uid://b2jijavqd78b2" path="res://assets/player/poop.png" id="2_oiqbv"]
+[ext_resource type="Texture2D" uid="uid://b2jijavqd78b2" path="res://assets/Sprites/player/poop.png" id="2_oiqbv"]
 [ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="3_0dap4"]
+[ext_resource type="PackedScene" uid="uid://15u7bf1ml8g7" path="res://weapons/TrashPoke.tscn" id="4_wn7md"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc4i"]
 size = Vector2(240, 242)
@@ -19,5 +20,9 @@ texture = ExtResource("2_oiqbv")
 shape = SubResource("RectangleShape2D_8qc4i")
 
 [node name="BubbleGun" parent="." instance=ExtResource("3_0dap4")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TrashPoke" parent="." instance=ExtResource("4_wn7md")]
 
 [editable path="BubbleGun"]
