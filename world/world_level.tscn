@@ -1,35 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://lcfiuuwrp0oc"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
+[ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_544fm"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6v4d"]
-
 [node name="WorldLevel" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-
-[node name="Player" parent="." node_paths=PackedStringArray("melee_hit_box", "melee_cooldown") instance=ExtResource("1_d65yr")]
-MAX_SPEED = 500.0
-DECELERATION = 150.0
-melee_hit_box = NodePath("ShapeCast2D")
+[node name="Player" parent="." instance=ExtResource("1_d65yr")]
 MELEE_ATTACK_SPEED = 5.0
-melee_cooldown = NodePath("MeleeCooldown")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Player"]
-position = Vector2(66, -72)
-scale = Vector2(-4.73068, 2.77806)
-shape = SubResource("CapsuleShape2D_v6v4d")
-
-[node name="MeleeCooldown" type="Timer" parent="Player"]
-wait_time = 5.0
-one_shot = true
+[node name="Background" parent="." instance=ExtResource("2_544fm")]
+shift_coefficient = 1000.0
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_u88qc")]
+visible = false
 
 [node name="MonochromePostProcessor" parent="." instance=ExtResource("2_xqbff")]
 visible = false
-
-[connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]

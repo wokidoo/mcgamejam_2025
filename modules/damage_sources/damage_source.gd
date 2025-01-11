@@ -12,6 +12,10 @@ class_name DamageSource
 		area = value
 		self.scale = Vector2(value,value)
 @export_range(0,180,0.1,"radians_as_degrees") var deviation: float
+## Number of enemies that source can go through before being destroyed
+## A value of 0 means the source can pierce any number of enemies
+@export var pierce:int = 0
+var has_pierced: int = 0
 
 var direction : Vector2
 var emit_destroyed: bool = true

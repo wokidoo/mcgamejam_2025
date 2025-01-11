@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=8 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://b2jijavqd78b2" path="res://assets/Sprites/player/poop.png" id="2_oiqbv"]
@@ -8,10 +8,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc4i"]
 size = Vector2(240, 242)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xbwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gr8wq"]
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_edvie")
-MAX_SPEED = 200.0
+MAX_SPEED = 500.0
+DECELERATION = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_oiqbv")
@@ -22,7 +27,25 @@ shape = SubResource("RectangleShape2D_8qc4i")
 [node name="BubbleGun" parent="." instance=ExtResource("3_0dap4")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
 [node name="TrashPoke" parent="." instance=ExtResource("4_wn7md")]
+
+[node name="Attract" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attract"]
+scale = Vector2(52.709, 50)
+shape = SubResource("CircleShape2D_5xbwd")
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+scale = Vector2(16.75, 17)
+shape = SubResource("CircleShape2D_gr8wq")
+
+[connection signal="body_entered" from="Attract" to="." method="_on_attract_body_entered"]
+[connection signal="body_exited" from="Attract" to="." method="_on_attract_body_exited"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]
 
 [editable path="BubbleGun"]
