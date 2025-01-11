@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqi8f5wmvmu11"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_g441g"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_30ihv"]
+[ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="2_q0pda"]
+
+[node name="SyringSmg" type="Node2D"]
+script = ExtResource("1_g441g")
+weapon_name = "Syring SMG"
+texture = ExtResource("2_30ihv")
+attacks_per_second = 5.0
+speed = 300.0
+deviation = 0.174533
+area = 0.5
+
+[node name="SourceEmitterWC" parent="." instance=ExtResource("2_q0pda")]

@@ -9,12 +9,10 @@
 [node name="WorldLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_d65yr")]
-MAX_SPEED = 500.0
-DECELERATION = 150.0
 MELEE_ATTACK_SPEED = 5.0
 
 [node name="Background" parent="." instance=ExtResource("2_544fm")]
-shift_coefficient = 500.0
+shift_coefficient = 1000.0
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_u88qc")]
 visible = false

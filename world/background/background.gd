@@ -13,4 +13,4 @@ func _ready():
 func _physics_process(delta):
 	var move_by = player.global_position - last_pos
 	last_pos = player.position
-	material.set_shader_parameter("player_pos",last_pos/player.MAX_SPEED)
+	material.set_shader_parameter("player_pos",last_pos/shift_coefficient)
