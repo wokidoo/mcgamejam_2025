@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://b45rtsx2s0m0t"]
+
+[ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
+[ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
+[ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qu014"]
+distance = -2.48114
+
+[node name="Khang-level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_d0pys")]
+MAX_SPEED = 1000.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+
+[node name="RetroPostProcessor" parent="." instance=ExtResource("2_dkkkp")]
+visible = false
+
+[node name="MonochromePostProcessor" parent="." instance=ExtResource("3_gg0o3")]
+visible = false
+
+[node name="== LEVEL ==" type="Node2D" parent="."]
+
+[node name="- Level Border -" type="StaticBody2D" parent="== LEVEL =="]
+
+[node name="Top" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
+position = Vector2(0, -2000)
+scale = Vector2(1, -6.452)
+shape = SubResource("WorldBoundaryShape2D_qu014")
+
+[node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Top"]
+position = Vector2(1.372e-15, 2.16988)
+scale = Vector2(1.4047, -0.0246511)
+texture = ExtResource("4_pq3a6")
+
+[node name="Bottom" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
+position = Vector2(0, 2000)
+rotation = 3.14159
+scale = Vector2(1, -6.453)
+shape = SubResource("WorldBoundaryShape2D_qu014")
+
+[node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Bottom"]
+position = Vector2(1.45499e-15, 2.30113)
+scale = Vector2(1.4047, -0.0256536)
+texture = ExtResource("4_pq3a6")
+
+[node name="Right" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
+position = Vector2(2000, 0)
+rotation = 1.5708
+scale = Vector2(1, -6.452)
+shape = SubResource("WorldBoundaryShape2D_qu014")
+
+[node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Right"]
+position = Vector2(1.372e-15, 2.16988)
+scale = Vector2(1.4047, -0.0246511)
+texture = ExtResource("4_pq3a6")
+
+[node name="Left" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
+position = Vector2(-2000, 0)
+rotation = -1.5708
+scale = Vector2(1, -6.452)
+shape = SubResource("WorldBoundaryShape2D_qu014")
+
+[node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Left"]
+position = Vector2(1.372e-15, 2.16988)
+scale = Vector2(1.4047, -0.0246511)
+texture = ExtResource("4_pq3a6")
+
+[node name="anchor" type="Sprite2D" parent="== LEVEL =="]
+position = Vector2(-733, 372)
+texture = ExtResource("4_pq3a6")
+
+[node name="anchor2" type="Sprite2D" parent="== LEVEL =="]
+position = Vector2(1267, 1179)
+texture = ExtResource("4_pq3a6")
+
+[node name="anchor3" type="Sprite2D" parent="== LEVEL =="]
+position = Vector2(-1361, -1535)
+texture = ExtResource("4_pq3a6")
+
+[node name="anchor4" type="Sprite2D" parent="== LEVEL =="]
+position = Vector2(1504, -1319)
+texture = ExtResource("4_pq3a6")
