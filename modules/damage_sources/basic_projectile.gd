@@ -11,8 +11,8 @@ func _ready():
 	
 func _physics_process(delta):
 	var move_by : Vector2 = direction*speed*delta
-	position += move_by
-	rotation = direction.angle()
+	global_position += move_by
+	global_rotation = direction.angle()
 	travled_distance += move_by.length()
 	if travled_distance >= range:
 		destroy_source()

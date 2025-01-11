@@ -9,6 +9,8 @@ class_name Player
 var canAttack:bool
 var direction: Vector2
 
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+
 func _ready() -> void:
 	canAttack = true
 
@@ -20,6 +22,15 @@ func _physics_process(delta):
 		velocity = direction * MAX_SPEED
 	else:
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
+		
+	if velocity.length() > 0:
+		sprite.play("walk")
+		if velocity.x < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+	else:
+		sprite.play("idle")
 	move_and_slide()
 
 
