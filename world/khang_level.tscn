@@ -1,20 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://b45rtsx2s0m0t"]
+[gd_scene load_steps=8 format=3 uid="uid://b45rtsx2s0m0t"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
+[ext_resource type="Script" path="res://world/LevelManager.gd" id="4_60gon"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnac7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qu014"]
 distance = -2.48114
 
 [node name="Khang-level" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_d0pys")]
-MAX_SPEED = 1000.0
+[node name="Player" parent="." node_paths=PackedStringArray("melee_hit_box", "melee_cooldown") instance=ExtResource("1_d0pys")]
+MAX_SPEED = 500.0
+DECELERATION = 150.0
+melee_hit_box = NodePath("ShapeCast2D")
+MELEE_ATTACK_SPEED = 5.0
+melee_cooldown = NodePath("MeleeCooldown")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Player"]
+position = Vector2(66, -72)
+scale = Vector2(-4.73068, 2.77806)
+shape = SubResource("CapsuleShape2D_jnac7")
+
+[node name="MeleeCooldown" type="Timer" parent="Player"]
+wait_time = 5.0
+one_shot = true
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_dkkkp")]
 visible = false
@@ -23,6 +36,7 @@ visible = false
 visible = false
 
 [node name="== LEVEL ==" type="Node2D" parent="."]
+script = ExtResource("4_60gon")
 
 [node name="- Level Border -" type="StaticBody2D" parent="== LEVEL =="]
 
@@ -70,7 +84,7 @@ scale = Vector2(1.4047, -0.0246511)
 texture = ExtResource("4_pq3a6")
 
 [node name="anchor" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(-733, 372)
+position = Vector2(-465, 236)
 texture = ExtResource("4_pq3a6")
 
 [node name="anchor2" type="Sprite2D" parent="== LEVEL =="]
@@ -84,3 +98,7 @@ texture = ExtResource("4_pq3a6")
 [node name="anchor4" type="Sprite2D" parent="== LEVEL =="]
 position = Vector2(1504, -1319)
 texture = ExtResource("4_pq3a6")
+
+[node name="Difficulty Timer" type="Timer" parent="== LEVEL =="]
+
+[connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]
