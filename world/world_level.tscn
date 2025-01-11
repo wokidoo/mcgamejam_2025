@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_544fm"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
+[ext_resource type="Texture2D" uid="uid://dsdq7otrwlygu" path="res://assets/Sprites/Enemy/enemy_test.png" id="3_4k5o5"]
 
 [node name="WorldLevel" type="Node2D"]
 

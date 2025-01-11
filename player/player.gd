@@ -21,3 +21,24 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
 	move_and_slide()
+
+
+func _on_attack_body_entered(body) -> void:
+	if(body.is_in_group("Enemy")):
+		body.state = body.HIT
+
+
+func _on_attack_body_exited(body) -> void:
+	if(body.is_in_group("Enemy")):
+		body.state = body.SURROUND
+
+
+func _on_attract_body_entered(body) -> void:
+	if(body.is_in_group("Enemy")):
+		body.attack_timer.start()
+
+
+func _on_attract_body_exited(body) -> void:
+	if(body.is_in_group("Enemy")):
+		body.attack_timer.stop()
+		body.state = body.SURROUND
