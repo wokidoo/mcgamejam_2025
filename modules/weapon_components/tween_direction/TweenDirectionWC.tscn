@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://difm27shvdn2d"]
+
+[ext_resource type="Script" path="res://modules/weapon_components/tween_direction/tween_direction_WC.gd" id="1_iul2m"]
+
+[node name="TweenDirectionWC" type="Node2D"]
+script = ExtResource("1_iul2m")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8qv1dmqiqmic"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/basic_projectile.gd" id="1_7oc27"]
+[ext_resource type="Texture2D" uid="uid://dl05cqo0h1uof" path="res://icon.svg" id="2_6x47t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjxdr"]
+radius = 64.2806
+
+[node name="BasicProjectile" type="Area2D"]
+script = ExtResource("1_7oc27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kjxdr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6x47t")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
+rect = Rect2(-60, -60, 120, 120)

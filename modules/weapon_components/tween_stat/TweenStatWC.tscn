@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq2x1q533ty0p"]
+
+[ext_resource type="Script" path="res://modules/weapon_components/tween_stat/tween_stat_WC.gd" id="1_0gqpk"]
+
+[node name="TweenStatWC" type="Node2D"]
+script = ExtResource("1_0gqpk")

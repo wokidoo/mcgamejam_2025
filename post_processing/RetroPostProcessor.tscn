@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://j5jldqfynkjh"]
+
+[ext_resource type="Shader" path="res://shaders/retro_post_processing.gdshader" id="1_wa622"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s34mp"]
+noise_type = 3
+frequency = 0.9625
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iaxtj"]
+noise = SubResource("FastNoiseLite_s34mp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hu8k4"]
+shader = ExtResource("1_wa622")
+shader_parameter/BANDS = 12
+shader_parameter/PIXEL_SIZE = 300
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 1.0
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_iaxtj")
+
+[node name="RetroPostProcessor" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_hu8k4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
