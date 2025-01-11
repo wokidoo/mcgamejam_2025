@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2jijavqd78b2"
-path="res://.godot/imported/poop.png-4450ceadb9466152458770aaf4b61a2f.ctex"
+path="res://.godot/imported/poop.png-869f08df9b55fad8080060ef56961df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/poop.png"
-dest_files=["res://.godot/imported/poop.png-4450ceadb9466152458770aaf4b61a2f.ctex"]
+source_file="res://assets/Sprites/player/poop.png"
+dest_files=["res://.godot/imported/poop.png-869f08df9b55fad8080060ef56961df0.ctex"]
 
 [params]
 

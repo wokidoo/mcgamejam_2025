@@ -14,6 +14,7 @@ signal on_attack(weapon:Weapon)
 @export var range: float = 500.0
 @export_range(0,180,0.1,"radians_as_degrees") var deviation: float
 @export_range(0.1,10,0.1) var area: float = 1.0
+@export var input_name:String = "attack"
 
 var direction: Vector2 = Vector2.ZERO
 var attack_timer: Timer
@@ -26,7 +27,7 @@ func _ready():
 	sprite.texture = texture
 
 func _physics_process(delta):
-	if Input.is_action_pressed("attack"):
+	if Input.is_action_pressed(input_name):
 		if attack_timer.is_stopped():
 			direction = calculate_attack_direction()
 			attack_timer.start(1.0/attacks_per_second)

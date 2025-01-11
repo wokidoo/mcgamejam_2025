@@ -3,7 +3,14 @@ extends CharacterBody2D
 
 @export var MAX_SPEED :float = 1500.0
 @export var DECELERATION :float = 100.0
+@export var melee_hit_box:ShapeCast2D
+@export var MELEE_ATTACK_SPEED:float
+@export var melee_cooldown:Timer
+var canAttack:bool
 var direction: Vector2
+
+func _ready() -> void:
+	canAttack = true
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
