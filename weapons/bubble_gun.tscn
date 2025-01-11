@@ -18,5 +18,4 @@ area = 0.5
 
 [node name="TweenStatWC" parent="SourceEmitterWC" instance=ExtResource("4_o6thn")]
 stat_name = "speed"
-destroy_after = false
 parent_trigger_signal = "on_source_created"
