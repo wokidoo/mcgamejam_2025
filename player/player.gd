@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-class_name Player
-
 @export var MAX_SPEED :float = 1500.0
 @export var DECELERATION :float = 100.0
 @export var melee_hit_box:ShapeCast2D
