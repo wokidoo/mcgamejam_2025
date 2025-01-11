@@ -8,3 +8,7 @@ void fragment() {
 	COLOR.rgb = noise_texture.rgb;
 }
 
+void vertex() {
+	VERTEX.y = VERTEX.y * 0.25;
+}
+

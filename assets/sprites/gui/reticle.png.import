@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2jijavqd78b2"
-path="res://.godot/imported/poop.png-869f08df9b55fad8080060ef56961df0.ctex"
+uid="uid://b6susq3khdd15"
+path="res://.godot/imported/reticle.png-77b0890a0e6d0ebd94748ce7c2f0d46a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/player/poop.png"
-dest_files=["res://.godot/imported/poop.png-869f08df9b55fad8080060ef56961df0.ctex"]
+source_file="res://assets/sprites/gui/reticle.png"
+dest_files=["res://.godot/imported/reticle.png-77b0890a0e6d0ebd94748ce7c2f0d46a.ctex"]
 
 [params]
 
