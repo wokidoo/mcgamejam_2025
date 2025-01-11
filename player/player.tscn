@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=6 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://b2jijavqd78b2" path="res://assets/Sprites/player/poop.png" id="2_oiqbv"]
