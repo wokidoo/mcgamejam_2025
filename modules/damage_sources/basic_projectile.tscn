@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://modules/damage_sources/basic_projectile.gd" id="1_7oc27"]
 [ext_resource type="AudioStream" uid="uid://bf3g6d5w1s3uf" path="res://assets/SFX/bubble gun 1 shot.wav" id="2_81b3q"]
+
 [ext_resource type="Texture2D" uid="uid://b30u6l7gmg2p3" path="res://assets/Sprites/weapons/gun_bullet.png" id="2_cpctb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjxdr"]

@@ -66,8 +66,8 @@ func move(target,delta):
 	if can_move:
 		var direction = (target - global_position).normalized() 
 		var desired_velocity =  direction * SPEED
-
-		velocity = desired_velocity
+    
+    velocity = desired_velocity
 		if velocity.x < 0:
 			sprite.flip_h = true
 		else:

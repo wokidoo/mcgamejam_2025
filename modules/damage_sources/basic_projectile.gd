@@ -11,6 +11,7 @@ var travled_distance: float = 0.0
 func _ready():
 	$Sprite2D/VisibleOnScreenNotifier2D.connect("screen_exited",destroy_source)
 	sprite.play("default")
+
 	audio.play()
 	
 func _physics_process(delta):
