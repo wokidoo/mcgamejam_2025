@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://6sjwsecexfcr"]
+[gd_scene load_steps=6 format=3 uid="uid://6sjwsecexfcr"]
 
 [ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_a1d2k"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_ebsom"]
 [ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="2_jbxkt"]
 [ext_resource type="PackedScene" uid="uid://bq2x1q533ty0p" path="res://modules/weapon_components/tween_stat/TweenStatWC.tscn" id="4_o6thn"]
+[ext_resource type="Script" path="res://modules/weapon_components/tween_stat/tween_stat_WC.gd" id="5_sjd07"]
 
 [node name="BubbleGun" type="Node2D"]
 script = ExtResource("1_a1d2k")
@@ -18,4 +19,11 @@ area = 2.0
 
 [node name="TweenStatWC" parent="SourceEmitterWC" instance=ExtResource("4_o6thn")]
 stat_name = "speed"
+duration = 1.5
+parent_trigger_signal = "on_source_created"
+
+[node name="TweenStatWC2" type="Node2D" parent="SourceEmitterWC"]
+script = ExtResource("5_sjd07")
+stat_name = "area"
+trans_method = 5
 parent_trigger_signal = "on_source_created"

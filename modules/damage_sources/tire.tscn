@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://di4uulpuq27e6"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/banana.gd" id="1_mcln4"]
+[ext_resource type="AudioStream" uid="uid://b1af6o2fwyh81" path="res://assets/SFX/toaster flail 1.wav" id="2_tvcmt"]
+[ext_resource type="Texture2D" uid="uid://c0aspb52xi56q" path="res://assets/Sprites/weapons/wheel_e.png" id="3_dj28q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xxx8"]
+radius = 49.0306
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1unvw"]
+atlas = ExtResource("3_dj28q")
+region = Rect2(0, 0, 106, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8jun"]
+atlas = ExtResource("3_dj28q")
+region = Rect2(106, 0, 106, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lflv"]
+atlas = ExtResource("3_dj28q")
+region = Rect2(212, 0, 106, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwd2o"]
+atlas = ExtResource("3_dj28q")
+region = Rect2(318, 0, 106, 101)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqit7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1unvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8jun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lflv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwd2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Tire" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mcln4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tvcmt")
+volume_db = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0xxx8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_lqit7")
+frame_progress = 0.112029
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 0.500002)
+scale = Vector2(4.9, 4.95)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

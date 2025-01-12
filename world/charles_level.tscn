@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bkk87l658qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_yscg4"]
-[ext_resource type="PackedScene" uid="uid://bqi8f5wmvmu11" path="res://weapons/syring_smg.tscn" id="2_lralx"]
+[ext_resource type="PackedScene" uid="uid://cibmgl8wje7wc" path="res://weapons/tire_toss.tscn" id="2_mld80"]
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_u335j"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="3_mcpts"]
 [ext_resource type="PackedScene" uid="uid://ddh3880tt2rj6" path="res://weapons/goop_gun.tscn" id="3_rvhgh"]
@@ -12,6 +12,8 @@
 [node name="CharlesLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yscg4")]
+
+[node name="TireToss" parent="Player" instance=ExtResource("2_mld80")]
 
 [node name="SyringSmg" parent="Player" instance=ExtResource("2_lralx")]
 

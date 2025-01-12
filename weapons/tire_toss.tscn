@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cibmgl8wje7wc"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_56hqx"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_cfe4r"]
+[ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="3_d1y0r"]
+[ext_resource type="PackedScene" uid="uid://di4uulpuq27e6" path="res://modules/damage_sources/tire.tscn" id="4_pc80a"]
+[ext_resource type="PackedScene" uid="uid://bq2x1q533ty0p" path="res://modules/weapon_components/tween_stat/TweenStatWC.tscn" id="5_d2i8p"]
+
+[node name="TireToss" type="Node2D"]
+script = ExtResource("1_56hqx")
+weapon_name = "Tire Toss"
+texture = ExtResource("2_cfe4r")
+damage = 15.0
+attacks_per_second = 0.25
+speed = 1500.0
+range = 1200.0
+deviation = 0.0872665
+area = 2.0
+
+[node name="SourceEmitterWC" parent="." instance=ExtResource("3_d1y0r")]
+source_scene = ExtResource("4_pc80a")
+
+[node name="TweenStatWC" parent="SourceEmitterWC" instance=ExtResource("5_d2i8p")]
+stat_name = "area"
+target_value = 1.5
+duration = 0.5
+destroy_after = false
+parent_trigger_signal = "on_source_created"
+
+[node name="TweenStatWC2" parent="SourceEmitterWC" instance=ExtResource("5_d2i8p")]
+stat_name = "damage"
+target_value = -10.0
+as_relative = true
+duration = 0.5
+destroy_after = false
+parent_trigger_signal = "on_source_created"
