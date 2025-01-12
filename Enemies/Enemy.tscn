@@ -1,25 +1,176 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnpjilxty7u3p"]
+[gd_scene load_steps=30 format=3 uid="uid://cnpjilxty7u3p"]
+
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xs2ds"]
-[ext_resource type="Texture2D" uid="uid://dsdq7otrwlygu" path="res://assets/Sprites/Enemy/enemy_test.png" id="2_i0qn1"]
 [ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_jpqwp"]
 [ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="2_uvxet"]
 [ext_resource type="AudioStream" uid="uid://dldxcnvlovs4a" path="res://assets/SFX/enemy die 1.wav" id="4_j2ykq"]
 [ext_resource type="AudioStream" uid="uid://d3ia43d2q76gv" path="res://assets/SFX/enemy die 2.wav" id="5_jby3a"]
 [ext_resource type="AudioStream" uid="uid://bb1ncsca6yccn" path="res://assets/SFX/enemy_projectile_hit.wav" id="6_xiirp"]
 [ext_resource type="AudioStream" uid="uid://1n4gbsmqjust" path="res://assets/SFX/enemy chomp.wav" id="7_8kul6"]
+[ext_resource type="Texture2D" uid="uid://dnsyo2abroo0v" path="res://assets/Sprites/Enemy/deathsprite_smallenemy.png" id="3_audkt"]
+[ext_resource type="Texture2D" uid="uid://crdfxo18p2gib" path="res://assets/Sprites/Enemy/enemy_small_walk.png" id="4_xv7iv"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
 radius = 44.7772
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1cec"]
+atlas = ExtResource("3_audkt")
+region = Rect2(0, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n14lh"]
+atlas = ExtResource("3_audkt")
+region = Rect2(220, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jc5q"]
+atlas = ExtResource("3_audkt")
+region = Rect2(440, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y4rh"]
+atlas = ExtResource("3_audkt")
+region = Rect2(660, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1acne"]
+atlas = ExtResource("3_audkt")
+region = Rect2(880, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xc6x"]
+atlas = ExtResource("3_audkt")
+region = Rect2(1100, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_semvv"]
+atlas = ExtResource("3_audkt")
+region = Rect2(1320, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12355"]
+atlas = ExtResource("3_audkt")
+region = Rect2(1540, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp3we"]
+atlas = ExtResource("3_audkt")
+region = Rect2(1760, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyks5"]
+atlas = ExtResource("3_audkt")
+region = Rect2(1980, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1a4w"]
+atlas = ExtResource("3_audkt")
+region = Rect2(2200, 0, 220, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qxa2"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(0, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvwjf"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(122, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flk6c"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(244, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ehiv"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(366, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xh5x"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(488, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7e7k"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(610, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32u11"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(732, 0, 122, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arj8x"]
+atlas = ExtResource("4_xv7iv")
+region = Rect2(854, 0, 122, 145)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jsr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1cec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n14lh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jc5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y4rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1acne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xc6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_semvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12355")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp3we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyks5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1a4w")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qxa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvwjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flk6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ehiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xh5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7e7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32u11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arj8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0fw"]
 radius = 45.0999
+
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aw1oi"]
 random_pitch = 3.6
 streams_count = 2
 stream_0/stream = ExtResource("4_j2ykq")
 stream_1/stream = ExtResource("5_jby3a")
+
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -38,9 +189,10 @@ z_index = -1
 position = Vector2(0, 43)
 texture = ExtResource("2_jpqwp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14)
-texture = ExtResource("2_i0qn1")
+sprite_frames = SubResource("SpriteFrames_4jsr8")
+frame_progress = 0.789838
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
