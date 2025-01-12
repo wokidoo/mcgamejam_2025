@@ -22,7 +22,7 @@ MELEE_ATTACK_SPEED = 5.0
 
 [node name="Background" parent="." instance=ExtResource("2_544fm")]
 scale = Vector2(1, 1.32)
-scroll_offset = Vector2(40, 20)
+scroll_offset = Vector2(6462, 1820)
 shift_coefficient = 1000.0
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_u88qc")]
@@ -225,7 +225,7 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
-position = Vector2(15, 0)
+position = Vector2(-5, 10)
 spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
 
 [node name="SpawnPoint1" type="Node2D" parent="Spawner3"]
