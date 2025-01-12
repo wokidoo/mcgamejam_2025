@@ -9,12 +9,13 @@ class_name Enemy
 @onready var hitbox: Area2D = $"Hitbox"
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
 @export var DAMAGE: float = 1.0
+@onready var hurt_sound:AudioStreamPlayer2D = $HurtSounds
 
 var randomnum
 
 signal enemy_died(enemy:Enemy)
 
-signal gacha_time(position:Vector2)
+var can_hurt_sound:bool
 
 enum{
 	SURROUND,
@@ -26,9 +27,11 @@ var state = SURROUND
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
+	can_hurt_sound = true
 	rng.randomize()
 	randomnum = rng.randf()
 	deathSounds.finished.connect(destory_enemy)
+	hurt_sound.finished.connect(reset_hurt_sound)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 
 func _physics_process(delta: float) -> void:
@@ -70,6 +73,10 @@ func get_circle_position(random):
 
 func take_damage(damage):
 	HEALTH -= damage
+	if(can_hurt_sound):
+		can_hurt_sound = false
+		hurt_sound.play()
+	
 	if HEALTH <= 0:
 		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
 		if(!deathSounds.playing):
@@ -78,3 +85,6 @@ func take_damage(damage):
 func destory_enemy():
 	enemy_died.emit(self)
 	queue_free()
+
+func reset_hurt_sound():
+	can_hurt_sound = true

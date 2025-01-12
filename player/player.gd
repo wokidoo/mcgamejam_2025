@@ -113,7 +113,6 @@ func _on_timeout():
 				take_damage(i)
 				break
 	else:
-		print("Can take Damage")
 		canTakeDamage = true
 
 func _on_damage_source_enter(source:Enemy):
@@ -121,28 +120,6 @@ func _on_damage_source_enter(source:Enemy):
 		take_damage(source)
 func _on_footstep_finished():
 	tookStep = true
-
-func take_damage(source:Enemy):
-	canTakeDamage = false
-	DamageCooldown.start()
-	print("Taking ",source.DAMAGE," damage")
-	HEALTH -= source.DAMAGE
-	if(HEALTH<=0):
-		ON_DEATH.emit()
-
-func _on_timeout():
-	if(hitbox.has_overlapping_bodies()):
-		for i in hitbox.get_overlapping_bodies():
-			if(i.is_in_group("Enemy")):
-				take_damage(i)
-				break
-	else:
-		print("Can take Damage")
-		canTakeDamage = true
-
-func _on_footstep_finished():
-	tookStep = true
-
 
 func _on_attract_body_entered(body) -> void:
 	if(body.is_in_group("Enemy")):

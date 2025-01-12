@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=39 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://fg450mjd8llf" path="res://assets/Sprites/effects/gun_flash.png" id="4_pjydn"]
 [ext_resource type="Texture2D" uid="uid://d30hv463sq2yd" path="res://assets/Sprites/player/gun_shoot.png" id="6_3u40n"]
 [ext_resource type="AudioStream" uid="uid://b8qdc2hru7oa6" path="res://assets/SFX/footstep.wav" id="6_agigk"]
-[ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="7_oe7g8"]
-[ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
 [ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="6_pv2j3"]
+[ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
+[ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="7_oe7g8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5jgc"]
 atlas = ExtResource("6_3u40n")

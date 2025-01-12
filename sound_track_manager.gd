@@ -11,14 +11,15 @@ func _ready() -> void:
 	LevelManager.modifier_increased.connect(_on_wave_increase)
 	stream = round_1_2_song
 	play()
+	stream.loop = true
 
 func _on_wave_increase():
 	round+=1
 	print_debug("Round: ",round)
-	match(round):
-		3:
-			stop()
-			stream = round_3_up_song
-			play()
-		5:
-			pitch_scale += 0.1
+	if(round==3):
+		stop()
+		stream = round_3_up_song
+		stream.loop = true
+		play()
+	elif(round >= 5):
+		pitch_scale += 0.1
