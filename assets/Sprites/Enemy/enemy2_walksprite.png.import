@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpq6mshm5q0ej"
-path="res://.godot/imported/item_goob.png-7bfead8cdbad147601faf743fe712d42.ctex"
+uid="uid://bm2ab0rftme6q"
+path="res://.godot/imported/enemy2_walksprite.png-fd8755bc772c8047a45bb5a7937bce44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/items/item_goob.png"
-dest_files=["res://.godot/imported/item_goob.png-7bfead8cdbad147601faf743fe712d42.ctex"]
+source_file="res://assets/Sprites/Enemy/enemy2_walksprite.png"
+dest_files=["res://.godot/imported/enemy2_walksprite.png-fd8755bc772c8047a45bb5a7937bce44.ctex"]
 
 [params]
 

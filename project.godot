@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="McGameJam_2025"
-run/main_scene="res://world/world_level.tscn"
+run/main_scene="res://UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 LevelManager="*res://world/LevelManager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 

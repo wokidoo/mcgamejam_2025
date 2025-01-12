@@ -36,6 +36,7 @@ func _ready() -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body is Player:
 		print("Player picked up weapon")
+		LevelManager.message = "Picked up weapon!"
 		# weapon_index = randi() % WEAPON_TYPE.size()
 		# print("Got weapon: ", WEAPON_TYPE.get(weapon_index))
 		# var weapon_system_node = body.get_node("WeaponSystem")

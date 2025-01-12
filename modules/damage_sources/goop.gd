@@ -3,7 +3,6 @@ extends DamageSource
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var splash_sprite: AnimatedSprite2D = $SplashSprite
 var travled_distance: float = 0.0
 var goop_dot: PackedScene = preload("res://modules/damage_sources/goop_dot.tscn")
 

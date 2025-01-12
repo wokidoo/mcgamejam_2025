@@ -2,18 +2,18 @@ extends Node2D
 
 # Player weapons
 var preload_weapon_scenes: Array[PackedScene]
-var preload_weapon_sprites: Array[Texture2D]
+#var preload_weapon_sprites: Array[Texture2D]
 
 # Player powerups
 #var preload_powerup_scenes: Array[PackedScene]
-var preload_powerup_sprites: Array[Texture2D]
+#var preload_powerup_sprites: Array[Texture2D]
 
 # Auto Firing
 var auto_fire: bool = false
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
-@export var difficultyTimerInterval: float = 90.0
+@export var difficultyTimerInterval: float = 50.0
 # MODIFIERS: The level will increase a set of modifiers based on the game time to increase game difficulty
 # These modifiers should be referenced by other scripts to 'increase' the base value of game elements
 # The formula is: 
@@ -51,6 +51,12 @@ var gameTime: float = 0.0
 
 # Current number of enemies
 var numberOfEnemies: int = 0
+
+# enemy killed
+@onready var enemyKilled: int = 0
+
+# message
+@export var message: String
 
 # Function to increase the modifers after Timer hit zero
 func _on_DifficultyTimer_timeout():
@@ -96,12 +102,12 @@ func _ready() -> void:
 	print("loading weapons...")
 	load_scenes("res://weapons", preload_weapon_scenes)
 
-	print("loading weapon sprites...")
-	load_sprites("res://assets/Sprites/items", preload_weapon_sprites)
-
-	# Call the function to load powerups
-	print("loading powerup sprites...")
-	load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
+	#print("loading weapon sprites...")
+	#load_sprites("res://assets/Sprites/items", preload_weapon_sprites)
+#
+	## Call the function to load powerups
+	#print("loading powerup sprites...")
+	#load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
 
 # Function to load scenes
 func load_scenes(folder_path: String, arr: Array[PackedScene]) -> void:

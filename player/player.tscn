@@ -277,6 +277,7 @@ shape = SubResource("CapsuleShape2D_bxg6f")
 
 [node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_agigk")
+volume_db = 20.0
 
 [node name="BubbleGun" parent="." instance=ExtResource("6_pv2j3")]
 
