@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnpjilxty7u3p"]
+[gd_scene load_steps=10 format=3 uid="uid://cnpjilxty7u3p"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xs2ds"]
 [ext_resource type="Texture2D" uid="uid://dsdq7otrwlygu" path="res://assets/Sprites/Enemy/enemy_test.png" id="2_i0qn1"]
 [ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_jpqwp"]
+[ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="2_uvxet"]
 [ext_resource type="AudioStream" uid="uid://dldxcnvlovs4a" path="res://assets/SFX/enemy die 1.wav" id="4_j2ykq"]
 [ext_resource type="AudioStream" uid="uid://d3ia43d2q76gv" path="res://assets/SFX/enemy die 2.wav" id="5_jby3a"]
 [ext_resource type="AudioStream" uid="uid://bb1ncsca6yccn" path="res://assets/SFX/enemy_projectile_hit.wav" id="6_xiirp"]
@@ -27,6 +28,7 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xs2ds")
 SPEED = 200.0
+onDeathWeapon = ExtResource("2_uvxet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8rlcj")

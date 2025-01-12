@@ -19,7 +19,6 @@ signal on_attack(weapon:Weapon)
 var direction: Vector2 = Vector2.ZERO
 var attack_timer: Timer
 @onready var sprite: Sprite2D = Sprite2D.new()
-@onready var auto_fire: bool = false
  
 func _ready():
 	attack_timer = Timer.new()
@@ -28,10 +27,7 @@ func _ready():
 	sprite.texture = texture
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("auto_fire"):
-		auto_fire = !auto_fire
-
-	if auto_fire or Input.is_action_pressed(input_name):
+	if LevelManager.auto_fire or Input.is_action_pressed(input_name):
 		if attack_timer.is_stopped():
 			direction = calculate_attack_direction()
 			attack_timer.start(1.0/attacks_per_second)
