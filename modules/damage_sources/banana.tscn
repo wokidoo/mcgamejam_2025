@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://ceievnc1ndjfy"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/banana.gd" id="1_1w87p"]
+[ext_resource type="AudioStream" uid="uid://butuaafaf6ych" path="res://assets/SFX/banana sling.wav" id="2_exeys"]
+[ext_resource type="Texture2D" uid="uid://drnd20qwjuefm" path="res://assets/Sprites/weapons/banana.png" id="3_6vqq7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xxx8"]
+radius = 39.0512
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1h0t"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(0, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma6c4"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(120, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtlhi"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(240, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbesw"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(360, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc4s2"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(480, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fhgt"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(600, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmkt5"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(720, 0, 120, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o117b"]
+atlas = ExtResource("3_6vqq7")
+region = Rect2(840, 0, 120, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqit7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1h0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma6c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtlhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbesw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pc4s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fhgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmkt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o117b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Banana" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1w87p")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_exeys")
+volume_db = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0xxx8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_lqit7")
+frame_progress = 0.349182
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(4.37798, 2.45161)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

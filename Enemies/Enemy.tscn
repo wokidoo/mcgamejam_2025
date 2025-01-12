@@ -1,16 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://cnpjilxty7u3p"]
-
+[gd_scene load_steps=33 format=3 uid="uid://cnpjilxty7u3p"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xs2ds"]
 [ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_jpqwp"]
 [ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="2_uvxet"]
+[ext_resource type="Texture2D" uid="uid://dnsyo2abroo0v" path="res://assets/Sprites/Enemy/deathsprite_smallenemy.png" id="3_audkt"]
 [ext_resource type="AudioStream" uid="uid://dldxcnvlovs4a" path="res://assets/SFX/enemy die 1.wav" id="4_j2ykq"]
+[ext_resource type="Texture2D" uid="uid://crdfxo18p2gib" path="res://assets/Sprites/Enemy/enemy_small_walk.png" id="4_xv7iv"]
 [ext_resource type="AudioStream" uid="uid://d3ia43d2q76gv" path="res://assets/SFX/enemy die 2.wav" id="5_jby3a"]
 [ext_resource type="AudioStream" uid="uid://bb1ncsca6yccn" path="res://assets/SFX/enemy_projectile_hit.wav" id="6_xiirp"]
 [ext_resource type="AudioStream" uid="uid://1n4gbsmqjust" path="res://assets/SFX/enemy chomp.wav" id="7_8kul6"]
-[ext_resource type="Texture2D" uid="uid://dnsyo2abroo0v" path="res://assets/Sprites/Enemy/deathsprite_smallenemy.png" id="3_audkt"]
-[ext_resource type="Texture2D" uid="uid://crdfxo18p2gib" path="res://assets/Sprites/Enemy/enemy_small_walk.png" id="4_xv7iv"]
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
 radius = 44.7772
@@ -164,13 +162,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0fw"]
 radius = 45.0999
 
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aw1oi"]
 random_pitch = 3.6
 streams_count = 2
 stream_0/stream = ExtResource("4_j2ykq")
 stream_1/stream = ExtResource("5_jby3a")
-
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
