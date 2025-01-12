@@ -52,6 +52,9 @@ var gameTime: float = 0.0
 # Current number of enemies
 var numberOfEnemies: int = 0
 
+# enemy killed
+@onready var enemyKilled: int = 0
+
 # Function to increase the modifers after Timer hit zero
 func _on_DifficultyTimer_timeout():
 	# Increase the spawn rate modifier

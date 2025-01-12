@@ -100,6 +100,7 @@ func take_damage(damage):
 		hurt_sound.play()
 	if HEALTH <= 0:
 		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
+		LevelManager.enemyKilled += 1
 		# rng to spawn an item or powerup
 		if (!isDeathSpawned):
 			isDeathSpawned = true
