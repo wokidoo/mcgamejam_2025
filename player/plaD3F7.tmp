@@ -39,7 +39,7 @@ region = Rect2(238, 0, 119, 81)
 [sub_resource type="SpriteFrames" id="SpriteFrames_rwke3"]
 animations = [{
 "frames": [{
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s5jgc")
 }, {
 "duration": 1.0,
@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 12.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -64,7 +64,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 12.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uh163"]
@@ -104,13 +104,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wrg6u")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": true,
 "name": &"fire",
-"speed": 20.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s1a"]
@@ -226,29 +223,28 @@ DECELERATION = 150.0
 melee_cooldown = NodePath("DamageCooldown")
 
 [node name="ArmJoint" type="Node2D" parent="."]
-position = Vector2(12, 0)
 
 [node name="SpriteArm" type="AnimatedSprite2D" parent="ArmJoint"]
 position = Vector2(55, -17)
 sprite_frames = SubResource("SpriteFrames_rwke3")
-animation = &"idle"
-frame = 2
-frame_progress = 0.342456
+animation = &"fire"
+frame_progress = 0.0138508
 
 [node name="SpriteMuzzleFlash" type="AnimatedSprite2D" parent="ArmJoint"]
-position = Vector2(134, -32)
+position = Vector2(109.51, -32)
 sprite_frames = SubResource("SpriteFrames_hiqi1")
 animation = &"fire"
-frame_progress = 0.356159
+frame_progress = 0.442446
 speed_scale = 2.0
 
 [node name="Sprite2DShadow" type="Sprite2D" parent="."]
-position = Vector2(0, 77)
+position = Vector2(0, 75)
 texture = ExtResource("2_kfwik")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooloi")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.995215
 speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

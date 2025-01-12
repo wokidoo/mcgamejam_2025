@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="PlasticBag" type="Area2D"]
@@ -84,6 +84,6 @@ shape = SubResource("RectangleShape2D_n8dn8")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_lqit7")
-frame_progress = 0.771203
+frame_progress = 0.21435
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

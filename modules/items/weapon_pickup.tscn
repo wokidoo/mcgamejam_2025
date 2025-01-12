@@ -76,71 +76,86 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i243d")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_pvct7")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_i243d")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_gj3cw")
 }],
 "loop": true,
 "name": &"bag",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a1yrf")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_fgvtr")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a1yrf")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_2l8fc")
 }],
 "loop": true,
 "name": &"banana",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_agpaw")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_h1xfb")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_agpaw")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_11fv2")
 }],
 "loop": true,
 "name": &"goop",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ignyv")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_i4mu7")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ignyv")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_ebg5r")
 }],
 "loop": true,
 "name": &"syring",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_726nd")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_w8j8r")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_726nd")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_55wjo")
 }],
 "loop": true,
 "name": &"tire",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="weaponPickup" type="Node2D"]
@@ -153,5 +168,5 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fv4mm")
-animation = &"tire"
-frame_progress = 0.0874573
+animation = &"bag"
+frame_progress = 0.0642578

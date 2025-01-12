@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://modules/damage_sources/basic_projectile.gd" id="1_7oc27"]
 [ext_resource type="AudioStream" uid="uid://bf3g6d5w1s3uf" path="res://assets/SFX/bubble gun 1 shot.wav" id="2_81b3q"]
-
 [ext_resource type="Texture2D" uid="uid://b30u6l7gmg2p3" path="res://assets/Sprites/weapons/gun_bullet.png" id="2_cpctb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjxdr"]
@@ -34,7 +33,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="BasicProjectile" type="Area2D"]
@@ -50,7 +49,7 @@ stream = ExtResource("2_81b3q")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8b0xg")
-frame_progress = 0.524986
+frame_progress = 0.165072
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
 scale = Vector2(0.405894, 0.174839)

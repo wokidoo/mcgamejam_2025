@@ -110,7 +110,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
-"speed": 20.0
+"speed": 18.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s1a"]
@@ -226,32 +226,31 @@ DECELERATION = 150.0
 melee_cooldown = NodePath("DamageCooldown")
 
 [node name="ArmJoint" type="Node2D" parent="."]
-position = Vector2(12, 0)
+position = Vector2(13, 1)
 
 [node name="SpriteArm" type="AnimatedSprite2D" parent="ArmJoint"]
 position = Vector2(55, -17)
 sprite_frames = SubResource("SpriteFrames_rwke3")
-animation = &"idle"
-frame = 2
-frame_progress = 0.342456
+animation = &"fire"
 
 [node name="SpriteMuzzleFlash" type="AnimatedSprite2D" parent="ArmJoint"]
 position = Vector2(134, -32)
 sprite_frames = SubResource("SpriteFrames_hiqi1")
 animation = &"fire"
-frame_progress = 0.356159
 speed_scale = 2.0
 
 [node name="Sprite2DShadow" type="Sprite2D" parent="."]
-position = Vector2(0, 77)
+position = Vector2(0, 75)
 texture = ExtResource("2_kfwik")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooloi")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.828197
 speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 
@@ -271,6 +270,7 @@ wait_time = 2.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 position = Vector2(0, 7)
 scale = Vector2(3.2, 5.53565)
 shape = SubResource("CapsuleShape2D_bxg6f")

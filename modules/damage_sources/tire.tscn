@@ -40,7 +40,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 18.0
 }]
 
 [node name="Tire" type="Area2D"]
@@ -58,7 +58,7 @@ shape = SubResource("CircleShape2D_0xxx8")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_lqit7")
-frame_progress = 0.112029
+frame_progress = 0.275801
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 0.500002)
