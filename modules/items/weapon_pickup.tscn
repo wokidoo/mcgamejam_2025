@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://bg2lj2gghs60w"]
 
 [ext_resource type="Script" path="res://modules/items/weapon_pickup.gd" id="1_1skmw"]
-[ext_resource type="Texture2D" uid="uid://ckaio7lkj5cr1" path="res://assets/Sprites/items/item_bag.png" id="2_62tgf"]
-[ext_resource type="Texture2D" uid="uid://scufbuvbxdyn" path="res://assets/Sprites/items/item_banana.png" id="3_0tr1p"]
-[ext_resource type="Texture2D" uid="uid://qla65f2kabo5" path="res://assets/Sprites/items/item_goob.png" id="4_sfqx5"]
-[ext_resource type="Texture2D" uid="uid://g6cjsdtkjgpb" path="res://assets/Sprites/items/item_syringe.png" id="5_10fy0"]
+[ext_resource type="Texture2D" uid="uid://utgy17nirev1" path="res://assets/Sprites/items/item_bag.png" id="2_62tgf"]
+[ext_resource type="Texture2D" uid="uid://broh7r2xjs3l1" path="res://assets/Sprites/items/item_banana.png" id="3_0tr1p"]
+[ext_resource type="Texture2D" uid="uid://bpq6mshm5q0ej" path="res://assets/Sprites/items/item_goob.png" id="4_sfqx5"]
+[ext_resource type="Texture2D" uid="uid://bchbb2xdw4gea" path="res://assets/Sprites/items/item_syringe.png" id="5_10fy0"]
 [ext_resource type="Texture2D" uid="uid://dj4tfu4fkmpbo" path="res://assets/Sprites/items/item_wheel.png" id="6_sy0kk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xtqbq"]
@@ -153,5 +153,4 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fv4mm")
-animation = &"tire"
-frame_progress = 0.0874573
+animation = &"banana"
