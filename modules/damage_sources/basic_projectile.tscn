@@ -22,7 +22,7 @@ region = Rect2(104, 0, 52, 18)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8b0xg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_8g68c")
 }, {
 "duration": 1.0,
@@ -33,7 +33,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="BasicProjectile" type="Area2D"]
