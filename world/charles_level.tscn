@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkk87l658qw0m"]
+[gd_scene load_steps=4 format=3 uid="uid://bkk87l658qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_yscg4"]
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_u335j"]
+[ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="3_mcpts"]
 
 [node name="CharlesLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yscg4")]
 
 [node name="Background" parent="." instance=ExtResource("2_u335j")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_mcpts")]
+position = Vector2(1270, -145)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_mcpts")]
+position = Vector2(849, 362)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_mcpts")]
+position = Vector2(899, -99)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_mcpts")]
+position = Vector2(1123, 229)
