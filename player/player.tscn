@@ -206,7 +206,6 @@ initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 250, 0)
 scale_min = 0.0
-scale_max = 11.68
 color_ramp = SubResource("GradientTexture1D_6yer1")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxg6f"]
