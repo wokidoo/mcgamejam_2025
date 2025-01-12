@@ -2,7 +2,6 @@
 class_name WeaponPickup extends Node2D
 
 enum WEAPON_TYPE { 
-	BUBBLE_GUN,
 	SYRING_GUN,
 	GOOB_GUN,
 	BAG_GUN,

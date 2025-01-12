@@ -43,6 +43,9 @@ func _ready():
 	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
 	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
 	sprite.play("default")
+	HEALTH = HEALTH * LevelManager.enemyHealthModifier
+	SPEED = SPEED * LevelManager.enemySpeedModifier
+	print_debug("Health = ",HEALTH,"\nSpeed = ",SPEED)
 
 
 func _physics_process(delta: float) -> void:

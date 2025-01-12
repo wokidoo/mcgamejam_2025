@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="2_hsjcw"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="3_g3ixc"]
 [ext_resource type="PackedScene" uid="uid://bqi8f5wmvmu11" path="res://weapons/syring_smg.tscn" id="3_myk8b"]
-[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="6_hrjq2"]
+[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_hrjq2"]
 [ext_resource type="AudioStream" uid="uid://bycorh1vyt1h2" path="res://Music/mcjam song v1.1.mp3" id="7_qbfr7"]
 
 [node name="BattleArenaTest" type="Node2D"]
@@ -17,18 +17,23 @@ script = ExtResource("1_lri3k")
 
 [node name="Enemy" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(1034, -103)
+onDeathWeapon = null
 
 [node name="Enemy2" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(-992, -451)
+onDeathWeapon = null
 
 [node name="Enemy3" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(-926, 136)
+onDeathWeapon = null
 
 [node name="Enemy4" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(500, -502)
+onDeathWeapon = null
 
 [node name="Enemy5" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(611, 385)
+onDeathWeapon = null
 
 [node name="GameOver" parent="." instance=ExtResource("3_g3ixc")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=40 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -206,6 +206,7 @@ initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 250, 0)
 scale_min = 0.0
+scale_max = 11.68
 color_ramp = SubResource("GradientTexture1D_6yer1")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxg6f"]

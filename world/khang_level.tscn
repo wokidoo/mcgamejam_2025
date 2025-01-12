@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://crvbkb0ugjgyv"]
+[gd_scene load_steps=13 format=3 uid="uid://clli2446v88d7"]
 
+[ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_3f1x0"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="4_i53vf"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="7_5m1yp"]
-[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
+[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
 [ext_resource type="AudioStream" uid="uid://bycorh1vyt1h2" path="res://Music/mcjam song v1.1.mp3" id="9_i3p86"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
 
@@ -16,6 +17,7 @@
 distance = -2.48114
 
 [node name="Khang-level" type="Node2D"]
+script = ExtResource("1_3f1x0")
 
 [node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
 spawnPoints = [NodePath("Spawn 7"), NodePath("Spawn 8"), NodePath("Spawn 9"), NodePath("Spawn 10")]
