@@ -4,6 +4,9 @@ class_name WeaponPickup extends Node2D
 enum WEAPON_TYPE { 
 	BUBBLE_GUN,
 	SYRING_GUN,
+	GOOB_GUN,
+	BAG_GUN,
+	BANANA,
 }
 
 @onready var area_2d : Area2D = $Area2D

@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://crvbkb0ugjgyv"]
+[gd_scene load_steps=12 format=3 uid="uid://crvbkb0ugjgyv"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
+[ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="4_i53vf"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
-[ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="7_y5psu"]
+[ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="7_5m1yp"]
+[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
+[ext_resource type="AudioStream" uid="uid://bycorh1vyt1h2" path="res://Music/mcjam song v1.1.mp3" id="9_i3p86"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnac7"]
@@ -13,6 +16,45 @@
 distance = -2.48114
 
 [node name="Khang-level" type="Node2D"]
+
+[node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
+spawnPoints = [NodePath("Spawn 7"), NodePath("Spawn 8"), NodePath("Spawn 9"), NodePath("Spawn 10")]
+
+[node name="Spawn 7" type="Node2D" parent="Spawner3"]
+position = Vector2(2581, 5255)
+
+[node name="Spawn 8" type="Node2D" parent="Spawner3"]
+position = Vector2(-4459, 5298)
+
+[node name="Spawn 9" type="Node2D" parent="Spawner3"]
+position = Vector2(0, 5274)
+
+[node name="Spawn 10" type="Node2D" parent="Spawner3"]
+position = Vector2(-9158, 719)
+
+[node name="Spawner2" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
+spawnPoints = [NodePath("Spawn 4"), NodePath("Spawn 5"), NodePath("Spawn 6")]
+
+[node name="Spawn 4" type="Node2D" parent="Spawner2"]
+position = Vector2(8575, -1471)
+
+[node name="Spawn 5" type="Node2D" parent="Spawner2"]
+position = Vector2(8391, -5394)
+
+[node name="Spawn 6" type="Node2D" parent="Spawner2"]
+position = Vector2(8534, -3045)
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
+spawnPoints = [NodePath("Spawn 1"), NodePath("Spawn 2"), NodePath("Spawn 3")]
+
+[node name="Spawn 1" type="Node2D" parent="Spawner"]
+position = Vector2(-8031, -5250)
+
+[node name="Spawn 2" type="Node2D" parent="Spawner"]
+position = Vector2(-3045, -5394)
+
+[node name="Spawn 3" type="Node2D" parent="Spawner"]
+position = Vector2(-5270, -5252)
 
 [node name="Player" parent="." instance=ExtResource("1_d0pys")]
 DECELERATION = 100.0
@@ -38,68 +80,57 @@ visible = false
 position = Vector2(741, 265)
 
 [node name="Sprite2D2" type="Sprite2D" parent="== LEVEL ==/powerupPickup"]
-texture = ExtResource("4_pq3a6")
 
 [node name="Difficulty Timer" type="Timer" parent="== LEVEL =="]
 
 [node name="- Level Border -" type="StaticBody2D" parent="== LEVEL =="]
 
 [node name="Top" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
-position = Vector2(0, -2000)
+position = Vector2(0, -6000)
 scale = Vector2(1, -6.452)
 shape = SubResource("WorldBoundaryShape2D_qu014")
 
 [node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Top"]
-position = Vector2(1.372e-15, 2.16988)
-scale = Vector2(1.4047, -0.0246511)
+position = Vector2(23.5002, 57.9526)
+scale = Vector2(40.1328, -0.896256)
 texture = ExtResource("4_pq3a6")
 
 [node name="Bottom" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
-position = Vector2(0, 2000)
+position = Vector2(0, 6000)
 rotation = 3.14159
 scale = Vector2(1, -6.453)
 shape = SubResource("WorldBoundaryShape2D_qu014")
 
 [node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Bottom"]
-position = Vector2(1.45499e-15, 2.30113)
-scale = Vector2(1.4047, -0.0256536)
+position = Vector2(-81.8193, 73.6086)
+scale = Vector2(66.9267, -1.13983)
 texture = ExtResource("4_pq3a6")
 
 [node name="Right" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
-position = Vector2(2000, 0)
+position = Vector2(10000, 0)
 rotation = 1.5708
 scale = Vector2(1, -6.452)
 shape = SubResource("WorldBoundaryShape2D_qu014")
 
 [node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Right"]
-position = Vector2(1.372e-15, 2.16988)
-scale = Vector2(1.4047, -0.0246511)
+position = Vector2(6.6738, 30.5934)
+scale = Vector2(21.1979, -0.468768)
 texture = ExtResource("4_pq3a6")
 
 [node name="Left" type="CollisionShape2D" parent="== LEVEL ==/- Level Border -"]
-position = Vector2(-2000, 0)
+position = Vector2(-10000, 0)
 rotation = -1.5708
 scale = Vector2(1, -6.452)
 shape = SubResource("WorldBoundaryShape2D_qu014")
 
 [node name="Sprite2D" type="Sprite2D" parent="== LEVEL ==/- Level Border -/Left"]
-position = Vector2(1.372e-15, 2.16988)
-scale = Vector2(1.4047, -0.0246511)
+position = Vector2(0.339294, 44.3147)
+scale = Vector2(24.035, -0.683164)
 texture = ExtResource("4_pq3a6")
 
-[node name="Enemy" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(-133, 489)
+[node name="GameOver" parent="." instance=ExtResource("7_5m1yp")]
 
-[node name="Enemy2" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(-500, 0)
-
-[node name="Enemy3" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(-603, -394)
-
-[node name="Enemy4" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(584, -365)
-
-[node name="Enemy5" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(1000, 0)
+[node name="SoundTrackManager" parent="." instance=ExtResource("8_y7b4v")]
+round_3_up_song = ExtResource("9_i3p86")
 
 [connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]
