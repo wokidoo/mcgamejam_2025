@@ -98,6 +98,7 @@ func _input(event):
 func calculate_attack_direction() -> Vector2:
 	var global_mouse_pos = get_global_mouse_position()
 	return (global_mouse_pos - global_position).normalized()
+	
 func take_damage(source:Enemy):
 	canTakeDamage = false
 	damage_taken_sound.play()

@@ -21,16 +21,16 @@ distance = -2.48114
 spawnPoints = [NodePath("Spawn 7"), NodePath("Spawn 8"), NodePath("Spawn 9"), NodePath("Spawn 10")]
 
 [node name="Spawn 7" type="Node2D" parent="Spawner3"]
-position = Vector2(651, -282)
+position = Vector2(2581, 5255)
 
 [node name="Spawn 8" type="Node2D" parent="Spawner3"]
-position = Vector2(-14, -391)
+position = Vector2(-4459, 5298)
 
 [node name="Spawn 9" type="Node2D" parent="Spawner3"]
-position = Vector2(-787, -390)
+position = Vector2(0, 5274)
 
 [node name="Spawn 10" type="Node2D" parent="Spawner3"]
-position = Vector2(-726, 160)
+position = Vector2(-9158, 719)
 
 [node name="Spawner2" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
 spawnPoints = [NodePath("Spawn 4"), NodePath("Spawn 5"), NodePath("Spawn 6")]
@@ -57,7 +57,11 @@ position = Vector2(-3045, -5394)
 position = Vector2(-5270, -5252)
 
 [node name="Player" parent="." instance=ExtResource("1_d0pys")]
-DECELERATION = 100.0
+DECELERATION = null
+MELEE_ATTACK_SPEED = null
+HEALTH = null
+SPEEDSTER_TIMER = null
+NOIR_TIMER = null
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Player"]
 position = Vector2(66, -72)
