@@ -8,6 +8,8 @@ class_name Player
 @export var melee_cooldown:Timer
 @export var HEALTH:float = 5.0
 
+signal ON_DEATH
+
 @onready var DamageCooldown:Timer = $DamageCooldown
 
 var canTakeDamage:bool
@@ -52,7 +54,7 @@ func take_damage(source:Enemy):
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE
 	if(HEALTH<=0):
-		get_tree().paused = true
+		ON_DEATH.emit()
 
 func _on_timeout():
 	if(hitbox.has_overlapping_bodies()):
