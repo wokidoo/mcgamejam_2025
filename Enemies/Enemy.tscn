@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnpjilxty7u3p"]
+[gd_scene load_steps=11 format=3 uid="uid://cnpjilxty7u3p"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xs2ds"]
 [ext_resource type="Texture2D" uid="uid://dsdq7otrwlygu" path="res://assets/Sprites/Enemy/enemy_test.png" id="2_i0qn1"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dldxcnvlovs4a" path="res://assets/SFX/enemy die 1.wav" id="4_j2ykq"]
 [ext_resource type="AudioStream" uid="uid://d3ia43d2q76gv" path="res://assets/SFX/enemy die 2.wav" id="5_jby3a"]
 [ext_resource type="AudioStream" uid="uid://bb1ncsca6yccn" path="res://assets/SFX/enemy_projectile_hit.wav" id="6_xiirp"]
+[ext_resource type="AudioStream" uid="uid://1n4gbsmqjust" path="res://assets/SFX/enemy chomp.wav" id="7_8kul6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
 radius = 44.7772
@@ -53,3 +54,7 @@ volume_db = 5.0
 [node name="HurtSounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xiirp")
 volume_db = 5.0
+
+[node name="ChompSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8kul6")
+volume_db = 10.0

@@ -100,6 +100,7 @@ func calculate_attack_direction() -> Vector2:
 func take_damage(source:Enemy):
 	canTakeDamage = false
 	damage_taken_sound.play()
+	source.chomp_sound.play()
 	DamageCooldown.start()
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE

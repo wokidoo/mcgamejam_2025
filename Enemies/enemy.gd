@@ -10,6 +10,7 @@ class_name Enemy
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
 @export var DAMAGE: float = 1.0
 @onready var hurt_sound:AudioStreamPlayer2D = $HurtSounds
+@onready var chomp_sound:AudioStreamPlayer2D = $ChompSound
 
 var randomnum
 
