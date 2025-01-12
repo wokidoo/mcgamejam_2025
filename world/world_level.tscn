@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://lcfiuuwrp0oc"]
+[gd_scene load_steps=9 format=3 uid="uid://lcfiuuwrp0oc"]
 
+[ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_0knp4"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_544fm"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
+[ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="5_m1nju"]
+[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
+[ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
 
 [node name="WorldLevel" type="Node2D"]
+script = ExtResource("1_0knp4")
 
 [node name="Player" parent="." instance=ExtResource("1_d65yr")]
 MELEE_ATTACK_SPEED = 5.0
@@ -17,3 +22,263 @@ shift_coefficient = 1000.0
 
 [node name="MonochromePostProcessor" parent="." instance=ExtResource("2_xqbff")]
 visible = false
+
+[node name="SoundTrackManager" parent="." instance=ExtResource("6_mwvss")]
+
+[node name="Spawner" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+position = Vector2(15, 0)
+spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
+
+[node name="SpawnPoint1" type="Node2D" parent="Spawner"]
+position = Vector2(-1971, -1042)
+
+[node name="SpawnPoint2" type="Node2D" parent="Spawner"]
+position = Vector2(-8083, -8018)
+
+[node name="SpawnPoint3" type="Node2D" parent="Spawner"]
+position = Vector2(-1715, -8114)
+
+[node name="SpawnPoint4" type="Node2D" parent="Spawner"]
+position = Vector2(-8019, -1554)
+
+[node name="SpawnPoint5" type="Node2D" parent="Spawner"]
+position = Vector2(-4883, -4658)
+
+[node name="SpawnPoint6" type="Node2D" parent="Spawner"]
+position = Vector2(4845, -4690)
+
+[node name="SpawnPoint7" type="Node2D" parent="Spawner"]
+position = Vector2(1037, -8082)
+
+[node name="SpawnPoint8" type="Node2D" parent="Spawner"]
+position = Vector2(8429, -8018)
+
+[node name="SpawnPoint9" type="Node2D" parent="Spawner"]
+position = Vector2(7949, -1362)
+
+[node name="SpawnPoint10" type="Node2D" parent="Spawner"]
+position = Vector2(1805, -1426)
+
+[node name="SpawnPoint11" type="Node2D" parent="Spawner"]
+position = Vector2(1709, 2350)
+
+[node name="SpawnPoint12" type="Node2D" parent="Spawner"]
+position = Vector2(7917, 2190)
+
+[node name="SpawnPoint13" type="Node2D" parent="Spawner"]
+position = Vector2(7789, 8462)
+
+[node name="SpawnPoint14" type="Node2D" parent="Spawner"]
+position = Vector2(1293, 8654)
+
+[node name="SpawnPoint15" type="Node2D" parent="Spawner"]
+position = Vector2(5037, 4814)
+
+[node name="SpawnPoint16" type="Node2D" parent="Spawner"]
+position = Vector2(-1779, 2606)
+
+[node name="SpawnPoint17" type="Node2D" parent="Spawner"]
+position = Vector2(-8051, 2574)
+
+[node name="SpawnPoint18" type="Node2D" parent="Spawner"]
+position = Vector2(-7859, 9070)
+
+[node name="SpawnPoint19" type="Node2D" parent="Spawner"]
+position = Vector2(-4947, 5198)
+
+[node name="SpawnPoint20" type="Node2D" parent="Spawner"]
+position = Vector2(-1619, 8942)
+
+[node name="Spawner4" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+position = Vector2(15, 0)
+spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
+
+[node name="SpawnPoint1" type="Node2D" parent="Spawner4"]
+position = Vector2(-1971, -1042)
+
+[node name="SpawnPoint2" type="Node2D" parent="Spawner4"]
+position = Vector2(-8083, -8018)
+
+[node name="SpawnPoint3" type="Node2D" parent="Spawner4"]
+position = Vector2(-1715, -8114)
+
+[node name="SpawnPoint4" type="Node2D" parent="Spawner4"]
+position = Vector2(-8019, -1554)
+
+[node name="SpawnPoint5" type="Node2D" parent="Spawner4"]
+position = Vector2(-4883, -4658)
+
+[node name="SpawnPoint6" type="Node2D" parent="Spawner4"]
+position = Vector2(4845, -4690)
+
+[node name="SpawnPoint7" type="Node2D" parent="Spawner4"]
+position = Vector2(1037, -8082)
+
+[node name="SpawnPoint8" type="Node2D" parent="Spawner4"]
+position = Vector2(8429, -8018)
+
+[node name="SpawnPoint9" type="Node2D" parent="Spawner4"]
+position = Vector2(7949, -1362)
+
+[node name="SpawnPoint10" type="Node2D" parent="Spawner4"]
+position = Vector2(1805, -1426)
+
+[node name="SpawnPoint11" type="Node2D" parent="Spawner4"]
+position = Vector2(1709, 2350)
+
+[node name="SpawnPoint12" type="Node2D" parent="Spawner4"]
+position = Vector2(7917, 2190)
+
+[node name="SpawnPoint13" type="Node2D" parent="Spawner4"]
+position = Vector2(7789, 8462)
+
+[node name="SpawnPoint14" type="Node2D" parent="Spawner4"]
+position = Vector2(1293, 8654)
+
+[node name="SpawnPoint15" type="Node2D" parent="Spawner4"]
+position = Vector2(5037, 4814)
+
+[node name="SpawnPoint16" type="Node2D" parent="Spawner4"]
+position = Vector2(-1779, 2606)
+
+[node name="SpawnPoint17" type="Node2D" parent="Spawner4"]
+position = Vector2(-8051, 2574)
+
+[node name="SpawnPoint18" type="Node2D" parent="Spawner4"]
+position = Vector2(-7859, 9070)
+
+[node name="SpawnPoint19" type="Node2D" parent="Spawner4"]
+position = Vector2(-4947, 5198)
+
+[node name="SpawnPoint20" type="Node2D" parent="Spawner4"]
+position = Vector2(-1619, 8942)
+
+[node name="Spawner2" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+position = Vector2(15, 0)
+spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
+
+[node name="SpawnPoint1" type="Node2D" parent="Spawner2"]
+position = Vector2(-1971, -1042)
+
+[node name="SpawnPoint2" type="Node2D" parent="Spawner2"]
+position = Vector2(-8083, -8018)
+
+[node name="SpawnPoint3" type="Node2D" parent="Spawner2"]
+position = Vector2(-1715, -8114)
+
+[node name="SpawnPoint4" type="Node2D" parent="Spawner2"]
+position = Vector2(-8019, -1554)
+
+[node name="SpawnPoint5" type="Node2D" parent="Spawner2"]
+position = Vector2(-4883, -4658)
+
+[node name="SpawnPoint6" type="Node2D" parent="Spawner2"]
+position = Vector2(4845, -4690)
+
+[node name="SpawnPoint7" type="Node2D" parent="Spawner2"]
+position = Vector2(1037, -8082)
+
+[node name="SpawnPoint8" type="Node2D" parent="Spawner2"]
+position = Vector2(8429, -8018)
+
+[node name="SpawnPoint9" type="Node2D" parent="Spawner2"]
+position = Vector2(7949, -1362)
+
+[node name="SpawnPoint10" type="Node2D" parent="Spawner2"]
+position = Vector2(1805, -1426)
+
+[node name="SpawnPoint11" type="Node2D" parent="Spawner2"]
+position = Vector2(1709, 2350)
+
+[node name="SpawnPoint12" type="Node2D" parent="Spawner2"]
+position = Vector2(7917, 2190)
+
+[node name="SpawnPoint13" type="Node2D" parent="Spawner2"]
+position = Vector2(7789, 8462)
+
+[node name="SpawnPoint14" type="Node2D" parent="Spawner2"]
+position = Vector2(1293, 8654)
+
+[node name="SpawnPoint15" type="Node2D" parent="Spawner2"]
+position = Vector2(5037, 4814)
+
+[node name="SpawnPoint16" type="Node2D" parent="Spawner2"]
+position = Vector2(-1779, 2606)
+
+[node name="SpawnPoint17" type="Node2D" parent="Spawner2"]
+position = Vector2(-8051, 2574)
+
+[node name="SpawnPoint18" type="Node2D" parent="Spawner2"]
+position = Vector2(-7859, 9070)
+
+[node name="SpawnPoint19" type="Node2D" parent="Spawner2"]
+position = Vector2(-4947, 5198)
+
+[node name="SpawnPoint20" type="Node2D" parent="Spawner2"]
+position = Vector2(-1619, 8942)
+
+[node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+position = Vector2(15, 0)
+spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
+
+[node name="SpawnPoint1" type="Node2D" parent="Spawner3"]
+position = Vector2(-1971, -1042)
+
+[node name="SpawnPoint2" type="Node2D" parent="Spawner3"]
+position = Vector2(-8083, -8018)
+
+[node name="SpawnPoint3" type="Node2D" parent="Spawner3"]
+position = Vector2(-1715, -8114)
+
+[node name="SpawnPoint4" type="Node2D" parent="Spawner3"]
+position = Vector2(-8019, -1554)
+
+[node name="SpawnPoint5" type="Node2D" parent="Spawner3"]
+position = Vector2(-4883, -4658)
+
+[node name="SpawnPoint6" type="Node2D" parent="Spawner3"]
+position = Vector2(4845, -4690)
+
+[node name="SpawnPoint7" type="Node2D" parent="Spawner3"]
+position = Vector2(1037, -8082)
+
+[node name="SpawnPoint8" type="Node2D" parent="Spawner3"]
+position = Vector2(8429, -8018)
+
+[node name="SpawnPoint9" type="Node2D" parent="Spawner3"]
+position = Vector2(7949, -1362)
+
+[node name="SpawnPoint10" type="Node2D" parent="Spawner3"]
+position = Vector2(1805, -1426)
+
+[node name="SpawnPoint11" type="Node2D" parent="Spawner3"]
+position = Vector2(1709, 2350)
+
+[node name="SpawnPoint12" type="Node2D" parent="Spawner3"]
+position = Vector2(7917, 2190)
+
+[node name="SpawnPoint13" type="Node2D" parent="Spawner3"]
+position = Vector2(7789, 8462)
+
+[node name="SpawnPoint14" type="Node2D" parent="Spawner3"]
+position = Vector2(1293, 8654)
+
+[node name="SpawnPoint15" type="Node2D" parent="Spawner3"]
+position = Vector2(5037, 4814)
+
+[node name="SpawnPoint16" type="Node2D" parent="Spawner3"]
+position = Vector2(-1779, 2606)
+
+[node name="SpawnPoint17" type="Node2D" parent="Spawner3"]
+position = Vector2(-8051, 2574)
+
+[node name="SpawnPoint18" type="Node2D" parent="Spawner3"]
+position = Vector2(-7859, 9070)
+
+[node name="SpawnPoint19" type="Node2D" parent="Spawner3"]
+position = Vector2(-4947, 5198)
+
+[node name="SpawnPoint20" type="Node2D" parent="Spawner3"]
+position = Vector2(-1619, 8942)
+
+[node name="GameOver" parent="." instance=ExtResource("5_m1nju")]
