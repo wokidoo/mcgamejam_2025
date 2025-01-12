@@ -7,6 +7,10 @@ class_name Player
 @export var MELEE_ATTACK_SPEED:float
 @export var melee_cooldown:Timer
 @export var HEALTH:float = 5.0
+
+@onready var DamageCooldown:Timer = $DamageCooldown
+
+var canTakeDamage:bool
 var canAttack:bool
 var direction: Vector2
 
@@ -15,7 +19,9 @@ var direction: Vector2
 
 func _ready() -> void:
 	hitbox.body_entered.connect(_on_damage_source_enter)
+	DamageCooldown.timeout.connect(_on_timeout)
 	canAttack = true
+	canTakeDamage = true
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -37,7 +43,23 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_damage_source_enter(source:Enemy):
+	if(canTakeDamage):
+		take_damage(source)
+
+func take_damage(source:Enemy):
+	canTakeDamage = false
+	DamageCooldown.start()
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE
 	if(HEALTH<=0):
 		get_tree().paused = true
+
+func _on_timeout():
+	if(hitbox.has_overlapping_bodies()):
+		for i in hitbox.get_overlapping_bodies():
+			if(i.is_in_group("Enemy")):
+				take_damage(i)
+				break
+	else:
+		print("Can take Damage")
+		canTakeDamage = true

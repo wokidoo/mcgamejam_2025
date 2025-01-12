@@ -114,4 +114,7 @@ shape = SubResource("CapsuleShape2D_u6tju")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u6tju")
 
+[node name="DamageCooldown" type="Timer" parent="."]
+wait_time = 5.0
+
 [editable path="BubbleGun"]
