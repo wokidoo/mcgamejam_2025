@@ -1,12 +1,113 @@
-[gd_scene load_steps=23 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=37 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
 [ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_kfwik"]
 [ext_resource type="Texture2D" uid="uid://ct6hjbfxevgxl" path="res://assets/Sprites/player/pom_run_r.png" id="3_gienb"]
+[ext_resource type="Texture2D" uid="uid://fg450mjd8llf" path="res://assets/Sprites/effects/gun_flash.png" id="4_pjydn"]
+[ext_resource type="Texture2D" uid="uid://d30hv463sq2yd" path="res://assets/Sprites/player/gun_shoot.png" id="6_3u40n"]
 [ext_resource type="AudioStream" uid="uid://b8qdc2hru7oa6" path="res://assets/SFX/footstep.wav" id="6_agigk"]
-[ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="6_pv2j3"]
+[ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="7_oe7g8"]
 [ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
+[ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="6_pv2j3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5jgc"]
+atlas = ExtResource("6_3u40n")
+region = Rect2(0, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvcwn"]
+atlas = ExtResource("6_3u40n")
+region = Rect2(119, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fr2d"]
+atlas = ExtResource("6_3u40n")
+region = Rect2(238, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uiuf"]
+atlas = ExtResource("7_oe7g8")
+region = Rect2(0, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dgsq"]
+atlas = ExtResource("7_oe7g8")
+region = Rect2(119, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3yvc"]
+atlas = ExtResource("7_oe7g8")
+region = Rect2(238, 0, 119, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rwke3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5jgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvcwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fr2d")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uiuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dgsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3yvc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh163"]
+atlas = ExtResource("4_pjydn")
+region = Rect2(0, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qeen"]
+atlas = ExtResource("4_pjydn")
+region = Rect2(37, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unm3q"]
+atlas = ExtResource("4_pjydn")
+region = Rect2(74, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c86fd"]
+atlas = ExtResource("4_pjydn")
+region = Rect2(111, 0, 37, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrg6u"]
+atlas = ExtResource("4_pjydn")
+region = Rect2(148, 0, 37, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hiqi1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh163")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qeen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unm3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c86fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrg6u")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s1a"]
 atlas = ExtResource("2_6vm1o")
@@ -116,6 +217,21 @@ script = ExtResource("1_edvie")
 MAX_SPEED = 500.0
 DECELERATION = 150.0
 melee_cooldown = NodePath("DamageCooldown")
+
+[node name="ArmJoint" type="Node2D" parent="."]
+
+[node name="SpriteArm" type="AnimatedSprite2D" parent="ArmJoint"]
+position = Vector2(55, -17)
+sprite_frames = SubResource("SpriteFrames_rwke3")
+animation = &"fire"
+frame_progress = 0.0138508
+
+[node name="SpriteMuzzleFlash" type="AnimatedSprite2D" parent="ArmJoint"]
+position = Vector2(109.51, -32)
+sprite_frames = SubResource("SpriteFrames_hiqi1")
+animation = &"fire"
+frame_progress = 0.442446
+speed_scale = 2.0
 
 [node name="Sprite2DShadow" type="Sprite2D" parent="."]
 position = Vector2(0, 75)

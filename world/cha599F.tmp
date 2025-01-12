@@ -30,5 +30,6 @@ position = Vector2(899, -99)
 position = Vector2(1123, 229)
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("5_hjk0g")]
+visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("6_m03m0")]

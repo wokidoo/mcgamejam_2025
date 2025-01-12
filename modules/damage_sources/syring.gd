@@ -3,6 +3,7 @@ extends DamageSource
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var travled_distance: float = 0.0
 
 func _ready():
