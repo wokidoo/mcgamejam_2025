@@ -12,8 +12,13 @@ class_name Player
 var canAttack:bool
 var direction: Vector2
 
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var particles: GPUParticles2D= $GPUParticles2D
+var particle_material: ParticleProcessMaterial
+
 func _ready() -> void:
 	canAttack = true
+	particle_material = particles.process_material
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -23,6 +28,19 @@ func _physics_process(delta):
 		velocity = direction * MAX_SPEED
 	else:
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
+		
+	if velocity.length() > 0:
+		sprite.play("walk")
+		if velocity.x < 0:
+			sprite.flip_h = true
+			particle_material.direction.x = -1
+		else:
+			sprite.flip_h = false
+			particle_material.direction.x = 1
+		particles.emitting = true
+	else:
+		sprite.play("idle")
+		particles.emitting = false
 	move_and_slide()
 
 
