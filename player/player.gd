@@ -11,7 +11,8 @@ class_name Player
 signal ON_DEATH
 
 @onready var DamageCooldown:Timer = $DamageCooldown
-@onready var footsteps:AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var footsteps:AudioStreamPlayer2D = $FootstepSound
+@onready var damage_taken_sound:AudioStreamPlayer2D = $DamageTakenSound
 
 var canTakeDamage:bool
 
@@ -72,6 +73,7 @@ func _on_damage_source_enter(source:Enemy):
 
 func take_damage(source:Enemy):
 	canTakeDamage = false
+	damage_taken_sound.play()
 	DamageCooldown.start()
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE

@@ -8,11 +8,14 @@ class_name Enemy
 @onready var player:Player = $"../Player"
 @onready var hitbox: Area2D = $"Hitbox"
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
+var weapon_drop_prefab = preload("res://modules/items/weapon_pickup.tscn")
 @export var DAMAGE: float = 1.0
 
 var randomnum
 
 signal enemy_died(enemy:Enemy)
+
+signal gacha_time(position:Vector2)
 
 enum{
 	SURROUND,

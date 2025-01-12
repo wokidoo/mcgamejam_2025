@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=23 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct6hjbfxevgxl" path="res://assets/Sprites/player/pom_run_r.png" id="3_gienb"]
 [ext_resource type="AudioStream" uid="uid://b8qdc2hru7oa6" path="res://assets/SFX/footstep.wav" id="6_agigk"]
 [ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="6_pv2j3"]
+[ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05s1a"]
 atlas = ExtResource("2_6vm1o")
@@ -149,8 +150,11 @@ position = Vector2(0, 7)
 scale = Vector2(3.2, 5.53565)
 shape = SubResource("CapsuleShape2D_bxg6f")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="FootstepSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_agigk")
 volume_db = 20.0
 
 [node name="BubbleGun" parent="." instance=ExtResource("6_pv2j3")]
+
+[node name="DamageTakenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d3o5d")
