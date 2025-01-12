@@ -1,7 +1,7 @@
 extends Node2D
 
-# Player and enemy nodes
-@export var Player: PackedScene
+# Player weapons
+var preload_weapon_scenes: Array[PackedScene]
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
@@ -75,6 +75,33 @@ func _ready() -> void:
 	difficultyTimer.wait_time = difficultyTimerInterval
 	difficultyTimer.start()
 
+	# load weapon scenes
+	var folder_path = "res://weapons"
+	print("loading weapons...")
+	var files = get_files_in_folder(folder_path)
+	print("Files in folder: ", files)
+	for file in files:
+		var gun_scene = load(folder_path + "/" + file)
+		if gun_scene:
+			preload_weapon_scenes.append(gun_scene)
+			print(preload_weapon_scenes.size())
+		else:
+			print("Failed to load gun scene: ", gun_scene)
+	
+	
+# Look for files in the folder "godot"
+func get_files_in_folder(folder_path: String) -> Array:
+	var dir = DirAccess.open(folder_path)
+	var files = []
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if !dir.current_is_dir():
+				files.append(file_name)
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	return files
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

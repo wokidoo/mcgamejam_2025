@@ -1,14 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://crvbkb0ugjgyv"]
+[gd_scene load_steps=9 format=3 uid="uid://crvbkb0ugjgyv"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
-[ext_resource type="Script" path="res://player/player_weapon.gd" id="2_nuueg"]
-[ext_resource type="PackedScene" uid="uid://bu2tlb4jplcjw" path="res://weapons/syring_smg.tscn" id="2_r677c"]
-[ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="3_15avi"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
-[ext_resource type="Script" path="res://world/LevelManager.gd" id="4_60gon"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
-[ext_resource type="PackedScene" uid="uid://b4r1t8stflsvm" path="res://weapons/TrashPoke.tscn" id="4_tmd7y"]
 [ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="5_2yjue"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
 
@@ -32,10 +27,6 @@ shape = SubResource("CapsuleShape2D_jnac7")
 wait_time = 5.0
 one_shot = true
 
-[node name="WeaponSystem" type="Node2D" parent="Player"]
-script = ExtResource("2_nuueg")
-preload_scenes = Array[PackedScene]([ExtResource("3_15avi"), ExtResource("2_r677c"), ExtResource("4_tmd7y")])
-
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_dkkkp")]
 visible = false
 
@@ -43,7 +34,6 @@ visible = false
 visible = false
 
 [node name="== LEVEL ==" type="Node2D" parent="."]
-script = ExtResource("4_60gon")
 
 [node name="powerupPickup" parent="== LEVEL ==" instance=ExtResource("9_qvf81")]
 position = Vector2(741, 265)
