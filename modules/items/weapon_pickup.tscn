@@ -153,5 +153,9 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fv4mm")
+
+animation = &"banana"
+
 animation = &"bag"
 frame_progress = 0.223637
+

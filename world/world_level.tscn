@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_544fm"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
-[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
+[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
 [ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_0cis1"]
