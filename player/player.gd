@@ -45,6 +45,7 @@ func _ready() -> void:
 	canTakeDamage = true
 	tookStep = true
 	particle_material = particles.process_material
+	muzzle_sprite.pause()
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.

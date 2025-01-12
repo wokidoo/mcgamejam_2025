@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkk87l658qw0m"]
+[gd_scene load_steps=9 format=3 uid="uid://bkk87l658qw0m"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_yscg4"]
 [ext_resource type="PackedScene" uid="uid://bqi8f5wmvmu11" path="res://weapons/syring_smg.tscn" id="2_lralx"]
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_u335j"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="3_mcpts"]
+[ext_resource type="PackedScene" uid="uid://ddh3880tt2rj6" path="res://weapons/goop_gun.tscn" id="3_rvhgh"]
+[ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="4_jkr6y"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="5_hjk0g"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="6_m03m0"]
 
@@ -12,8 +14,10 @@
 [node name="Player" parent="." instance=ExtResource("1_yscg4")]
 
 [node name="SyringSmg" parent="Player" instance=ExtResource("2_lralx")]
-attacks_per_second = 5.0
-area = 1.0
+
+[node name="GoopGun" parent="Player" instance=ExtResource("3_rvhgh")]
+
+[node name="BubbleGun" parent="Player" instance=ExtResource("4_jkr6y")]
 
 [node name="Background" parent="." instance=ExtResource("2_u335j")]
 
