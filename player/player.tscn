@@ -226,17 +226,17 @@ DECELERATION = 150.0
 melee_cooldown = NodePath("DamageCooldown")
 
 [node name="ArmJoint" type="Node2D" parent="."]
-position = Vector2(12, 0)
+position = Vector2(12, 3)
 
 [node name="SpriteArm" type="AnimatedSprite2D" parent="ArmJoint"]
-position = Vector2(55, -17)
+position = Vector2(54.5, -19)
 sprite_frames = SubResource("SpriteFrames_rwke3")
 animation = &"idle"
 frame = 2
 frame_progress = 0.342456
 
 [node name="SpriteMuzzleFlash" type="AnimatedSprite2D" parent="ArmJoint"]
-position = Vector2(134, -32)
+position = Vector2(133.5, -34)
 sprite_frames = SubResource("SpriteFrames_hiqi1")
 animation = &"fire"
 frame_progress = 0.356159
