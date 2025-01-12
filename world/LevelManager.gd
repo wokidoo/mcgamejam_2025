@@ -58,6 +58,8 @@ func _on_DifficultyTimer_timeout():
 	if enemyHealthModifier < MAX_ENEMY_HEALTH_MODIFIER:
 		enemyHealthModifier += ENEMY_HEALTH_MODIFIER_INCREMENT
 	
+	modifier_increased.emit()
+
 	# DEBUG println
 	print("Game Time: ", gameTime)
 	print("Spawn Rate Modifier: ", spawnRateModifier)
