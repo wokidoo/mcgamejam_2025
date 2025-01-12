@@ -58,35 +58,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bhrqe")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_xwsrr")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bhrqe")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_cqpgd")
 }],
 "loop": true,
 "name": &"glasses",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qs77c")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_73g52")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qs77c")
+}, {
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_ecs7v")
 }],
 "loop": true,
 "name": &"skateboard",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="powerupPickup" type="Node2D"]
@@ -99,4 +105,5 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovqvc")
-animation = &"glasses"
+animation = &"skateboard"
+frame_progress = 0.0762447
