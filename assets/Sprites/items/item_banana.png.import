@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchbb2xdw4gea"
-path="res://.godot/imported/2item_syringe.png-ac5dd1b0815e77776f67f8201b5d1bf8.ctex"
+uid="uid://broh7r2xjs3l1"
+path="res://.godot/imported/item_banana.png-412ed0c246ea5013ce2bef92a3888269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/items/2item_syringe.png"
-dest_files=["res://.godot/imported/2item_syringe.png-ac5dd1b0815e77776f67f8201b5d1bf8.ctex"]
+source_file="res://assets/Sprites/items/item_banana.png"
+dest_files=["res://.godot/imported/item_banana.png-412ed0c246ea5013ce2bef92a3888269.ctex"]
 
 [params]
 
