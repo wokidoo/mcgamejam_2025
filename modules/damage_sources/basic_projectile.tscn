@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://8qv1dmqiqmic"]
+[gd_scene load_steps=9 format=3 uid="uid://8qv1dmqiqmic"]
 
 [ext_resource type="Script" path="res://modules/damage_sources/basic_projectile.gd" id="1_7oc27"]
+[ext_resource type="AudioStream" uid="uid://bf3g6d5w1s3uf" path="res://assets/SFX/bubble gun 1 shot.wav" id="2_81b3q"]
+
 [ext_resource type="Texture2D" uid="uid://b30u6l7gmg2p3" path="res://assets/Sprites/weapons/gun_bullet.png" id="2_cpctb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjxdr"]
@@ -42,6 +44,9 @@ script = ExtResource("1_7oc27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kjxdr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_81b3q")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8b0xg")

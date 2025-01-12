@@ -21,6 +21,7 @@ var direction : Vector2
 var emit_destroyed: bool = true
 
 signal on_source_destroyed(source: DamageSource)
+signal on_source_contact(source: DamageSource)
 
 func destroy_source():
 	if emit_destroyed:

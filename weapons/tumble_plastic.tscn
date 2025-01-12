@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bimdgprgieerd"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_tllcr"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_w3583"]
+[ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="3_ojmbg"]
+[ext_resource type="PackedScene" uid="uid://cl5m33pbg67b6" path="res://modules/damage_sources/plastic_bag.tscn" id="4_1bbte"]
+[ext_resource type="PackedScene" uid="uid://bq2x1q533ty0p" path="res://modules/weapon_components/tween_stat/TweenStatWC.tscn" id="5_st0m4"]
+
+[node name="TumblePlastic" type="Node2D"]
+script = ExtResource("1_tllcr")
+weapon_name = "Tumble Plastic"
+texture = ExtResource("2_w3583")
+damage = 0.0
+attacks_per_second = 0.5
+speed = 800.0
+range = 1500.0
+deviation = 0.174533
+area = 1.5
+
+[node name="SourceEmitterWC" parent="." instance=ExtResource("3_ojmbg")]
+source_scene = ExtResource("4_1bbte")
+
+[node name="TweenStatWC" parent="SourceEmitterWC" instance=ExtResource("5_st0m4")]
+stat_name = "speed"
+duration = 1.5
+parent_trigger_signal = "on_source_created"
+
+[node name="TweenStatWC2" parent="SourceEmitterWC" instance=ExtResource("5_st0m4")]
+stat_name = "area"
+duration = 1.5
+trans_method = 8
+parent_trigger_signal = "on_source_created"

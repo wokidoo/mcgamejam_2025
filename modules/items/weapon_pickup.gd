@@ -2,15 +2,16 @@
 class_name WeaponPickup extends Node2D
 
 enum WEAPON_TYPE { 
+	BANANA_GUN,
 	BUBBLE_GUN,
+	GOOP_GUN,
 	SYRING_GUN,
-	GOOB_GUN,
-	BAG_GUN,
-	BANANA,
+	TIRE_GUN,
+	PLASTIC_GUN,
 }
 
 @onready var area_2d : Area2D = $Area2D
-@onready var sprite_2d : Sprite2D = $Sprite2D
+@onready var sprite_2d : AnimatedSprite2D = $Sprite2D
 @onready var weapon_index : int = 1
 
 func _ready() -> void:
@@ -19,7 +20,17 @@ func _ready() -> void:
 	weapon_index = randi() % WEAPON_TYPE.size()
 
 	# set the sprite
-	sprite_2d.texture = LevelManager.preload_weapon_sprites[weapon_index]
+	#sprite_2d.texture = LevelManager.preload_weapon_sprites[weapon_index]
+	if weapon_index == WEAPON_TYPE.SYRING_GUN:
+		sprite_2d.play("syring")
+	elif weapon_index == WEAPON_TYPE.GOOP_GUN:
+		sprite_2d.play("goop")
+	elif weapon_index == WEAPON_TYPE.BANANA_GUN:
+		sprite_2d.play("banana")
+	elif weapon_index == WEAPON_TYPE.PLASTIC_GUN:
+		sprite_2d.play("bag")
+	elif weapon_index == WEAPON_TYPE.TIRE_GUN:
+		sprite_2d.play("tire")
 
 # On entered
 func _on_Area2D_body_entered(body: Node) -> void:

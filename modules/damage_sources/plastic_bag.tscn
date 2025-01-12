@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://cl5m33pbg67b6"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/plastic_bag.gd" id="1_fptl6"]
+[ext_resource type="Texture2D" uid="uid://d15y1k0q7mf78" path="res://assets/Sprites/weapons/bag_bullet.png" id="3_0cr67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8dn8"]
+size = Vector2(96, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gh2o"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(0, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqa0x"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(134, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vitcw"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(268, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc8ad"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(402, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ps6h"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(536, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26w0v"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(670, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwdbk"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(804, 0, 134, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwi0k"]
+atlas = ExtResource("3_0cr67")
+region = Rect2(938, 0, 134, 133)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqit7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gh2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqa0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vitcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc8ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ps6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26w0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwdbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwi0k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlasticBag" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fptl6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8dn8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_lqit7")
+frame_progress = 0.771203
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkft3ywxui4hp"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_dqd4f"]
+[ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_7ct5t"]
+[ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="3_edf6g"]
+[ext_resource type="PackedScene" uid="uid://ceievnc1ndjfy" path="res://modules/damage_sources/banana.tscn" id="4_inp5h"]
+[ext_resource type="PackedScene" uid="uid://bq2x1q533ty0p" path="res://modules/weapon_components/tween_stat/TweenStatWC.tscn" id="5_6h7c1"]
+
+[node name="BananaSling" type="Node2D"]
+script = ExtResource("1_dqd4f")
+weapon_name = "Banana Sling"
+texture = ExtResource("2_7ct5t")
+damage = 3.0
+attacks_per_second = 1.5
+speed = 800.0
+range = 1500.0
+deviation = 0.698132
+
+[node name="SourceEmitterWC" parent="." instance=ExtResource("3_edf6g")]
+source_scene = ExtResource("4_inp5h")
+
+[node name="TweenStatWC" parent="SourceEmitterWC" instance=ExtResource("5_6h7c1")]
+stat_name = "speed"
+target_value = -800.0
+duration = 2.5
+parent_trigger_signal = "on_source_created"

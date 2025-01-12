@@ -5,7 +5,7 @@ var preload_weapon_scenes: Array[PackedScene]
 var preload_weapon_sprites: Array[Texture2D]
 
 # Player powerups
-var preload_powerup_scenes: Array[PackedScene]
+#var preload_powerup_scenes: Array[PackedScene]
 var preload_powerup_sprites: Array[Texture2D]
 
 # Auto Firing
