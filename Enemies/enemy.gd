@@ -8,7 +8,6 @@ class_name Enemy
 @onready var player:Player = $"../Player"
 @onready var hitbox: Area2D = $"Hitbox"
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
-var weapon_drop_prefab = preload("res://modules/items/weapon_pickup.tscn")
 @export var DAMAGE: float = 1.0
 
 var randomnum
@@ -29,6 +28,7 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	randomnum = rng.randf()
+	deathSounds.finished.connect(destory_enemy)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 
 func _physics_process(delta: float) -> void:
@@ -62,17 +62,19 @@ func get_circle_position(random):
 	var y = kill_circle_centre.y + sin(angle) * radius;
 	return Vector2(x, y)
 
-func _on_damage_source_enter(damage_source: DamageSource) -> void:
-	print_debug("Receive ",damage_source.damage," damage!")
-	HEALTH -= damage_source.damage
-	if HEALTH <= 0:
-		destory_enemy()
-		
+#func _on_damage_source_enter(damage_source: DamageSource) -> void:
+	#print_debug("Receive ",damage_source.damage," damage!")
+	#HEALTH -= damage_source.damage
+	#if HEALTH <= 0:
+		#destory_enemy()
+
 func take_damage(damage):
 	HEALTH -= damage
 	if HEALTH <= 0:
-		destory_enemy()
-		
+		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
+		if(!deathSounds.playing):
+			deathSounds.play()
+
 func destory_enemy():
 	enemy_died.emit(self)
 	queue_free()
