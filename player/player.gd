@@ -10,8 +10,6 @@ class_name Player
 @export var SPEEDSTER_TIMER : float = 10.0
 @export var NOIR_TIMER : float = 10.0
 
-@export var canTakeDamage = true
-
 var canAttack:bool
 var direction: Vector2
 
@@ -19,13 +17,11 @@ var direction: Vector2
 var weapons : Array[Weapon]
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
-@onready var hitbox: Area2D = $HitBox
 @onready var particles: GPUParticles2D= $GPUParticles2D
 var particle_material: ParticleProcessMaterial
 
 func _ready() -> void:
 	canAttack = true
-	canTakeDamage = true
 	particle_material = particles.process_material
 
 func _physics_process(delta):

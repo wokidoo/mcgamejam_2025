@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=20 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -104,16 +104,11 @@ gravity = Vector3(0, 250, 0)
 scale_max = 11.68
 color_ramp = SubResource("GradientTexture1D_6yer1")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxg6f"]
-radius = 17.1875
-height = 37.2214
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("melee_cooldown")]
+[node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_edvie")
 MAX_SPEED = 500.0
 DECELERATION = 150.0
-melee_cooldown = NodePath("DamageCooldown")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooloi")
@@ -137,14 +132,3 @@ position = Vector2(0, 72.905)
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_s3ker")
-
-[node name="DamageCooldown" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="HitBox" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 7)
-scale = Vector2(3.2, 5.53565)
-shape = SubResource("CapsuleShape2D_bxg6f")
