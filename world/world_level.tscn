@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
-[ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_0cis1"]
+[ext_resource type="PackedScene" path="res://UI/hud.tscn" id="10_0cis1"]
 
 [node name="WorldLevel" type="Node2D"]
 script = ExtResource("1_0knp4")
