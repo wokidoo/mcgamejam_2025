@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddh3880tt2rj6"]
+[gd_scene load_steps=5 format=3 uid="uid://dsknkyxu0p78s"]
 
 [ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_wedhs"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_ligau"]
 [ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="3_v5mw1"]
-[ext_resource type="PackedScene" uid="uid://bga6yumid0oe2" path="res://modules/damage_sources/goop.tscn" id="4_080xb"]
+[ext_resource type="PackedScene" path="res://modules/damage_sources/goop.tscn" id="4_080xb"]
 
 [node name="GoopGun" type="Node2D"]
 script = ExtResource("1_wedhs")

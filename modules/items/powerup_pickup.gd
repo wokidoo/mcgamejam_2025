@@ -30,6 +30,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		print("Player picked up powerup")
 		powerup_index = randi() % POWERUP_TYPE.size()
 		print("Got powerup: ", POWERUP_TYPE.get(powerup_index))
+		LevelManager.message = "Power up!"
 		body.activate_powerup(powerup_index)
 		queue_free()
 

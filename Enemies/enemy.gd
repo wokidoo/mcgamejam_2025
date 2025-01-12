@@ -9,7 +9,6 @@ class_name Enemy
 @onready var hitbox: Area2D = $"Hitbox"
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
 @export var DAMAGE: float = 1.0
-
 @onready var hurt_sound:AudioStreamPlayer2D = $HurtSounds
 @onready var chomp_sound:AudioStreamPlayer2D = $ChompSound
 @export var onDeathWeapon: PackedScene
@@ -44,8 +43,12 @@ func _ready():
 	hurt_sound.finished.connect(reset_hurt_sound)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
+	print(onDeathWeapon)
 	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
 	sprite.play("default")
+	HEALTH = HEALTH * LevelManager.enemyHealthModifier
+	SPEED = SPEED * LevelManager.enemySpeedModifier
+	print_debug("Health = ",HEALTH,"\nSpeed = ",SPEED)
 
 
 func _physics_process(delta: float) -> void:
@@ -66,8 +69,8 @@ func move(target,delta):
 	if can_move:
 		var direction = (target - global_position).normalized() 
 		var desired_velocity =  direction * SPEED
-    
-    velocity = desired_velocity
+	
+		velocity = desired_velocity
 		if velocity.x < 0:
 			sprite.flip_h = true
 		else:
@@ -99,6 +102,7 @@ func take_damage(damage):
 		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
 		# rng to spawn an item or powerup
 		if (!isDeathSpawned):
+			LevelManager.enemyKilled += 1
 			isDeathSpawned = true
 			death_spawn()
 

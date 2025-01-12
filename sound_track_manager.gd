@@ -16,10 +16,10 @@ func _ready() -> void:
 func _on_wave_increase():
 	round+=1
 	print_debug("Round: ",round)
-	if(round==3):
+	if(round==5):
 		stop()
 		stream = round_3_up_song
 		stream.loop = true
 		play()
-	elif(round >= 5):
+	elif(round >= 10):
 		pitch_scale += 0.1

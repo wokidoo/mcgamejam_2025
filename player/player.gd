@@ -1,7 +1,9 @@
 extends CharacterBody2D
 class_name Player
 
-@export var MAX_SPEED :float = 1500.0
+@export var MAX_SPEED_CAP : float = 1800.0
+@export var MIN_SPEED_CAP : float = 800.0
+@export var MAX_SPEED :float = 800.0
 @export var DECELERATION :float = 100.0
 @export var melee_hit_box:ShapeCast2D
 @export var MELEE_ATTACK_SPEED:float
@@ -98,6 +100,7 @@ func _input(event):
 func calculate_attack_direction() -> Vector2:
 	var global_mouse_pos = get_global_mouse_position()
 	return (global_mouse_pos - global_position).normalized()
+	
 func take_damage(source:Enemy):
 	canTakeDamage = false
 	damage_taken_sound.play()
@@ -141,7 +144,8 @@ func add_weapon(weapon_index:int) -> void:
 
 # Speedster timer timeout
 func _on_speed_timer_timeout() -> void:
-	MAX_SPEED /= 2
+	var speed = MAX_SPEED - 500
+	MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP)
 
 # Noir timer timeout
 func _on_noir_timer_timeout() -> void:
@@ -159,7 +163,8 @@ func activate_powerup(powerup_index:int) -> void:
 			speed_timer.one_shot = true
 			speed_timer.timeout.connect(_on_speed_timer_timeout)
 			speed_timer.start()
-			MAX_SPEED *= 2
+			var speed = MAX_SPEED + 500
+			MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP) 
 		1: # NOIR
 			# Add invincibility here & noir filter
 			var invinc_timer = Timer.new()
