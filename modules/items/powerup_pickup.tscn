@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://biu7sy2bkb8qq"]
+[gd_scene load_steps=16 format=3 uid="uid://biu7sy2bkb8qq"]
 
 [ext_resource type="Script" path="res://modules/items/powerup_pickup.gd" id="1_vjp0u"]
 [ext_resource type="Texture2D" uid="uid://tndbfw3n47kt" path="res://assets/Sprites/effects/goop_puddle.png" id="2_v4piv"]
+[ext_resource type="Texture2D" uid="uid://dryadla7qtbun" path="res://assets/Sprites/powerups/item_sunglasses.png" id="3_a5e08"]
+[ext_resource type="Texture2D" uid="uid://yxq5y1gk8mn7" path="res://assets/Sprites/powerups/item_skateboard.png" id="4_fbk0j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xtqbq"]
 radius = 50.0
@@ -18,6 +20,30 @@ region = Rect2(226, 0, 226, 44)
 atlas = ExtResource("2_v4piv")
 region = Rect2(452, 0, 226, 44)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhrqe"]
+atlas = ExtResource("3_a5e08")
+region = Rect2(0, 0, 78, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwsrr"]
+atlas = ExtResource("3_a5e08")
+region = Rect2(78, 0, 78, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqpgd"]
+atlas = ExtResource("3_a5e08")
+region = Rect2(156, 0, 78, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs77c"]
+atlas = ExtResource("4_fbk0j")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73g52"]
+atlas = ExtResource("4_fbk0j")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecs7v"]
+atlas = ExtResource("4_fbk0j")
+region = Rect2(160, 0, 80, 80)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovqvc"]
 animations = [{
 "frames": [{
@@ -32,7 +58,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhrqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwsrr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqpgd")
+}],
+"loop": true,
+"name": &"glasses",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs77c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73g52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecs7v")
+}],
+"loop": true,
+"name": &"skateboard",
+"speed": 5.0
 }]
 
 [node name="powerupPickup" type="Node2D"]
@@ -45,4 +99,4 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovqvc")
-frame_progress = 0.216809
+animation = &"glasses"

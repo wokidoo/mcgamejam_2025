@@ -4,6 +4,7 @@ class_name PowerupPickup extends Node2D
 enum POWERUP_TYPE { 
 	SKATE,
 	NOIR,
+	DEFAULT,
 }
 
 @onready var area_2d: Area2D = $Area2D
@@ -18,8 +19,10 @@ func _ready() -> void:
 	# set the sprite
 	#sprite_2d.texture = LevelManager.preload_powerup_sprites[powerup_index]
 	if powerup_index == POWERUP_TYPE.SKATE:
-		sprite_2d.play("default")
+		sprite_2d.play("skateboard")
 	elif powerup_index == POWERUP_TYPE.NOIR:
+		sprite_2d.play("glasses")
+	elif powerup_index == POWERUP_TYPE.DEFAULT:
 		sprite_2d.play("default")
 
 
@@ -28,8 +31,7 @@ func _ready() -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body is Player:
 		print("Player picked up powerup")
-		powerup_index = randi() % POWERUP_TYPE.size()
-		print("Got powerup: ", POWERUP_TYPE.get(powerup_index))
+		print("Got powerup: ", powerup_index)
 		LevelManager.message = "Power up!"
 		body.activate_powerup(powerup_index)
 		queue_free()

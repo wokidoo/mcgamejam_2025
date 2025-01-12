@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ceievnc1ndjfy"]
+[gd_scene load_steps=14 format=3 uid="uid://cbjv2prys0jkg"]
 
 [ext_resource type="Script" path="res://modules/damage_sources/banana.gd" id="1_1w87p"]
 [ext_resource type="AudioStream" uid="uid://butuaafaf6ych" path="res://assets/SFX/banana sling.wav" id="2_exeys"]
@@ -68,7 +68,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 24.0
+"speed": 12.0
 }]
 
 [node name="Banana" type="Area2D"]
@@ -86,7 +86,7 @@ shape = SubResource("CircleShape2D_0xxx8")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_lqit7")
-frame_progress = 0.0584198
+frame_progress = 0.349182
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(4.37798, 2.45161)

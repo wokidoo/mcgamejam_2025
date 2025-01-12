@@ -23,6 +23,10 @@ LevelManager="*res://world/LevelManager.gd"
 
 window/stretch/mode="canvas_items"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [input]
 
 move_left={
@@ -65,3 +69,11 @@ auto_fire={
 
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="damage_sources"
+2d_physics/layer_4="spawner"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+
+2d_physics/layer_4="spawner"
+
