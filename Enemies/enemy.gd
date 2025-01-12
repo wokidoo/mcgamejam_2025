@@ -101,12 +101,12 @@ func death_spawn():
 	if weapon_spawn_chance <= LevelManager.WEAPON_DROP_CHANCE:
 		# spawn onDeathWeapon
 		var weapon_instance = onDeathWeapon.instantiate()
-		get_parent().add_child(weapon_instance)
+		get_parent().call_deferred("add_child", weapon_instance)
 		weapon_instance.global_position = global_position
 	elif powerup_spawn_chance <= LevelManager.POWERUP_DROP_CHANCE:
 		# spawn powerup
 		var powerup_instance = onDeathPowerup.instantiate()
-		get_parent().add_child(powerup_instance)
+		get_parent().call_deferred("add_child", powerup_instance)
 		powerup_instance.global_position = global_position
 
 func destory_enemy():
