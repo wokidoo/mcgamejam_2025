@@ -7,7 +7,7 @@ enum POWERUP_TYPE {
 }
 
 @onready var area_2d: Area2D = $Area2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var powerup_index : int = 0
 
 func _ready() -> void:
@@ -16,8 +16,13 @@ func _ready() -> void:
 	# Randomize the powerup
 	powerup_index = randi() % POWERUP_TYPE.size()
 	# set the sprite
-	sprite_2d.texture = LevelManager.preload_powerup_sprites[powerup_index]
-	
+	#sprite_2d.texture = LevelManager.preload_powerup_sprites[powerup_index]
+	if powerup_index == POWERUP_TYPE.SKATE:
+		sprite_2d.play("default")
+	elif powerup_index == POWERUP_TYPE.NOIR:
+		sprite_2d.play("default")
+
+
 
 # On entered
 func _on_Area2D_body_entered(body: Node) -> void:

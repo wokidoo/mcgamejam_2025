@@ -2,11 +2,11 @@ extends Node2D
 
 # Player weapons
 var preload_weapon_scenes: Array[PackedScene]
-var preload_weapon_sprites: Array[Texture2D]
+#var preload_weapon_sprites: Array[Texture2D]
 
 # Player powerups
-var preload_powerup_scenes: Array[PackedScene]
-var preload_powerup_sprites: Array[Texture2D]
+#var preload_powerup_scenes: Array[PackedScene]
+#var preload_powerup_sprites: Array[Texture2D]
 
 # Auto Firing
 var auto_fire: bool = false
@@ -96,12 +96,12 @@ func _ready() -> void:
 	print("loading weapons...")
 	load_scenes("res://weapons", preload_weapon_scenes)
 
-	print("loading weapon sprites...")
-	load_sprites("res://assets/Sprites/items", preload_weapon_sprites)
-
-	# Call the function to load powerups
-	print("loading powerup sprites...")
-	load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
+	#print("loading weapon sprites...")
+	#load_sprites("res://assets/Sprites/items", preload_weapon_sprites)
+#
+	## Call the function to load powerups
+	#print("loading powerup sprites...")
+	#load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
 
 # Function to load scenes
 func load_scenes(folder_path: String, arr: Array[PackedScene]) -> void:

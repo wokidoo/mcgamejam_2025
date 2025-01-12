@@ -1,5 +1,5 @@
 extends DamageSource
-class_name Projectile
+
 
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
@@ -9,9 +9,8 @@ class_name Projectile
 var travled_distance: float = 0.0
 
 func _ready():
-	$Sprite2D/VisibleOnScreenNotifier2D.connect("screen_exited",destroy_source)
+	$VisibleOnScreenNotifier2D.connect("screen_exited",destroy_source)
 	sprite.play("default")
-
 	audio.play()
 	
 func _physics_process(delta):
@@ -26,4 +25,3 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
-	destroy_source()

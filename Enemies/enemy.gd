@@ -22,6 +22,8 @@ var isDeathSpawned: bool = false
 
 var can_hurt_sound:bool
 
+var can_move: bool = true
+
 signal enemy_died(enemy:Enemy)
 
 enum{
@@ -41,6 +43,7 @@ func _ready():
 	hurt_sound.finished.connect(reset_hurt_sound)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
+	print(onDeathWeapon)
 	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
 	sprite.play("default")
 	HEALTH = HEALTH * LevelManager.enemyHealthModifier
@@ -55,23 +58,24 @@ func _physics_process(delta: float) -> void:
 		ATTACK:
 			move(player.global_position, delta)
 		HIT:
-			#move(-player.velocity.normalized(), delta)
-			var player_velocity = player.velocity
-			velocity += player_velocity
-			move_and_slide()
+			if can_move:
+				var player_velocity = player.velocity
+				velocity += player_velocity
+				move_and_slide()
 	
 	
 
 func move(target,delta):
-	var direction = (target - global_position).normalized() 
-	var desired_velocity =  direction * SPEED
-
-	velocity = desired_velocity
-	if velocity.x < 0:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
-	move_and_slide()
+	if can_move:
+		var direction = (target - global_position).normalized() 
+		var desired_velocity =  direction * SPEED
+	
+		velocity = desired_velocity
+		if velocity.x < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+		move_and_slide()
 
 	
 func get_circle_position(random):
