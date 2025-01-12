@@ -31,7 +31,6 @@ position = Vector2(500, -502)
 position = Vector2(611, 385)
 
 [node name="Player" parent="." instance=ExtResource("1_d0pys")]
-MAX_SPEED = 1500.0
 DECELERATION = 100.0
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Player"]
