@@ -82,6 +82,7 @@ animations = [{
 "speed": 5.0
 }]
 
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7b5a"]
 radius = 51.0
 height = 144.0
@@ -121,6 +122,9 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 
 [node name="BubbleGun" parent="." instance=ExtResource("3_0dap4")]
+
+[node name="TweenStatWC" parent="BubbleGun/SourceEmitterWC" index="0"]
+parent_trigger_signal = "on_source_created"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

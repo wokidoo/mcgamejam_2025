@@ -12,6 +12,7 @@ var direction: Vector2
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var particles: GPUParticles2D= $GPUParticles2D
 var particle_material: ParticleProcessMaterial
+
 func _ready() -> void:
 	canAttack = true
 	particle_material = particles.process_material
