@@ -24,7 +24,7 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	randomnum = rng.randf()
-	hitbox.area_entered.connect(_on_damage_source_enter)
+	#hitbox.area_entered.connect(_on_damage_source_enter)
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -67,7 +67,12 @@ func _on_damage_source_enter(damage_source: DamageSource) -> void:
 	HEALTH -= damage_source.damage
 	if HEALTH <= 0:
 		destory_enemy()
-
+		
+func take_damage(damage):
+	HEALTH -= damage
+	if HEALTH <= 0:
+		destory_enemy()
+		
 func destory_enemy():
 	print_debug(self," DIED!")
 	enemy_died.emit(self)
