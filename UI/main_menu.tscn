@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://lpdj5lokxa87"]
+[gd_scene load_steps=4 format=3 uid="uid://lpdj5lokxa87"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_1ajob"]
+[ext_resource type="AudioStream" uid="uid://drgmurhha162c" path="res://Music/mcjam song intro.mp3" id="2_yso1m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lyuj1"]
 font_size = 50
@@ -41,6 +42,11 @@ size_flags_vertical = 0
 text = "Junk Bash"
 label_settings = SubResource("LabelSettings_lyuj1")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yso1m")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/New Run" to="." method="_on_new_run_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

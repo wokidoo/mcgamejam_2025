@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lcfiuuwrp0oc"]
+[gd_scene load_steps=10 format=3 uid="uid://lcfiuuwrp0oc"]
 
 [ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_0knp4"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="5_m1nju"]
 [ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
+[ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
 
 [node name="WorldLevel" type="Node2D"]
 script = ExtResource("1_0knp4")
@@ -282,3 +283,16 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="GameOver" parent="." instance=ExtResource("5_m1nju")]
+z_index = 1
+
+[node name="Enemy" parent="." instance=ExtResource("9_2v0xw")]
+position = Vector2(-1257, 0)
+
+[node name="Enemy4" parent="." instance=ExtResource("9_2v0xw")]
+position = Vector2(15, 756)
+
+[node name="Enemy2" parent="." instance=ExtResource("9_2v0xw")]
+position = Vector2(1362, -4)
+
+[node name="Enemy3" parent="." instance=ExtResource("9_2v0xw")]
+position = Vector2(6, -787)

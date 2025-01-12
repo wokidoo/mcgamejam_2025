@@ -35,7 +35,7 @@ onDeathWeapon = null
 position = Vector2(611, 385)
 onDeathWeapon = null
 
-[node name="GameOver" parent="." instance=ExtResource("3_g3ixc")]
-
 [node name="SoundTrackManager" parent="." instance=ExtResource("6_hrjq2")]
 round_3_up_song = ExtResource("7_qbfr7")
+
+[node name="GameOver" parent="." instance=ExtResource("3_g3ixc")]
