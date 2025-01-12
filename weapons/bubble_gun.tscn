@@ -12,7 +12,7 @@ texture = ExtResource("2_ebsom")
 speed = 800.0
 range = 1500.0
 deviation = 0.174533
-area = 0.5
+area = 2.0
 
 [node name="SourceEmitterWC" parent="." instance=ExtResource("2_jbxkt")]
 

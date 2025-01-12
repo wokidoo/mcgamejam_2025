@@ -14,6 +14,8 @@ class_name Enemy
 @export var onDeathWeapon: PackedScene
 @export var onDeathPowerup: PackedScene
 
+@onready var sprite: AnimatedSprite2D = $Sprite2D
+
 var randomnum: float
 
 var isDeathSpawned: bool = false
@@ -40,6 +42,8 @@ func _ready():
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
 	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
+	sprite.play("default")
+
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -60,6 +64,10 @@ func move(target,delta):
 	var desired_velocity =  direction * SPEED
 
 	velocity = desired_velocity
+	if velocity.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	move_and_slide()
 
 	
@@ -110,7 +118,11 @@ func death_spawn():
 		powerup_instance.global_position = global_position
 
 func destory_enemy():
+	deathSounds.play()
+	sprite.speed_scale = 5
+	sprite.play("death")
 	enemy_died.emit(self)
+	await sprite.animation_looped
 	queue_free()
 
 func reset_hurt_sound():
