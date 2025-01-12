@@ -4,8 +4,10 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	LevelManager.gameTime = 0.0
+	LevelManager.enemyKilled = 0
 	$time.text = "Lost: " + str(LevelManager.gameTime) + " sec"
-	$enemyKilled2.text = "Found: " + str(LevelManager.enemyKilled)
+	$enemyKilled2.text = "Enemies Trashed: " + str(LevelManager.enemyKilled)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
