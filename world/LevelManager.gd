@@ -5,7 +5,7 @@ var preload_weapon_scenes: Array[PackedScene]
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
-@export var difficultyTimerInterval: float = 90.0
+@export var difficultyTimerInterval: float = 20.0
 # MODIFIERS: The level will increase a set of modifiers based on the game time to increase game difficulty
 # These modifiers should be referenced by other scripts to 'increase' the base value of game elements
 # The formula is: 

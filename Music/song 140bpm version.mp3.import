@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d260few700de6"
+path="res://.godot/imported/song 140bpm version.mp3-0e789dbac2bfd86c87a7fe7caa7be00c.mp3str"
+
+[deps]
+
+source_file="res://Music/song 140bpm version.mp3"
+dest_files=["res://.godot/imported/song 140bpm version.mp3-0e789dbac2bfd86c87a7fe7caa7be00c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
