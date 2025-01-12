@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=20 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -82,12 +82,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc4i"]
-size = Vector2(240, 242)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5xbwd"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7b5a"]
+radius = 51.0
+height = 144.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gr8wq"]
+[sub_resource type="Gradient" id="Gradient_oggwj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.357057, 0.239716, 0.169207, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6yer1"]
+gradient = SubResource("Gradient_oggwj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3ker"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+spread = 15.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 250, 0)
+scale_max = 11.68
+color_ramp = SubResource("GradientTexture1D_6yer1")
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -102,7 +118,8 @@ frame_progress = 0.53761
 speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8qc4i")
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_i7b5a")
 
 [node name="BubbleGun" parent="." instance=ExtResource("3_0dap4")]
 
@@ -114,21 +131,10 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="TrashPoke" parent="." instance=ExtResource("4_wn7md")]
 
-[node name="Attract" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attract"]
-scale = Vector2(52.709, 50)
-shape = SubResource("CircleShape2D_5xbwd")
-
-[node name="Attack" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
-scale = Vector2(16.75, 17)
-shape = SubResource("CircleShape2D_gr8wq")
-
-[connection signal="body_entered" from="Attract" to="." method="_on_attract_body_entered"]
-[connection signal="body_exited" from="Attract" to="." method="_on_attract_body_exited"]
-[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
-[connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 72.905)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s3ker")
 
 [editable path="BubbleGun"]
