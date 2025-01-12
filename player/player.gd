@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var MAX_SPEED_CAP : float = 1800.0
+@export var MAX_SPEED_CAP : float = 1500.0
 @export var MIN_SPEED_CAP : float = 800.0
 @export var MAX_SPEED :float = 800.0
 @export var DECELERATION :float = 100.0
@@ -17,6 +17,7 @@ signal ON_DEATH
 @onready var damage_taken_sound:AudioStreamPlayer2D = $DamageTakenSound
 
 var canTakeDamage:bool
+@onready var isInvicible:bool = false
 
 @export var SPEEDSTER_TIMER : float = 10.0
 @export var NOIR_TIMER : float = 10.0
@@ -102,6 +103,9 @@ func calculate_attack_direction() -> Vector2:
 	return (global_mouse_pos - global_position).normalized()
 	
 func take_damage(source:Enemy):
+	if (isInvicible):
+		return
+	
 	canTakeDamage = false
 	damage_taken_sound.play()
 	source.chomp_sound.play()
@@ -144,12 +148,14 @@ func add_weapon(weapon_index:int) -> void:
 
 # Speedster timer timeout
 func _on_speed_timer_timeout() -> void:
-	var speed = MAX_SPEED - 500
+	var speed = MAX_SPEED - 300
 	MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP)
 
 # Noir timer timeout
 func _on_noir_timer_timeout() -> void:
-	pass
+	if LevelManager.mono_fx:
+		LevelManager.mono_fx.visible = false
+	isInvicible = false
 
 # Power up
 func activate_powerup(powerup_index:int) -> void:
@@ -163,17 +169,19 @@ func activate_powerup(powerup_index:int) -> void:
 			speed_timer.one_shot = true
 			speed_timer.timeout.connect(_on_speed_timer_timeout)
 			speed_timer.start()
-			var speed = MAX_SPEED + 500
+			var speed = MAX_SPEED + 300
 			MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP) 
 		1: # NOIR
 			# Add invincibility here & noir filter
+			if LevelManager.mono_fx: 
+				LevelManager.mono_fx.visible = true
 			var invinc_timer = Timer.new()
 			add_child(invinc_timer)
 			invinc_timer.wait_time = NOIR_TIMER
 			invinc_timer.one_shot = true
 			invinc_timer.timeout.connect(_on_noir_timer_timeout)
 			invinc_timer.start()
-			MELEE_ATTACK_SPEED *= 3
+			isInvicible = true
 			# and maybe OPAF gun
 		_:
 			MAX_SPEED *= 1

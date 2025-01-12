@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cl5m33pbg67b6"]
+[gd_scene load_steps=13 format=3 uid="uid://ctd54u42v5npj"]
 
 [ext_resource type="Script" path="res://modules/damage_sources/plastic_bag.gd" id="1_fptl6"]
 [ext_resource type="Texture2D" uid="uid://d15y1k0q7mf78" path="res://assets/Sprites/weapons/bag_bullet.png" id="3_0cr67"]
@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="PlasticBag" type="Area2D"]

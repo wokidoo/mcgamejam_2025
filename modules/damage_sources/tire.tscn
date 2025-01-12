@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://di4uulpuq27e6"]
+[gd_scene load_steps=10 format=3 uid="uid://de08tdha1hlbl"]
 
 [ext_resource type="Script" path="res://modules/damage_sources/banana.gd" id="1_mcln4"]
 [ext_resource type="AudioStream" uid="uid://b1af6o2fwyh81" path="res://assets/SFX/toaster flail 1.wav" id="2_tvcmt"]
@@ -40,7 +40,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 18.0
 }]
 
 [node name="Tire" type="Area2D"]
