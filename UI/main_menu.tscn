@@ -47,6 +47,3 @@ horizontal_alignment = 1
 stream = ExtResource("2_yso1m")
 autoplay = true
 parameters/looping = true
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/New Run" to="." method="_on_new_run_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

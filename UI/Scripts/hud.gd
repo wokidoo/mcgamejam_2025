@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$time.text = "Lost: " +str(snapped(LevelManager.gameTime, 0.01)) + " sec"
-	$enemyKilled2.text = "Found: " + str(LevelManager.enemyKilled)
+	$enemyKilled2.text = "Enemies Trashed: " + str(LevelManager.enemyKilled)
 	
 	$health.text = "HP: " + str(player.HEALTH)
 	$message.text = LevelManager.message
