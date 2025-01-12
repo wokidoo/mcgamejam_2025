@@ -6,22 +6,37 @@ class_name Player
 @export var melee_hit_box:ShapeCast2D
 @export var MELEE_ATTACK_SPEED:float
 @export var melee_cooldown:Timer
+@export var HEALTH:float = 5.0
+
+signal ON_DEATH
+
+@onready var DamageCooldown:Timer = $DamageCooldown
+@onready var footsteps:AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+var canTakeDamage:bool
 
 @export var SPEEDSTER_TIMER : float = 10.0
 @export var NOIR_TIMER : float = 10.0
 
 var canAttack:bool
 var direction: Vector2
+var tookStep:bool
 
 # Player weapons
 var weapons : Array[Weapon]
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var hitbox: Area2D = $HitBox
 @onready var particles: GPUParticles2D= $GPUParticles2D
 var particle_material: ParticleProcessMaterial
 
 func _ready() -> void:
+	hitbox.body_entered.connect(_on_damage_source_enter)
+	DamageCooldown.timeout.connect(_on_timeout)
+	footsteps.finished.connect(_on_footstep_finished)
 	canAttack = true
+	canTakeDamage = true
+	tookStep = true
 	particle_material = particles.process_material
 
 func _physics_process(delta):
@@ -34,6 +49,10 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
 		
 	if velocity.length() > 0:
+		if(tookStep):
+			footsteps.play()
+			tookStep = false
+		
 		sprite.play("walk")
 		if velocity.x < 0:
 			sprite.flip_h = true
@@ -47,15 +66,30 @@ func _physics_process(delta):
 		particles.emitting = false
 	move_and_slide()
 
+func _on_damage_source_enter(source:Enemy):
+	if(canTakeDamage):
+		take_damage(source)
 
-func _on_attack_body_entered(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.state = body.HIT
+func take_damage(source:Enemy):
+	canTakeDamage = false
+	DamageCooldown.start()
+	print("Taking ",source.DAMAGE," damage")
+	HEALTH -= source.DAMAGE
+	if(HEALTH<=0):
+		ON_DEATH.emit()
 
+func _on_timeout():
+	if(hitbox.has_overlapping_bodies()):
+		for i in hitbox.get_overlapping_bodies():
+			if(i.is_in_group("Enemy")):
+				take_damage(i)
+				break
+	else:
+		print("Can take Damage")
+		canTakeDamage = true
 
-func _on_attack_body_exited(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.state = body.SURROUND
+func _on_footstep_finished():
+	tookStep = true
 
 
 func _on_attract_body_entered(body) -> void:
