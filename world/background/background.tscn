@@ -11,7 +11,7 @@ shader_parameter/NOISE_TEXTURE = ExtResource("3_154rh")
 
 [node name="Background" type="Parallax2D"]
 z_index = -1
-repeat_size = Vector2(512, 512)
+repeat_size = Vector2(1080, 1080)
 repeat_times = 8
 script = ExtResource("1_wrqg5")
 shift_coefficient = 1.0

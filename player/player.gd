@@ -18,12 +18,15 @@ var direction: Vector2
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var hitbox: Area2D = $HitBox
+@onready var particles: GPUParticles2D= $GPUParticles2D
+var particle_material: ParticleProcessMaterial
 
 func _ready() -> void:
 	hitbox.body_entered.connect(_on_damage_source_enter)
 	DamageCooldown.timeout.connect(_on_timeout)
 	canAttack = true
 	canTakeDamage = true
+	particle_material = particles.process_material
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -38,10 +41,14 @@ func _physics_process(delta):
 		sprite.play("walk")
 		if velocity.x < 0:
 			sprite.flip_h = true
+			particle_material.direction.x = -1
 		else:
 			sprite.flip_h = false
+			particle_material.direction.x = 1
+		particles.emitting = true
 	else:
 		sprite.play("idle")
+		particles.emitting = false
 	move_and_slide()
 
 func _on_damage_source_enter(source:Enemy):

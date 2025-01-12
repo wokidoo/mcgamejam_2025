@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=20 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -82,7 +82,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6tju"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7b5a"]
+radius = 51.0
+height = 144.0
+
+[sub_resource type="Gradient" id="Gradient_oggwj"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.357057, 0.239716, 0.169207, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6yer1"]
+gradient = SubResource("Gradient_oggwj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3ker"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+spread = 15.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 250, 0)
+scale_max = 11.68
+color_ramp = SubResource("GradientTexture1D_6yer1")
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -96,6 +116,10 @@ animation = &"idle"
 frame_progress = 0.53761
 speed_scale = 1.25
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_i7b5a")
+
 [node name="BubbleGun" parent="." instance=ExtResource("3_0dap4")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -103,18 +127,8 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="TrashPoke" parent="." instance=ExtResource("4_wn7md")]
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="HitboxShape" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 5)
-scale = Vector2(5.44, 5.48)
-shape = SubResource("CapsuleShape2D_u6tju")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_u6tju")
-
-[node name="DamageCooldown" type="Timer" parent="."]
-wait_time = 2.0
-
-[editable path="BubbleGun"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 72.905)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s3ker")
