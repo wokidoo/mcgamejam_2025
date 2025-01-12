@@ -21,3 +21,8 @@ position = Vector2(500, -502)
 
 [node name="Enemy5" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(611, 385)
+
+[node name="GameOver" parent="." instance=ExtResource("3_g3ixc")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j71eg")
