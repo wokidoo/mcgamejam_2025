@@ -15,6 +15,10 @@ run/main_scene="res://world/world_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelManager="*res://world/LevelManager.gd"
+
 [input]
 
 move_left={

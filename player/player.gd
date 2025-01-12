@@ -6,8 +6,15 @@ class_name Player
 @export var melee_hit_box:ShapeCast2D
 @export var MELEE_ATTACK_SPEED:float
 @export var melee_cooldown:Timer
+
+@export var SPEEDSTER_TIMER : float = 10.0
+@export var NOIR_TIMER : float = 10.0
+
 var canAttack:bool
 var direction: Vector2
+
+# Player weapons
+var weapons : Array[Weapon]
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var particles: GPUParticles2D= $GPUParticles2D
@@ -60,3 +67,43 @@ func _on_attract_body_exited(body) -> void:
 	if(body.is_in_group("Enemy")):
 		body.attack_timer.stop()
 		body.state = body.SURROUND
+
+# Weapon pickup
+func add_weapon(weapon_index:int) -> void:
+	var weapon = LevelManager.preload_weapon_scenes[weapon_index].instantiate()
+	weapon.position = Vector2(0,0)
+	add_child(weapon)
+
+# Speedster timer timeout
+func _on_speed_timer_timeout() -> void:
+	MAX_SPEED /= 2
+
+# Noir timer timeout
+func _on_noir_timer_timeout() -> void:
+	pass
+
+# Power up
+func activate_powerup(powerup_index:int) -> void:
+	match powerup_index:
+		0: # SPEED
+			# add timer for 20 seconds speed boost
+			# and maybe a skate powerup
+			var speed_timer = Timer.new()
+			add_child(speed_timer)
+			speed_timer.wait_time = SPEEDSTER_TIMER
+			speed_timer.one_shot = true
+			speed_timer.timeout.connect(_on_speed_timer_timeout)
+			speed_timer.start()
+			MAX_SPEED *= 2
+		1: # NOIR
+			# Add invincibility here & noir filter
+			var invinc_timer = Timer.new()
+			add_child(invinc_timer)
+			invinc_timer.wait_time = NOIR_TIMER
+			invinc_timer.one_shot = true
+			invinc_timer.timeout.connect(_on_noir_timer_timeout)
+			invinc_timer.start()
+			MELEE_ATTACK_SPEED *= 3
+			# and maybe OPAF gun
+		_:
+			MAX_SPEED *= 1
