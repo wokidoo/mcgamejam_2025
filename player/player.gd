@@ -6,12 +6,15 @@ class_name Player
 @export var melee_hit_box:ShapeCast2D
 @export var MELEE_ATTACK_SPEED:float
 @export var melee_cooldown:Timer
+@export var HEALTH:float = 5.0
 var canAttack:bool
 var direction: Vector2
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
+@onready var hitbox: Area2D = $HitBox
 
 func _ready() -> void:
+	hitbox.body_entered.connect(_on_damage_source_enter)
 	canAttack = true
 
 func _physics_process(delta):
@@ -33,23 +36,8 @@ func _physics_process(delta):
 		sprite.play("idle")
 	move_and_slide()
 
-
-func _on_attack_body_entered(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.state = body.HIT
-
-
-func _on_attack_body_exited(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.state = body.SURROUND
-
-
-func _on_attract_body_entered(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.attack_timer.start()
-
-
-func _on_attract_body_exited(body) -> void:
-	if(body.is_in_group("Enemy")):
-		body.attack_timer.stop()
-		body.state = body.SURROUND
+func _on_damage_source_enter(source:Enemy):
+	print("Taking ",source.DAMAGE," damage")
+	HEALTH -= source.DAMAGE
+	if(HEALTH<=0):
+		get_tree().paused = true
