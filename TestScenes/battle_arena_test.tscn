@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dklhns7462puv"]
+[gd_scene load_steps=6 format=3 uid="uid://dklhns7462puv"]
 
+[ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_lri3k"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_vg12y"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="2_hsjcw"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="3_g3ixc"]
 [ext_resource type="AudioStream" uid="uid://drwmqy3dsi4po" path="res://Music/mcjam song v1.1.mp3" id="4_j71eg"]
 
 [node name="BattleArenaTest" type="Node2D"]
+script = ExtResource("1_lri3k")
 
 [node name="Player" parent="." instance=ExtResource("1_vg12y")]
 
