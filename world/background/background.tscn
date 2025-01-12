@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://shaders/background.gdshader" id="1_e3xuw"]
 [ext_resource type="Script" path="res://world/background/background.gd" id="1_wrqg5"]
-[ext_resource type="Texture2D" uid="uid://babh17e1x6moh" path="res://world/background/background.tres" id="3_154rh"]
+[ext_resource type="Texture2D" uid="uid://daesy65c1ab7w" path="res://world/background/background.tres" id="3_154rh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0qci2"]
 shader = ExtResource("1_e3xuw")
@@ -11,7 +11,7 @@ shader_parameter/NOISE_TEXTURE = ExtResource("3_154rh")
 
 [node name="Background" type="Parallax2D"]
 z_index = -1
-repeat_size = Vector2(1080, 1080)
+repeat_size = Vector2(2160, 2160)
 repeat_times = 8
 script = ExtResource("1_wrqg5")
 shift_coefficient = 1.0

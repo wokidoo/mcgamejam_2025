@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx6dmypei0aal"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/syring.gd" id="1_jv87d"]
+[ext_resource type="Texture2D" uid="uid://c83nxxwhblbj8" path="res://assets/Sprites/weapons/syringe.png" id="2_8kqsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8dn8"]
+size = Vector2(62, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apk4v"]
+atlas = ExtResource("2_8kqsl")
+region = Rect2(0, 0, 62, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7wve"]
+atlas = ExtResource("2_8kqsl")
+region = Rect2(62, 0, 62, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yktt0"]
+atlas = ExtResource("2_8kqsl")
+region = Rect2(124, 0, 62, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqit7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apk4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7wve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yktt0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Syring" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jv87d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8dn8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lqit7")
+frame_progress = 0.980879
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
