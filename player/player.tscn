@@ -129,6 +129,7 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(0, 72.905)
+emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_s3ker")
 
