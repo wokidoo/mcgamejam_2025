@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnpjilxty7u3p"]
+[gd_scene load_steps=6 format=3 uid="uid://cnpjilxty7u3p"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xs2ds"]
 [ext_resource type="Texture2D" uid="uid://dsdq7otrwlygu" path="res://assets/Sprites/Enemy/enemy_test.png" id="2_i0qn1"]
+[ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_jpqwp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
 radius = 44.7772
@@ -19,6 +20,11 @@ SPEED = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8rlcj")
+
+[node name="Sprite2DShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 43)
+texture = ExtResource("2_jpqwp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -14)
