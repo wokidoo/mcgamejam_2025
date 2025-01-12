@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkft3ywxui4hp"]
+[gd_scene load_steps=6 format=3 uid="uid://cmpld227l121e"]
 
 [ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_dqd4f"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="2_7ct5t"]
 [ext_resource type="PackedScene" uid="uid://cb32whtauc0wq" path="res://modules/weapon_components/source_emitter/SourceEmitterWC.tscn" id="3_edf6g"]
-[ext_resource type="PackedScene" uid="uid://ceievnc1ndjfy" path="res://modules/damage_sources/banana.tscn" id="4_inp5h"]
+[ext_resource type="PackedScene" uid="uid://cbjv2prys0jkg" path="res://modules/damage_sources/banana.tscn" id="4_inp5h"]
 [ext_resource type="PackedScene" uid="uid://bq2x1q533ty0p" path="res://modules/weapon_components/tween_stat/TweenStatWC.tscn" id="5_6h7c1"]
 
 [node name="BananaSling" type="Node2D"]
