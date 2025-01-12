@@ -11,10 +11,12 @@ class_name Player
 signal ON_DEATH
 
 @onready var DamageCooldown:Timer = $DamageCooldown
+@onready var footsteps:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var canTakeDamage:bool
 var canAttack:bool
 var direction: Vector2
+var tookStep:bool
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var hitbox: Area2D = $HitBox
@@ -24,8 +26,10 @@ var particle_material: ParticleProcessMaterial
 func _ready() -> void:
 	hitbox.body_entered.connect(_on_damage_source_enter)
 	DamageCooldown.timeout.connect(_on_timeout)
+	footsteps.finished.connect(_on_footstep_finished)
 	canAttack = true
 	canTakeDamage = true
+	tookStep = true
 	particle_material = particles.process_material
 
 func _physics_process(delta):
@@ -38,6 +42,10 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO * move_toward(velocity.length(), 0.0, DECELERATION * delta)
 		
 	if velocity.length() > 0:
+		if(tookStep):
+			footsteps.play()
+			tookStep = false
+		
 		sprite.play("walk")
 		if velocity.x < 0:
 			sprite.flip_h = true
@@ -72,3 +80,6 @@ func _on_timeout():
 	else:
 		print("Can take Damage")
 		canTakeDamage = true
+
+func _on_footstep_finished():
+	tookStep = true

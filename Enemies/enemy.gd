@@ -7,7 +7,7 @@ class_name Enemy
 
 @onready var player:Player = $"../Player"
 @onready var hitbox: Area2D = $"Hitbox"
-
+@onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
 @export var DAMAGE: float = 1.0
 
 var randomnum
@@ -71,6 +71,5 @@ func take_damage(damage):
 		destory_enemy()
 		
 func destory_enemy():
-	print_debug(self," DIED!")
 	enemy_died.emit(self)
 	queue_free()
