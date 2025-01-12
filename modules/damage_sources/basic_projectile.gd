@@ -18,5 +18,7 @@ func _physics_process(delta):
 		destroy_source()
 
 
-func _on_area_entered(area):
+func _on_body_entered(body):
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
 	destroy_source()
