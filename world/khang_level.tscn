@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://crvbkb0ugjgyv"]
+[gd_scene load_steps=9 format=3 uid="uid://crvbkb0ugjgyv"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
-[ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="5_2yjue"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="7_y5psu"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
 
@@ -14,21 +13,6 @@
 distance = -2.48114
 
 [node name="Khang-level" type="Node2D"]
-
-[node name="Enemy" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(1034, -103)
-
-[node name="Enemy2" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(-992, -451)
-
-[node name="Enemy3" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(-926, 136)
-
-[node name="Enemy4" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(500, -502)
-
-[node name="Enemy5" parent="." instance=ExtResource("7_y5psu")]
-position = Vector2(611, 385)
 
 [node name="Player" parent="." instance=ExtResource("1_d0pys")]
 DECELERATION = 100.0
@@ -54,12 +38,6 @@ visible = false
 position = Vector2(741, 265)
 
 [node name="Sprite2D2" type="Sprite2D" parent="== LEVEL ==/powerupPickup"]
-texture = ExtResource("4_pq3a6")
-
-[node name="weaponPickup" parent="== LEVEL ==" instance=ExtResource("5_2yjue")]
-position = Vector2(509, 494)
-
-[node name="Sprite2D2" type="Sprite2D" parent="== LEVEL ==/weaponPickup"]
 texture = ExtResource("4_pq3a6")
 
 [node name="Difficulty Timer" type="Timer" parent="== LEVEL =="]
@@ -109,20 +87,19 @@ position = Vector2(1.372e-15, 2.16988)
 scale = Vector2(1.4047, -0.0246511)
 texture = ExtResource("4_pq3a6")
 
-[node name="anchor" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(-385, 124)
-texture = ExtResource("4_pq3a6")
+[node name="Enemy" parent="." instance=ExtResource("7_y5psu")]
+position = Vector2(-133, 489)
 
-[node name="anchor2" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(1267, 1179)
-texture = ExtResource("4_pq3a6")
+[node name="Enemy2" parent="." instance=ExtResource("7_y5psu")]
+position = Vector2(-500, 0)
 
-[node name="anchor3" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(-1361, -1535)
-texture = ExtResource("4_pq3a6")
+[node name="Enemy3" parent="." instance=ExtResource("7_y5psu")]
+position = Vector2(-603, -394)
 
-[node name="anchor4" type="Sprite2D" parent="== LEVEL =="]
-position = Vector2(1504, -1319)
-texture = ExtResource("4_pq3a6")
+[node name="Enemy4" parent="." instance=ExtResource("7_y5psu")]
+position = Vector2(584, -365)
+
+[node name="Enemy5" parent="." instance=ExtResource("7_y5psu")]
+position = Vector2(1000, 0)
 
 [connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]

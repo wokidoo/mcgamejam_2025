@@ -2,6 +2,14 @@ extends Node2D
 
 # Player weapons
 var preload_weapon_scenes: Array[PackedScene]
+var preload_weapon_sprites: Array[Texture2D]
+
+# Player powerups
+var preload_powerup_scenes: Array[PackedScene]
+var preload_powerup_sprites: Array[Texture2D]
+
+# Auto Firing
+var auto_fire: bool = false
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
@@ -30,6 +38,10 @@ var preload_weapon_scenes: Array[PackedScene]
 @export var MAX_ENEMY_HEALTH_MODIFIER: float = 3.0
 @export var ENEMY_HEALTH_MODIFIER_INCREMENT: float = 0.2
 @export var enemyHealthModifier: float = 1.0 # Grab this!
+
+# Drop chance
+@export var WEAPON_DROP_CHANCE: float = 0.3
+@export var POWERUP_DROP_CHANCE: float = 0.3
 
 # Signal for modifier increase
 signal modifier_increased
@@ -80,19 +92,45 @@ func _ready() -> void:
 	difficultyTimer.wait_time = difficultyTimerInterval
 	difficultyTimer.start()
 
-	# load weapon scenes
-	var folder_path = "res://weapons"
+	# Call the function to load weapon
 	print("loading weapons...")
+	load_scenes("res://weapons", preload_weapon_scenes)
+
+	print("loading weapon sprites...")
+	load_sprites("res://assets/Sprites/items", preload_weapon_sprites)
+
+	# Call the function to load powerups
+	print("loading powerup sprites...")
+	load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
+
+# Function to load scenes
+func load_scenes(folder_path: String, arr: Array[PackedScene]) -> void:
 	var files = get_files_in_folder(folder_path)
 	print("Files in folder: ", files)
 	for file in files:
 		var gun_scene = load(folder_path + "/" + file)
 		if gun_scene:
-			preload_weapon_scenes.append(gun_scene)
-			print(preload_weapon_scenes.size())
+			arr.append(gun_scene)
+			print(arr.size())
 		else:
 			print("Failed to load gun scene: ", gun_scene)
-	
+
+# Function to load sprites
+func load_sprites(folder_path: String, arr: Array[Texture2D]) -> void:
+	var files = get_files_in_folder(folder_path)
+	print("Files in folder: ", files)
+	for file in files:
+		if !file.ends_with(".png"): 
+			continue
+		var image = Image.load_from_file(folder_path + "/" + file)
+		if image:
+			var texture = ImageTexture.create_from_image(image)
+			if texture:
+				arr.append(texture)
+				print(arr.size())
+			else:
+				print("Failed to create texture from texture: ", texture)
+			
 	
 # Look for files in the folder "godot"
 func get_files_in_folder(folder_path: String) -> Array:
@@ -111,3 +149,7 @@ func get_files_in_folder(folder_path: String) -> Array:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	gameTime += delta
+
+func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("auto_fire"):
+		LevelManager.auto_fire = !LevelManager.auto_fire

@@ -9,8 +9,16 @@ class_name Enemy
 @onready var hitbox: Area2D = $"Hitbox"
 @onready var deathSounds:AudioStreamPlayer2D = $DeathSounds
 @export var DAMAGE: float = 1.0
+@onready var hurt_sound:AudioStreamPlayer2D = $HurtSounds
+@onready var chomp_sound:AudioStreamPlayer2D = $ChompSound
+@export var onDeathWeapon: PackedScene
+@export var onDeathPowerup: PackedScene
 
-var randomnum
+var randomnum: float
+
+var isDeathSpawned: bool = false
+
+var can_hurt_sound:bool
 
 signal enemy_died(enemy:Enemy)
 
@@ -24,9 +32,14 @@ var state = SURROUND
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
+	can_hurt_sound = true
 	rng.randomize()
 	randomnum = rng.randf()
+	deathSounds.finished.connect(destory_enemy)
+	hurt_sound.finished.connect(reset_hurt_sound)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
+	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
+	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -59,17 +72,46 @@ func get_circle_position(random):
 	var y = kill_circle_centre.y + sin(angle) * radius;
 	return Vector2(x, y)
 
-func _on_damage_source_enter(damage_source: DamageSource) -> void:
-	print_debug("Receive ",damage_source.damage," damage!")
-	HEALTH -= damage_source.damage
-	if HEALTH <= 0:
-		destory_enemy()
-		
+#func _on_damage_source_enter(damage_source: DamageSource) -> void:
+	#print_debug("Receive ",damage_source.damage," damage!")
+	#HEALTH -= damage_source.damage
+	#if HEALTH <= 0:
+		#destory_enemy()
+
 func take_damage(damage):
 	HEALTH -= damage
+	if(can_hurt_sound):
+		can_hurt_sound = false
+		hurt_sound.play()
 	if HEALTH <= 0:
-		destory_enemy()
-		
+		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
+		# rng to spawn an item or powerup
+		if (!isDeathSpawned):
+			isDeathSpawned = true
+			death_spawn()
+
+		if(!deathSounds.playing):
+			deathSounds.play()
+
+func death_spawn():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var weapon_spawn_chance = rng.randf()
+	var powerup_spawn_chance = rng.randf()
+	if weapon_spawn_chance <= LevelManager.WEAPON_DROP_CHANCE:
+		# spawn onDeathWeapon
+		var weapon_instance = onDeathWeapon.instantiate()
+		get_parent().call_deferred("add_child", weapon_instance)
+		weapon_instance.global_position = global_position
+	elif powerup_spawn_chance <= LevelManager.POWERUP_DROP_CHANCE:
+		# spawn powerup
+		var powerup_instance = onDeathPowerup.instantiate()
+		get_parent().call_deferred("add_child", powerup_instance)
+		powerup_instance.global_position = global_position
+
 func destory_enemy():
 	enemy_died.emit(self)
 	queue_free()
+
+func reset_hurt_sound():
+	can_hurt_sound = true

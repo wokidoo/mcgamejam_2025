@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drgmurhha162c"
+path="res://.godot/imported/mcjam song intro.mp3-372907891efa877ab78ac70ec672e2c5.mp3str"
+
+[deps]
+
+source_file="res://Music/mcjam song intro.mp3"
+dest_files=["res://.godot/imported/mcjam song intro.mp3-372907891efa877ab78ac70ec672e2c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
