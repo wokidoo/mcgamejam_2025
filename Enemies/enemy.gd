@@ -1,14 +1,12 @@
 extends CharacterBody2D
-
 class_name Enemy
 
 @export var HEALTH: float = 10.0
 @export var SPEED:float
+@onready var attack_timer: Timer = $AttackTimer
 
 @onready var player:Player = $"../Player"
 @onready var hitbox: Area2D = $"Hitbox"
-
-@export var DAMAGE: float = 1.0
 
 var randomnum
 
@@ -39,8 +37,8 @@ func _physics_process(delta: float) -> void:
 			var player_velocity = player.velocity
 			velocity += player_velocity
 			move_and_slide()
-	
-	
+			print("HIT")
+			#Slash ANIM
 
 func move(target,delta):
 	var direction = (target - global_position).normalized() 
@@ -57,7 +55,12 @@ func get_circle_position(random):
 	var angle = random * PI * 2;
 	var x = kill_circle_centre.x + cos(angle) * radius;
 	var y = kill_circle_centre.y + sin(angle) * radius;
+
 	return Vector2(x, y)
+
+
+func _on_attack_timer_timeout() -> void:
+	state  = ATTACK
 
 func _on_damage_source_enter(damage_source: DamageSource) -> void:
 	print_debug("Receive ",damage_source.damage," damage!")

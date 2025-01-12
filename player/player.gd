@@ -10,13 +10,6 @@ class_name Player
 @export var SPEEDSTER_TIMER : float = 10.0
 @export var NOIR_TIMER : float = 10.0
 
-@export var HEALTH:float = 5.0
-
-signal ON_DEATH
-
-@onready var DamageCooldown:Timer = $DamageCooldown
-
-var canTakeDamage:bool
 var canAttack:bool
 var direction: Vector2
 
@@ -26,14 +19,10 @@ var weapons : Array[Weapon]
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var particles: GPUParticles2D= $GPUParticles2D
 var particle_material: ParticleProcessMaterial
-@onready var hitbox: Area2D = $HitBox
 
 func _ready() -> void:
-	hitbox.body_entered.connect(_on_damage_source_enter)
-	DamageCooldown.timeout.connect(_on_timeout)
 	canAttack = true
 	particle_material = particles.process_material
-	canTakeDamage = true
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -58,17 +47,10 @@ func _physics_process(delta):
 		particles.emitting = false
 	move_and_slide()
 
-func _on_damage_source_enter(source:Enemy):
-	if(canTakeDamage):
-		take_damage(source)
 
-func take_damage(source:Enemy):
-	canTakeDamage = false
-	DamageCooldown.start()
-	print("Taking ",source.DAMAGE," damage")
-	HEALTH -= source.DAMAGE
-	if(HEALTH<=0):
-		ON_DEATH.emit()
+func _on_attack_body_entered(body) -> void:
+	if(body.is_in_group("Enemy")):
+		body.state = body.HIT
 
 
 func _on_attack_body_exited(body) -> void:
@@ -125,12 +107,3 @@ func activate_powerup(powerup_index:int) -> void:
 			# and maybe OPAF gun
 		_:
 			MAX_SPEED *= 1
-func _on_timeout():
-	if(hitbox.has_overlapping_bodies()):
-		for i in hitbox.get_overlapping_bodies():
-			if(i.is_in_group("Enemy")):
-				take_damage(i)
-				break
-	else:
-		print("Can take Damage")
-		canTakeDamage = true

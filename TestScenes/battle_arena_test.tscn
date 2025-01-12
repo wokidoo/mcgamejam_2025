@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dklhns7462puv"]
+[gd_scene load_steps=3 format=3 uid="uid://dklhns7462puv"]
 
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_vg12y"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="2_hsjcw"]
-[ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="3_g3ixc"]
-[ext_resource type="AudioStream" uid="uid://drwmqy3dsi4po" path="res://Music/mcjam song v1.1.mp3" id="4_j71eg"]
 
 [node name="BattleArenaTest" type="Node2D"]
 
@@ -23,9 +21,3 @@ position = Vector2(500, -502)
 
 [node name="Enemy5" parent="." instance=ExtResource("2_hsjcw")]
 position = Vector2(611, 385)
-
-[node name="GameOver" parent="." instance=ExtResource("3_g3ixc")]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_j71eg")
-autoplay = true

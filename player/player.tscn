@@ -103,7 +103,6 @@ initial_velocity_max = 300.0
 gravity = Vector3(0, 250, 0)
 scale_max = 11.68
 color_ramp = SubResource("GradientTexture1D_6yer1")
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6tju"]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -128,18 +127,8 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="TrashPoke" parent="." instance=ExtResource("4_wn7md")]
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="HitboxShape" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 5)
-scale = Vector2(5.44, 5.48)
-shape = SubResource("CapsuleShape2D_u6tju")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_u6tju")
-
-[node name="DamageCooldown" type="Timer" parent="."]
-wait_time = 2.0
-
-[editable path="BubbleGun"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 72.905)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_s3ker")
