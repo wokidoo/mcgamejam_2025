@@ -30,6 +30,12 @@ var weapons : Array[Weapon]
 @onready var particles: GPUParticles2D= $GPUParticles2D
 var particle_material: ParticleProcessMaterial
 
+@onready var arm_sprite: AnimatedSprite2D = $ArmJoint/SpriteArm
+@onready var arm_joint: Node2D = $ArmJoint
+
+@onready var muzzle_sprite: AnimatedSprite2D = $ArmJoint/SpriteMuzzleFlash
+
+
 func _ready() -> void:
 	hitbox.body_entered.connect(_on_damage_source_enter)
 	DamageCooldown.timeout.connect(_on_timeout)
@@ -65,6 +71,32 @@ func _physics_process(delta):
 		sprite.play("idle")
 		particles.emitting = false
 	move_and_slide()
+	
+func _process(delta):
+	var attack_direction = calculate_attack_direction()
+	arm_joint.rotation = attack_direction.angle()
+	if attack_direction.angle() > PI/2 or attack_direction.angle() < -PI/2:
+		arm_sprite.flip_v = true
+		arm_sprite.position.y = 0
+		muzzle_sprite.position.y = 18
+	else:
+		arm_sprite.flip_v = false
+		arm_sprite.position.y = 0
+		muzzle_sprite.position.y = -18
+
+func _input(event):
+	if event.is_action_pressed("attack"):
+		arm_sprite.play("fire")
+		muzzle_sprite.visible = true
+		muzzle_sprite.play("fire")
+	elif event.is_action_released("attack"):
+		arm_sprite.play("idle")
+		muzzle_sprite.visible = false
+
+func calculate_attack_direction() -> Vector2:
+	var global_mouse_pos = get_global_mouse_position()
+	return (global_mouse_pos - global_position).normalized()
+
 
 func _on_damage_source_enter(source:Enemy):
 	if(canTakeDamage):

@@ -14,7 +14,6 @@ MELEE_ATTACK_SPEED = 5.0
 shift_coefficient = 1000.0
 
 [node name="RetroPostProcessor" parent="." instance=ExtResource("2_u88qc")]
-visible = false
 
 [node name="MonochromePostProcessor" parent="." instance=ExtResource("2_xqbff")]
 visible = false
