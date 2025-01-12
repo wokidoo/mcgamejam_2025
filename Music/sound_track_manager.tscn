@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bekca22o4mgo"]
+
+[ext_resource type="Script" path="res://sound_track_manager.gd" id="1_h3bch"]
+[ext_resource type="AudioStream" uid="uid://d260few700de6" path="res://Music/song 140bpm version.mp3" id="2_o5vkn"]
+[ext_resource type="AudioStream" uid="uid://c5rv3der7kmmx" path="res://Music/mcjam song main.mp3" id="3_jkqgu"]
+
+[node name="SoundTrackManager" type="AudioStreamPlayer"]
+autoplay = true
+script = ExtResource("1_h3bch")
+round_1_2_song = ExtResource("2_o5vkn")
+round_3_up_song = ExtResource("3_jkqgu")

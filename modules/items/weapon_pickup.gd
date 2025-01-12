@@ -12,6 +12,11 @@ enum WEAPON_TYPE {
 
 func _ready() -> void:
 	area_2d.body_entered.connect(_on_Area2D_body_entered)
+	# randomize the weapon
+	weapon_index = randi() % WEAPON_TYPE.size()
+
+	# set the sprite
+	sprite_2d.texture = LevelManager.preload_weapon_sprites[weapon_index]
 
 # On entered
 func _on_Area2D_body_entered(body: Node) -> void:

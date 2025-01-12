@@ -11,7 +11,8 @@ class_name Player
 signal ON_DEATH
 
 @onready var DamageCooldown:Timer = $DamageCooldown
-@onready var footsteps:AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var footsteps:AudioStreamPlayer2D = $FootstepSound
+@onready var damage_taken_sound:AudioStreamPlayer2D = $DamageTakenSound
 
 var canTakeDamage:bool
 
@@ -96,14 +97,10 @@ func _input(event):
 func calculate_attack_direction() -> Vector2:
 	var global_mouse_pos = get_global_mouse_position()
 	return (global_mouse_pos - global_position).normalized()
-
-
-func _on_damage_source_enter(source:Enemy):
-	if(canTakeDamage):
-		take_damage(source)
-
 func take_damage(source:Enemy):
 	canTakeDamage = false
+	damage_taken_sound.play()
+	source.chomp_sound.play()
 	DamageCooldown.start()
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE
@@ -117,12 +114,13 @@ func _on_timeout():
 				take_damage(i)
 				break
 	else:
-		print("Can take Damage")
 		canTakeDamage = true
 
+func _on_damage_source_enter(source:Enemy):
+	if(canTakeDamage):
+		take_damage(source)
 func _on_footstep_finished():
 	tookStep = true
-
 
 func _on_attract_body_entered(body) -> void:
 	if(body.is_in_group("Enemy")):
