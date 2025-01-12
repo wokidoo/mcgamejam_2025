@@ -5,7 +5,7 @@ var preload_weapon_scenes: Array[PackedScene]
 
 # Difficulty Timer
 @export var difficultyTimer: Timer
-@export var difficultyTimerInterval: float = 90.0
+@export var difficultyTimerInterval: float = 10.0
 # MODIFIERS: The level will increase a set of modifiers based on the game time to increase game difficulty
 # These modifiers should be referenced by other scripts to 'increase' the base value of game elements
 # The formula is: 
@@ -13,12 +13,12 @@ var preload_weapon_scenes: Array[PackedScene]
 # where: [modifiers] += [increment] after every interval as long as [modifier] <= [max modifier]
 ## Enemy spawn rate
 @export var MAX_SPAWN_RATE_MODIFIER: float = 3.0
-@export var SPAWN_RATE_MODIFIER_INCREMENT: float = 0.5
+@export var SPAWN_RATE_MODIFIER_INCREMENT: float = 0.2
 @export var spawnRateModifier: float = 1.0 # Grab this!
 
 ## Number of enemies
 @export var MAX_NUMBER_OF_ENEMIES_MODIFIER: float = 20.0
-@export var NUMBER_OF_ENEMIES_MODIFIER_INCREMENT: float = 2.0
+@export var NUMBER_OF_ENEMIES_MODIFIER_INCREMENT: float = 1.0
 @export var maxNumberOfEnemiesModifier: float = 1.0 #Grab this!
 
 ## Enemy speed
@@ -30,9 +30,6 @@ var preload_weapon_scenes: Array[PackedScene]
 @export var MAX_ENEMY_HEALTH_MODIFIER: float = 3.0
 @export var ENEMY_HEALTH_MODIFIER_INCREMENT: float = 0.2
 @export var enemyHealthModifier: float = 1.0 # Grab this!
-
-# Signal for modifier increase
-signal modifier_increased
 
 # Current game time
 var gameTime: float = 0.0
