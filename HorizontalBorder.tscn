@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vrxukvq56uq3"]
+
+[ext_resource type="Texture2D" uid="uid://b5hbmo2uk6pg4" path="res://assets/Sprites/map/env_2.png" id="1_7pcec"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1meg"]
+radius = 12.2317
+
+[node name="HorizontalBorder" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7pcec")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-11, -129)
+rotation = 1.5708
+scale = Vector2(-25.9162, 63.6823)
+shape = SubResource("CapsuleShape2D_s1meg")
