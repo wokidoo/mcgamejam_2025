@@ -21,15 +21,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="health" type="Label" parent="."]
 offset_left = 36.0
-offset_top = 530.0
+offset_top = 479.0
 offset_right = 430.0
-offset_bottom = 656.0
+offset_bottom = 605.0
 metadata/_edit_use_anchors_ = true
 
 [node name="message" type="Label" parent="."]
-offset_left = 753.0
-offset_top = 525.0
-offset_right = 1147.0
-offset_bottom = 651.0
-horizontal_alignment = 1
+offset_left = 688.0
+offset_top = 463.0
+offset_right = 1082.0
+offset_bottom = 589.0
 metadata/_edit_use_anchors_ = true

@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://clli2446v88d7"]
+[gd_scene load_steps=13 format=3 uid="uid://crvbkb0ugjgyv"]
 
-[ext_resource type="Script" path="res://UI/game_over.gd" id="1_66vd1"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d0pys"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_dkkkp"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="3_gg0o3"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="4_i53vf"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="7_5m1yp"]
-[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
+[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
 [ext_resource type="AudioStream" uid="uid://bycorh1vyt1h2" path="res://Music/mcjam song v1.1.mp3" id="9_i3p86"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
+[ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_k4q2q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jnac7"]
 
@@ -17,22 +17,21 @@
 distance = -2.48114
 
 [node name="Khang-level" type="Node2D"]
-script = ExtResource("1_66vd1")
 
 [node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
 spawnPoints = [NodePath("Spawn 7"), NodePath("Spawn 8"), NodePath("Spawn 9"), NodePath("Spawn 10")]
 
 [node name="Spawn 7" type="Node2D" parent="Spawner3"]
-position = Vector2(2581, 5255)
+position = Vector2(651, -282)
 
 [node name="Spawn 8" type="Node2D" parent="Spawner3"]
-position = Vector2(-4459, 5298)
+position = Vector2(-14, -391)
 
 [node name="Spawn 9" type="Node2D" parent="Spawner3"]
-position = Vector2(0, 5274)
+position = Vector2(-787, -390)
 
 [node name="Spawn 10" type="Node2D" parent="Spawner3"]
-position = Vector2(-9158, 719)
+position = Vector2(-726, 160)
 
 [node name="Spawner2" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("4_i53vf")]
 spawnPoints = [NodePath("Spawn 4"), NodePath("Spawn 5"), NodePath("Spawn 6")]
@@ -130,9 +129,12 @@ position = Vector2(0.339294, 44.3147)
 scale = Vector2(24.035, -0.683164)
 texture = ExtResource("4_pq3a6")
 
+[node name="GameOver" parent="." instance=ExtResource("7_5m1yp")]
+
 [node name="SoundTrackManager" parent="." instance=ExtResource("8_y7b4v")]
 round_3_up_song = ExtResource("9_i3p86")
 
-[node name="GameOver" parent="." instance=ExtResource("7_5m1yp")]
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_k4q2q")]
+player = NodePath("../Player")
 
 [connection signal="timeout" from="Player/MeleeCooldown" to="Player" method="_on_melee_cooldown_timeout"]

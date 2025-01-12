@@ -55,6 +55,9 @@ var numberOfEnemies: int = 0
 # enemy killed
 @onready var enemyKilled: int = 0
 
+# message
+@export var message: String
+
 # Function to increase the modifers after Timer hit zero
 func _on_DifficultyTimer_timeout():
 	# Increase the spawn rate modifier

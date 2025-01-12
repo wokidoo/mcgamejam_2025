@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,3 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$time.text = "Lost: " +str(snapped(LevelManager.gameTime, 0.01)) + " sec"
 	$enemyKilled2.text = "Found: " + str(LevelManager.enemyKilled)
+	
+	$health.text = "HP: " + str(player.HEALTH)
+	$message.text = LevelManager.message

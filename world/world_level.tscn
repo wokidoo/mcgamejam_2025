@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://lcfiuuwrp0oc"]
+[gd_scene load_steps=11 format=3 uid="uid://lcfiuuwrp0oc"]
 
 [ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_0knp4"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="5_m1nju"]
-[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
+[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
+[ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_0cis1"]
 
 [node name="WorldLevel" type="Node2D"]
 script = ExtResource("1_0knp4")
@@ -296,3 +297,6 @@ position = Vector2(1362, -4)
 
 [node name="Enemy3" parent="." instance=ExtResource("9_2v0xw")]
 position = Vector2(6, -787)
+
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_0cis1")]
+player = NodePath("../Player")
