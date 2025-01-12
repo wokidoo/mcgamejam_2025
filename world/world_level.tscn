@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lcfiuuwrp0oc"]
+[gd_scene load_steps=13 format=3 uid="uid://lcfiuuwrp0oc"]
 
 [ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_0knp4"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
 [ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_0cis1"]
 [ext_resource type="Script" path="res://UI/game_over.gd" id="10_nagvo"]
+[ext_resource type="PackedScene" uid="uid://vrxukvq56uq3" path="res://HorizontalBorder.tscn" id="11_3covs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vl6lf"]
 font_size = 50
@@ -298,7 +299,7 @@ position = Vector2(15, 756)
 position = Vector2(1362, -4)
 
 [node name="Enemy3" parent="." instance=ExtResource("9_2v0xw")]
-position = Vector2(6, -787)
+position = Vector2(-8, -1017)
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_0cis1")]
 player = NodePath("../Player")
@@ -340,6 +341,54 @@ text = "Junk Back In!!"
 [node name="Quit" type="Button" parent="HUD/Game Over/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Lose and Never be Found"
+
+[node name="HorizontalBorder" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-1895, -925)
+
+[node name="HorizontalBorder2" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(1845, -1345)
+
+[node name="HorizontalBorder3" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(7922, -1225)
+
+[node name="HorizontalBorder4" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(7994, 2323)
+
+[node name="HorizontalBorder5" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(1808, 2523)
+
+[node name="HorizontalBorder6" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(5144, 4889)
+
+[node name="HorizontalBorder7" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(7853, 8595)
+
+[node name="HorizontalBorder8" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(1496, 8766)
+
+[node name="HorizontalBorder9" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-1526, 9108)
+
+[node name="HorizontalBorder10" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-7712, 9194)
+
+[node name="HorizontalBorder11" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-4890, 5402)
+
+[node name="HorizontalBorder12" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-1697, 2751)
+
+[node name="HorizontalBorder13" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-8054, 2751)
+
+[node name="HorizontalBorder14" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-7854, -1297)
+
+[node name="HorizontalBorder15" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(-4860, -4490)
+
+[node name="HorizontalBorder16" parent="." instance=ExtResource("11_3covs")]
+position = Vector2(4890, -4547)
 
 [connection signal="pressed" from="HUD/Game Over/MarginContainer/VBoxContainer/Retry" to="HUD/Game Over" method="_on_retry_pressed"]
 [connection signal="pressed" from="HUD/Game Over/MarginContainer/VBoxContainer/Quit" to="HUD/Game Over" method="_on_quit_pressed"]
