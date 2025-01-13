@@ -82,10 +82,12 @@ func _process(delta):
 	arm_joint.rotation = attack_direction.angle()
 	if attack_direction.angle() > PI/2 or attack_direction.angle() < -PI/2:
 		arm_sprite.flip_v = true
+		arm_joint.position.x = -12
 		arm_sprite.position.y = 18
 		muzzle_sprite.position.y = 32
 	else:
 		arm_sprite.flip_v = false
+		arm_joint.position.x = 12
 		arm_sprite.position.y = -18
 		muzzle_sprite.position.y = -32
 

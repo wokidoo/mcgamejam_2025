@@ -127,7 +127,7 @@ func death_spawn():
 
 func destory_enemy():
 	deathSounds.play()
-	sprite.speed_scale = 5
+	SPEED = SPEED * 0.25
 	sprite.play("death")
 	enemy_died.emit(self)
 	await sprite.animation_looped

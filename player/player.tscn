@@ -1,16 +1,16 @@
-[gd_scene load_steps=40 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=39 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
-[ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="2_kfwik"]
 [ext_resource type="Texture2D" uid="uid://ct6hjbfxevgxl" path="res://assets/Sprites/player/pom_run_r.png" id="3_gienb"]
 [ext_resource type="Texture2D" uid="uid://fg450mjd8llf" path="res://assets/Sprites/effects/gun_flash.png" id="4_pjydn"]
+[ext_resource type="Texture2D" uid="uid://pkd2nci8cq7w" path="res://assets/Sprites/effects/shadow.png" id="5_jygsg"]
 [ext_resource type="Texture2D" uid="uid://d30hv463sq2yd" path="res://assets/Sprites/player/gun_shoot.png" id="6_3u40n"]
 [ext_resource type="AudioStream" uid="uid://b8qdc2hru7oa6" path="res://assets/SFX/footstep.wav" id="6_agigk"]
 [ext_resource type="PackedScene" uid="uid://6sjwsecexfcr" path="res://weapons/bubble_gun.tscn" id="6_pv2j3"]
 [ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
 [ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="7_oe7g8"]
-[ext_resource type="Texture2D" uid="uid://bfvlmcpri8ubk" path="res://assets/Sprites/effects/particle_dirt_large.png" id="8_ul6pb"]
+[ext_resource type="Texture2D" uid="uid://bvhuknprufse7" path="res://assets/Sprites/effects/particle_dirt.png" id="8_6sui5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5jgc"]
 atlas = ExtResource("6_3u40n")
@@ -196,12 +196,11 @@ animations = [{
 radius = 51.0
 height = 144.0
 
-[sub_resource type="Gradient" id="Gradient_oggwj"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.624541, 0.44336, 0.335314, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6yer1"]
-gradient = SubResource("Gradient_oggwj")
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dx47x"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s3ker"]
 particle_flag_align_y = true
@@ -211,8 +210,7 @@ spread = 15.0
 initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 250, 0)
-scale_min = 0.0
-color_ramp = SubResource("GradientTexture1D_6yer1")
+anim_offset_max = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxg6f"]
 radius = 17.1875
@@ -243,9 +241,10 @@ animation = &"fire"
 frame_progress = 0.356159
 speed_scale = 2.0
 
-[node name="Sprite2DShadow" type="Sprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 77)
-texture = ExtResource("2_kfwik")
+scale = Vector2(0.639999, 1)
+texture = ExtResource("5_jygsg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooloi")
@@ -257,13 +256,15 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_dx47x")
 position = Vector2(0, 72.905)
-amount = 20
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_s3ker")
-texture = ExtResource("8_ul6pb")
+texture = ExtResource("8_6sui5")
+speed_scale = 1.5
+randomness = 1.0
 
 [node name="DamageCooldown" type="Timer" parent="."]
 wait_time = 2.0
