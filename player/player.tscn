@@ -213,8 +213,8 @@ gravity = Vector3(0, 250, 0)
 anim_offset_max = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxg6f"]
-radius = 17.1875
-height = 37.2214
+radius = 9.6875
+height = 21.3164
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("melee_cooldown")]
 collision_mask = 9
@@ -252,6 +252,7 @@ animation = &"idle"
 speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 

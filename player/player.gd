@@ -72,7 +72,7 @@ func _physics_process(delta):
 			tookStep = false
 		
 		sprite.play("walk")
-		if velocity.x < 0:
+		if arm_joint.position.x < 0:
 			sprite.flip_h = true
 			particle_material.direction.x = -1
 		else:
