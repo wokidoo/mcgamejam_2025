@@ -11,9 +11,6 @@ var preload_weapon_scenes: Array[PackedScene]
 # Auto Firing
 var auto_fire: bool = false
 
-# Monochrome filter
-@onready var mono_fx : CanvasLayer
-
 # Difficulty Timer
 @export var difficultyTimer: Timer
 @export var difficultyTimerInterval: float = 50.0
@@ -112,9 +109,6 @@ func _ready() -> void:
 	#print("loading powerup sprites...")
 	#load_sprites("res://assets/Sprites/powerups", preload_powerup_sprites)
 	
-	# monochrome fx
-	mono_fx = get_tree().root.find_child("MonochromePostProcessor", true, false)
-	print(mono_fx)
 
 # Function to load scenes
 func load_scenes(folder_path: String, arr: Array[PackedScene]) -> void:
