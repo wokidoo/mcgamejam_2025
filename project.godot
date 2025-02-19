@@ -74,6 +74,4 @@ auto_fire={
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-
 2d_physics/layer_4="spawner"
-
