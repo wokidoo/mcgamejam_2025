@@ -25,7 +25,7 @@ var auto_fire: bool = false
 @export var spawnRateModifier: float = 1.0 # Grab this!
 
 ## Number of enemies
-@export var MAX_NUMBER_OF_ENEMIES_MODIFIER: float = 20.0
+@export var MAX_NUMBER_OF_ENEMIES_MODIFIER: float = 2.0
 @export var NUMBER_OF_ENEMIES_MODIFIER_INCREMENT: float = 2.0
 @export var maxNumberOfEnemiesModifier: float = 1.0 #Grab this!
 

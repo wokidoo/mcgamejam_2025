@@ -16,6 +16,7 @@ class_name Player
 signal ON_DEATH
 
 @onready var DamageCooldown:Timer = $DamageCooldown
+@onready var Blinker:Timer = $Blinker
 @onready var footsteps:AudioStreamPlayer2D = $FootstepSound
 @onready var damage_taken_sound:AudioStreamPlayer2D = $DamageTakenSound
 
@@ -112,7 +113,7 @@ func calculate_attack_direction() -> Vector2:
 func take_damage(source:Enemy):
 	if (isInvicible):
 		return
-	
+	Blinker.start()
 	canTakeDamage = false
 	damage_taken_sound.play()
 	source.chomp_sound.play()
@@ -130,7 +131,14 @@ func _on_timeout():
 				break
 	else:
 		canTakeDamage = true
-
+		Blinker.stop()
+		visible = true
+func _on_blinker_timeout() -> void:
+	if(visible):
+		visible = false
+	else:
+		visible = true
+	
 func _on_damage_source_enter(source:Enemy):
 	if(canTakeDamage):
 		take_damage(source)

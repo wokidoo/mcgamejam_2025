@@ -2,10 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b5hbmo2uk6pg4" path="res://assets/Sprites/map/env_2.png" id="1_7pcec"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1meg"]
-radius = 12.2317
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2swgt"]
+size = Vector2(16.0903, 22.0469)
 
 [node name="HorizontalBorder" type="Node2D"]
+position = Vector2(-99, -961)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7pcec")
@@ -15,7 +16,7 @@ collision_layer = 8
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-11, -129)
-rotation = 1.5708
-scale = Vector2(-25.9162, 63.6823)
-shape = SubResource("CapsuleShape2D_s1meg")
+position = Vector2(-95.9999, -72.5004)
+rotation = -1.57079
+scale = Vector2(25.9162, -63.6823)
+shape = SubResource("RectangleShape2D_2swgt")
