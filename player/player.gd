@@ -10,9 +10,13 @@ class_name Player
 @export var melee_cooldown:Timer
 @export var HEALTH:float = 5.0
 
+# Monochrome filter
+@onready var mono_fx : CanvasLayer
+
 signal ON_DEATH
 
 @onready var DamageCooldown:Timer = $DamageCooldown
+@onready var Blinker:Timer = $Blinker
 @onready var footsteps:AudioStreamPlayer2D = $FootstepSound
 @onready var damage_taken_sound:AudioStreamPlayer2D = $DamageTakenSound
 
@@ -49,6 +53,10 @@ func _ready() -> void:
 	tookStep = true
 	particle_material = particles.process_material
 	muzzle_sprite.pause()
+	
+	# monochrome fx
+	mono_fx = get_tree().root.find_child("MonochromePostProcessor", true, false)
+	print(mono_fx)
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -105,7 +113,7 @@ func calculate_attack_direction() -> Vector2:
 func take_damage(source:Enemy):
 	if (isInvicible):
 		return
-	
+	Blinker.start()
 	canTakeDamage = false
 	damage_taken_sound.play()
 	source.chomp_sound.play()
@@ -123,7 +131,14 @@ func _on_timeout():
 				break
 	else:
 		canTakeDamage = true
-
+		Blinker.stop()
+		visible = true
+func _on_blinker_timeout() -> void:
+	if(visible):
+		visible = false
+	else:
+		visible = true
+	
 func _on_damage_source_enter(source:Enemy):
 	if(canTakeDamage):
 		take_damage(source)
@@ -153,8 +168,8 @@ func _on_speed_timer_timeout() -> void:
 
 # Noir timer timeout
 func _on_noir_timer_timeout() -> void:
-	if LevelManager.mono_fx:
-		LevelManager.mono_fx.visible = false
+	if mono_fx:
+		mono_fx.visible = false
 	isInvicible = false
 
 # Power up
@@ -173,8 +188,8 @@ func activate_powerup(powerup_index:int) -> void:
 			MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP) 
 		1: # NOIR
 			# Add invincibility here & noir filter
-			if LevelManager.mono_fx: 
-				LevelManager.mono_fx.visible = true
+			if mono_fx: 
+				mono_fx.visible = true
 			var invinc_timer = Timer.new()
 			add_child(invinc_timer)
 			invinc_timer.wait_time = NOIR_TIMER

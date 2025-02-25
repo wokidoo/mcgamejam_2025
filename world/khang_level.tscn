@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="4_i53vf"]
 [ext_resource type="Texture2D" uid="uid://coqlqd8m425b6" path="res://icon.svg" id="4_pq3a6"]
 [ext_resource type="PackedScene" uid="uid://cggyw55hlavu3" path="res://UI/game_over.tscn" id="7_5m1yp"]
-[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
+[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="8_y7b4v"]
 [ext_resource type="AudioStream" uid="uid://bycorh1vyt1h2" path="res://Music/mcjam song v1.1.mp3" id="9_i3p86"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="9_qvf81"]
 [ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_k4q2q"]
