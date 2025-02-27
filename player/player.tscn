@@ -275,7 +275,7 @@ wait_time = 2.0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-7, 5)
+position = Vector2(-10, 5)
 scale = Vector2(4.84, 6.01565)
 shape = SubResource("CapsuleShape2D_bxg6f")
 
