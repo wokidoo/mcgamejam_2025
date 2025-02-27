@@ -287,3 +287,8 @@ volume_db = 20.0
 [node name="DamageTakenSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_d3o5d")
 volume_db = 10.0
+
+[node name="Blinker" type="Timer" parent="."]
+wait_time = 0.15
+
+[connection signal="timeout" from="Blinker" to="." method="_on_blinker_timeout"]
