@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_1wdc5"]
 [ext_resource type="PackedScene" uid="uid://bg2lj2gghs60w" path="res://modules/items/weapon_pickup.tscn" id="2_3kyn4"]
 [ext_resource type="PackedScene" uid="uid://biu7sy2bkb8qq" path="res://modules/items/powerup_pickup.tscn" id="3_mdae8"]
-[ext_resource type="Texture2D" uid="uid://c03jkpugsicxk" path="res://assets/Sprites/effects/shadow_pom.png" id="4_f0ma3"]
+[ext_resource type="Texture2D" uid="uid://pkd2nci8cq7w" path="res://assets/Sprites/effects/shadow.png" id="4_f0ma3"]
 [ext_resource type="Texture2D" uid="uid://cfn6qpx71uwll" path="res://assets/Sprites/Enemy/Tank Enemy/sprite_enemy2death.png" id="5_xjkyg"]
 [ext_resource type="Texture2D" uid="uid://cowyd6y34u5yb" path="res://assets/Sprites/Enemy/Tank Enemy/enemy2_walksprite.png" id="6_1xod4"]
 [ext_resource type="AudioStream" uid="uid://dldxcnvlovs4a" path="res://assets/SFX/enemy die 1.wav" id="7_rm3ll"]
