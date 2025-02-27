@@ -257,7 +257,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.75, 0.75)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_dx47x")

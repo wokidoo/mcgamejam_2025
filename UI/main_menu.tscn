@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lpdj5lokxa87"]
+[gd_scene load_steps=5 format=3 uid="uid://lpdj5lokxa87"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_1ajob"]
 [ext_resource type="Texture2D" uid="uid://b5bah6wk0kxlp" path="res://assets/Sprites/gui/logo.png" id="2_qjnc8"]
 [ext_resource type="AudioStream" uid="uid://drgmurhha162c" path="res://Music/mcjam song intro.mp3" id="2_yso1m"]
+[ext_resource type="Theme" uid="uid://ddsgh7aydhov5" path="res://fonts/HUD_theme.tres" id="3_a6bop"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -40,11 +41,13 @@ theme_override_constants/separation = 26
 
 [node name="New Run" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Start Bashin"
+theme = ExtResource("3_a6bop")
+text = "START BASHIN' !"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Stay Lost and Never be Found"
+theme = ExtResource("3_a6bop")
+text = "GET LOST !"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_yso1m")
