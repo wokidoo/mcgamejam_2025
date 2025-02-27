@@ -9,6 +9,7 @@ class_name SourcEmitterWC
 @export var use_deviation: bool = true
 signal on_source_created(source: DamageSource)
 signal on_source_destroyed(source: DamageSource)
+signal on_source_contact(source:DamageSource)
 
 func _apply_component(data):
 	if data is Weapon:

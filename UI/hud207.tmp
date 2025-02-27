@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcyqnq0blt2tq"]
+
+[ext_resource type="Script" path="res://UI/Scripts/hud.gd" id="1_sa64s"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_sa64s")
+
+[node name="time" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 62.0
+offset_right = 433.0
+offset_bottom = 188.0
+metadata/_edit_use_anchors_ = true
+
+[node name="enemyKilled2" type="Label" parent="."]
+offset_left = 990.0
+offset_top = 74.0
+offset_right = 1384.0
+offset_bottom = 200.0
+metadata/_edit_use_anchors_ = true
+
+[node name="health" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 479.0
+offset_right = 430.0
+offset_bottom = 605.0
+metadata/_edit_use_anchors_ = true
+
+[node name="message" type="Label" parent="."]
+offset_left = 688.0
+offset_top = 463.0
+offset_right = 1082.0
+offset_bottom = 589.0
+metadata/_edit_use_anchors_ = true

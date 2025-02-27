@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://bga6yumid0oe2"]
+
+[ext_resource type="Script" path="res://modules/damage_sources/goop.gd" id="1_tsxw8"]
+[ext_resource type="AudioStream" uid="uid://nv2w1ugi6s5n" path="res://assets/SFX/goop sploosh.wav" id="2_1kpti"]
+[ext_resource type="Texture2D" uid="uid://cx7k1j7rb6dr7" path="res://assets/Sprites/effects/goopFX.png" id="2_myrle"]
+[ext_resource type="Texture2D" uid="uid://dng0euol3o362" path="res://assets/Sprites/weapons/goop_bullet.png" id="2_ypu1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8dn8"]
+size = Vector2(96, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cqai"]
+atlas = ExtResource("2_ypu1a")
+region = Rect2(0, 0, 102, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awahw"]
+atlas = ExtResource("2_ypu1a")
+region = Rect2(102, 0, 102, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mec0x"]
+atlas = ExtResource("2_ypu1a")
+region = Rect2(204, 0, 102, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aux5d"]
+atlas = ExtResource("2_ypu1a")
+region = Rect2(306, 0, 102, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqj3a"]
+atlas = ExtResource("2_myrle")
+region = Rect2(0, 0, 103, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbe5i"]
+atlas = ExtResource("2_myrle")
+region = Rect2(103, 0, 103, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc7kr"]
+atlas = ExtResource("2_myrle")
+region = Rect2(206, 0, 103, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ene"]
+atlas = ExtResource("2_myrle")
+region = Rect2(309, 0, 103, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cg0r"]
+atlas = ExtResource("2_myrle")
+region = Rect2(412, 0, 103, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqit7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cqai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awahw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mec0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aux5d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqj3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbe5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc7kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5ene")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cg0r")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[node name="Goop" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_tsxw8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1kpti")
+volume_db = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n8dn8")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_lqit7")
+animation = &"explode"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
