@@ -6,11 +6,13 @@ extends Control
 func _ready() -> void:
 	new_run.pressed.connect(_on_new_run_pressed)
 	quit.pressed.connect(_on_quit_pressed)
-	
 
 func _on_new_run_pressed() -> void:
 	get_tree().change_scene_to_file("res://world/world_level.tscn")
 
-
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _process(delta):
+	var texture = $SubViewport.get_texture()
+	$Screen.texture = texture

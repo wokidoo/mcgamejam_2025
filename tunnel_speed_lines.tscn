@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://05rcex8h3on7"]
+
+[ext_resource type="Texture2D" uid="uid://b2my5tmwn6jgv" path="res://assets/Sprites/effects/menu_line.png" id="1_hievm"]
+
+[sub_resource type="Shader" id="Shader_rce88"]
+code = "shader_type particles;
+
+uniform float tube_radius : hint_range( 0.0, 10.0 ) = 3.0;
+uniform float tube_length : hint_range( 0.0, 100.0 ) = 50.0;
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0)
+	s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0)
+		s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536)) / 65535.0;
+}
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+void start() {
+	if (RESTART_VELOCITY) {
+		VELOCITY = (EMISSION_TRANSFORM * vec4( -tube_length / LIFETIME * 1.0, 0.0, 0.0, 0.0)).xyz;
+	}
+	if (RESTART_POSITION) {
+		uint alt_seed1 = hash(NUMBER + uint(1) + RANDOM_SEED);
+		// set particle position by tube_radius and tube_length
+		float a = rand_from_seed( alt_seed1 ) * TAU;
+		TRANSFORM = mat4(1.0);
+		TRANSFORM = mat4(
+			vec4( 1.0,0.0,0.0,0.0 ),
+			vec4( 0.0,sin(a),-cos(a),0.0 ),
+			vec4( 0.0,-cos(a),sin(a),0.0 ),
+			vec4( tube_length, sin( a + PI ) * tube_radius, cos( a + PI ) * tube_radius, 1.0 )
+		);
+		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1l8qo"]
+shader = SubResource("Shader_rce88")
+shader_parameter/tube_radius = 5.0
+shader_parameter/tube_length = 100.0
+
+[sub_resource type="Shader" id="Shader_dwe1w"]
+code = "shader_type spatial;
+
+render_mode unshaded;
+uniform sampler2D texture_albedo : source_color;
+
+
+void fragment() {
+	ALBEDO = texture( texture_albedo, UV ).rgb;
+	ALPHA = texture( texture_albedo, UV ).a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dk325"]
+render_priority = 0
+shader = SubResource("Shader_dwe1w")
+shader_parameter/texture_albedo = ExtResource("1_hievm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j7to3"]
+material = SubResource("ShaderMaterial_dk325")
+size = Vector2(50, 0.2)
+
+[node name="speed_lines" type="GPUParticles3D"]
+transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, 0, 0, 0)
+layers = 0
+cast_shadow = 0
+amount = 100
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 5.0
+fixed_fps = 60
+process_material = SubResource("ShaderMaterial_1l8qo")
+draw_pass_1 = SubResource("PlaneMesh_j7to3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.207912, -0.978148, 0, 0.978148, 0.207912, 1, 9.08811e-09, -4.27562e-08, 0, 0, 0)
