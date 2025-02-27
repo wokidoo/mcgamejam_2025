@@ -248,7 +248,7 @@ texture = ExtResource("5_jygsg")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ooloi")
-animation = &"idle"
+animation = &"walk"
 speed_scale = 1.25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -257,6 +257,7 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_i7b5a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_dx47x")
