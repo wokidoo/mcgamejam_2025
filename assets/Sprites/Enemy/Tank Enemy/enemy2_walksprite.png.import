@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03jkpugsicxk"
-path="res://.godot/imported/shadow_pom.png-587bd6628121e0f9e40f534240cf35bd.ctex"
+uid="uid://cowyd6y34u5yb"
+path="res://.godot/imported/enemy2_walksprite.png-a4f04d130e13560b66b700473450cf3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/effects/shadow_pom.png"
-dest_files=["res://.godot/imported/shadow_pom.png-587bd6628121e0f9e40f534240cf35bd.ctex"]
+source_file="res://assets/Sprites/Enemy/Tank Enemy/enemy2_walksprite.png"
+dest_files=["res://.godot/imported/enemy2_walksprite.png-a4f04d130e13560b66b700473450cf3e.ctex"]
 
 [params]
 
