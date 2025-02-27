@@ -11,9 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://bb1ncsca6yccn" path="res://assets/SFX/enemy_projectile_hit.wav" id="6_xiirp"]
 [ext_resource type="AudioStream" uid="uid://1n4gbsmqjust" path="res://assets/SFX/enemy chomp.wav" id="7_8kul6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
-radius = 44.7772
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1cec"]
 atlas = ExtResource("3_audkt")
 region = Rect2(0, 0, 220, 206)
@@ -138,8 +135,11 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rlcj"]
+radius = 44.7772
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_yx0fw"]
-radius = 45.0999
+radius = 60.9601
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aw1oi"]
 random_pitch = 3.6
@@ -157,10 +157,6 @@ SPEED = 200.0
 onDeathWeapon = ExtResource("2_uvxet")
 onDeathPowerup = ExtResource("3_7awkh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.85, 0.85)
-shape = SubResource("CircleShape2D_8rlcj")
-
 [node name="Sprite2DShadow" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(0, 56)
@@ -168,16 +164,24 @@ scale = Vector2(0.759996, 1)
 texture = ExtResource("4_iaq2j")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -14)
+position = Vector2(-1, -10)
 sprite_frames = SubResource("SpriteFrames_4jsr8")
-frame_progress = 0.269448
+frame_progress = 0.0422169
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12)
+scale = Vector2(0.731, 0.7)
+shape = SubResource("CircleShape2D_8rlcj")
 
 [node name="Hitbox" type="Area2D" parent="."]
-scale = Vector2(0.85, -0.85)
+position = Vector2(0, 12)
+scale = Vector2(-1.042, 1)
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.91939, 0)
+scale = Vector2(1.07171, 1.08)
 shape = SubResource("CircleShape2D_yx0fw")
 
 [node name="DeathSounds" type="AudioStreamPlayer2D" parent="."]
