@@ -49,7 +49,7 @@ stream = ExtResource("2_81b3q")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8b0xg")
-frame_progress = 0.524986
+frame_progress = 0.165072
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite2D"]
 scale = Vector2(0.405894, 0.174839)

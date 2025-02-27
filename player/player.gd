@@ -73,7 +73,7 @@ func _physics_process(delta):
 			tookStep = false
 		
 		sprite.play("walk")
-		if velocity.x < 0:
+		if arm_joint.position.x < 0:
 			sprite.flip_h = true
 			particle_material.direction.x = -1
 		else:
@@ -90,12 +90,14 @@ func _process(delta):
 	arm_joint.rotation = attack_direction.angle()
 	if attack_direction.angle() > PI/2 or attack_direction.angle() < -PI/2:
 		arm_sprite.flip_v = true
-		arm_sprite.position.y = 0
-		muzzle_sprite.position.y = 18
+		arm_joint.position.x = -12
+		arm_sprite.position.y = 18
+		muzzle_sprite.position.y = 32
 	else:
 		arm_sprite.flip_v = false
-		arm_sprite.position.y = 0
-		muzzle_sprite.position.y = -18
+		arm_joint.position.x = 12
+		arm_sprite.position.y = -18
+		muzzle_sprite.position.y = -32
 
 func _input(event):
 	if event.is_action_pressed("attack"):

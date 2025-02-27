@@ -1,7 +1,7 @@
 extends Control
 
-@onready var new_run:Button = $"MarginContainer/VBoxContainer/New Run"
-@onready var quit:Button = $MarginContainer/VBoxContainer/Quit
+@onready var new_run:Button = $"VBoxContainer/New Run"
+@onready var quit:Button = $VBoxContainer/Quit
 
 func _ready() -> void:
 	new_run.pressed.connect(_on_new_run_pressed)

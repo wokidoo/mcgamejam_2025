@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bga6yumid0oe2"]
+[gd_scene load_steps=15 format=3 uid="uid://bga6yumid0oe2"]
 
 [ext_resource type="Script" path="res://modules/damage_sources/goop.gd" id="1_tsxw8"]
 [ext_resource type="AudioStream" uid="uid://nv2w1ugi6s5n" path="res://assets/SFX/goop sploosh.wav" id="2_1kpti"]
@@ -27,10 +27,6 @@ region = Rect2(306, 0, 102, 67)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqj3a"]
 atlas = ExtResource("2_myrle")
 region = Rect2(0, 0, 103, 91)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbe5i"]
-atlas = ExtResource("2_myrle")
-region = Rect2(103, 0, 103, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qc7kr"]
 atlas = ExtResource("2_myrle")
@@ -61,14 +57,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_fqj3a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xbe5i")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qc7kr")
@@ -81,7 +74,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"explode",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="Goop" type="Area2D"]
@@ -99,6 +92,6 @@ shape = SubResource("RectangleShape2D_n8dn8")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_lqit7")
-animation = &"explode"
+frame_progress = 0.147275
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
