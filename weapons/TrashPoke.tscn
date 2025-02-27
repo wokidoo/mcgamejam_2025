@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://15u7bf1ml8g7"]
+
+[ext_resource type="Script" path="res://modules/weapons/weapon.gd" id="1_eo626"]
+[ext_resource type="Script" path="res://modules/weapon_components/source_emitter/source_emitter_WC.gd" id="2_6mi1b"]
+[ext_resource type="PackedScene" uid="uid://brntihionwko3" path="res://modules/damage_sources/basic_slash.tscn" id="3_cw4h8"]
+
+[node name="TrashPoke" type="Node2D"]
+position = Vector2(0, -3)
+script = ExtResource("1_eo626")
+attacks_per_second = 5.0
+speed = 300.0
+range = 180.0
+input_name = "melee"
+
+[node name="SourcEmitterWC" type="Node2D" parent="."]
+script = ExtResource("2_6mi1b")
+source_scene = ExtResource("3_cw4h8")
+parent_trigger_signal = "on_attack"
