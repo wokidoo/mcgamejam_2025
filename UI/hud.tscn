@@ -6,38 +6,55 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_sa64s")
 
-[node name="time" type="Label" parent="."]
-offset_left = 40.0
-offset_top = 60.0
-offset_right = 435.0
-offset_bottom = 185.0
+[node name="Message Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 19.0
+offset_bottom = 221.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="HP" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("2_um3y5")
+theme_override_font_sizes/font_size = 56
+text = "1"
+
+[node name="killCount" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_um3y5")
+theme_override_font_sizes/font_size = 56
+text = "1"
+vertical_alignment = 1
+
+[node name="time" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_um3y5")
+theme_override_font_sizes/font_size = 56
+text = "1"
 metadata/_edit_use_anchors_ = true
 
-[node name="enemyKilled2" type="Label" parent="."]
-offset_left = 1485.0
-offset_top = 60.0
-offset_right = 1880.0
-offset_bottom = 185.0
-theme = ExtResource("2_um3y5")
-horizontal_alignment = 2
-metadata/_edit_use_anchors_ = true
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -155.0
+offset_right = 20.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="health" type="Label" parent="."]
-offset_left = 40.0
-offset_top = 895.0
-offset_right = 435.0
-offset_bottom = 1020.0
+[node name="pickUpMessage" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_um3y5")
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 64
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="message" type="Label" parent="."]
-offset_left = 1485.0
-offset_top = 895.0
-offset_right = 1880.0
-offset_bottom = 1020.0
-theme = ExtResource("2_um3y5")
-horizontal_alignment = 2
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
+[connection signal="timeout" from="Message Timer" to="." method="_on_message_timer_timeout"]

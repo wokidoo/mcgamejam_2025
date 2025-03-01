@@ -14,6 +14,7 @@ class_name Player
 @onready var mono_fx : CanvasLayer
 
 signal ON_DEATH
+signal ON_PICKUP
 
 @onready var DamageCooldown:Timer = $DamageCooldown
 @onready var Blinker:Timer = $Blinker
@@ -158,8 +159,10 @@ func _on_attract_body_exited(body) -> void:
 		body.state = body.SURROUND
 
 # Weapon pickup
-func add_weapon(weapon_index:int) -> void:
+func add_weapon(weapon_index:int) -> void: 
+	ON_PICKUP.emit()
 	var weapon = LevelManager.preload_weapon_scenes[weapon_index].instantiate()
+	LevelManager.message = weapon.name
 	weapon.position = Vector2(0,0)
 	add_child(weapon)
 
@@ -176,10 +179,12 @@ func _on_noir_timer_timeout() -> void:
 
 # Power up
 func activate_powerup(powerup_index:int) -> void:
+	ON_PICKUP.emit()
 	match powerup_index:
 		0: # SPEED
 			# add timer for 20 seconds speed boost
 			# and maybe a skate powerup
+			LevelManager.message = "Skater Booster"
 			var speed_timer = Timer.new()
 			add_child(speed_timer)
 			speed_timer.wait_time = SPEEDSTER_TIMER
@@ -190,6 +195,7 @@ func activate_powerup(powerup_index:int) -> void:
 			MAX_SPEED = clamp(speed, MIN_SPEED_CAP, MAX_SPEED_CAP) 
 		1: # NOIR
 			# Add invincibility here & noir filter
+			LevelManager.message = "SAY HELLO TO MY LITTLE FRIEND"
 			if mono_fx: 
 				mono_fx.visible = true
 			var invinc_timer = Timer.new()

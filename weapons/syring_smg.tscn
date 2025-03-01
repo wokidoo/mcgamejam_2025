@@ -8,7 +8,7 @@
 
 [node name="SyringSmg" type="Node2D"]
 script = ExtResource("1_g441g")
-weapon_name = "Syring SMG"
+weapon_name = "Syringe Machine Gun"
 texture = ExtResource("2_30ihv")
 damage = 2.0
 attacks_per_second = 10.0
