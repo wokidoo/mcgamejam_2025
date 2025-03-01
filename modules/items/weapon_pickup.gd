@@ -13,11 +13,14 @@ enum WEAPON_TYPE {
 @onready var area_2d : Area2D = $Area2D
 @onready var sprite_2d : AnimatedSprite2D = $Sprite2D
 @onready var weapon_index : int = 1
+@onready var destroyTimer : Timer = $DestroyTimer
 
 func _ready() -> void:
 	area_2d.body_entered.connect(_on_Area2D_body_entered)
 	# randomize the weapon
 	weapon_index = randi() % WEAPON_TYPE.size()
+	
+	destroyTimer.start()
 
 	# set the sprite
 	#sprite_2d.texture = LevelManager.preload_weapon_sprites[weapon_index]
@@ -49,3 +52,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 func set_weapon_type(weapon_type:WEAPON_TYPE) -> void:
 	# randomize index from 0 to an integer value
 	weapon_index = weapon_type
+
+
+func _on_destroy_timer_timeout() -> void:
+	queue_free()

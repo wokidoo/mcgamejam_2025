@@ -10,9 +10,12 @@ enum POWERUP_TYPE {
 @onready var area_2d: Area2D = $Area2D
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var powerup_index : int = 0
+@onready var destroyTimer : Timer = $DestroyTimer
 
 func _ready() -> void:
 	area_2d.body_entered.connect(_on_Area2D_body_entered)
+	
+	destroyTimer.start()
 
 	# Randomize the powerup
 	powerup_index = randi() % POWERUP_TYPE.size()
@@ -40,3 +43,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 func set_powerup_type(powerup_type:POWERUP_TYPE) -> void:
 	# randomize index from 0 to an integer value
 	powerup_index = powerup_type
+
+
+func _on_destroy_timer_timeout() -> void:
+	queue_free()

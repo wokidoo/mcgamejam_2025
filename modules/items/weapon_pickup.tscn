@@ -168,5 +168,10 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fv4mm")
-animation = &"tire"
-frame_progress = 0.837486
+animation = &"banana"
+frame_progress = 0.680435
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
