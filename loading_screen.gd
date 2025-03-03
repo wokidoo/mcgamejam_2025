@@ -2,11 +2,13 @@ extends Control
 
 @onready var loadProgress = $VBoxContainer/ProgressBar
 var nextScenePath = "res://world/world_level.tscn"
+@onready var runningSprite = $VBoxContainer/AnimatedSprite2D
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(nextScenePath)
 	$VBoxContainer/AnimationPlayer.play("text_appear")
 	$VBoxContainer/Label.text = "[center][wave amp=50.0 freq=10.0 connected=0]LOADING...[/wave][/center]"
+	runningSprite.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,7 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpc5knai4eq31"]
+[gd_scene load_steps=13 format=3 uid="uid://cpc5knai4eq31"]
 
 [ext_resource type="Script" path="res://loading_screen.gd" id="1_oosnl"]
+[ext_resource type="Texture2D" uid="uid://ct6hjbfxevgxl" path="res://assets/Sprites/player/pom_run_r.png" id="2_2u3ih"]
 [ext_resource type="Theme" uid="uid://ddsgh7aydhov5" path="res://fonts/HUD_theme.tres" id="2_8pl3s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16alt"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(0, 0, 117, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjf28"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(117, 0, 117, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtmyu"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(234, 0, 117, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66007"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(351, 0, 117, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in3lr"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(468, 0, 117, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwoke"]
+atlas = ExtResource("2_2u3ih")
+region = Rect2(585, 0, 117, 155)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4r0b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16alt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjf28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtmyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66007")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in3lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwoke")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="Animation" id="Animation_n18q7"]
 resource_name = "text_appear"
@@ -47,12 +98,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 699.0
-offset_top = 540.0
-offset_right = 910.0
-offset_bottom = 653.0
+offset_left = 706.0
+offset_top = 695.0
+offset_right = 917.0
+offset_bottom = 808.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(82, -77)
+sprite_frames = SubResource("SpriteFrames_4r0b0")
+frame_progress = 0.163867
 
 [node name="Label" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
