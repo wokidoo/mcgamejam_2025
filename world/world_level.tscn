@@ -1,13 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://lcfiuuwrp0oc"]
+[gd_scene load_steps=18 format=3 uid="uid://lcfiuuwrp0oc"]
 
 [ext_resource type="Script" path="res://TestScenes/battle_arena_test.gd" id="1_0knp4"]
 [ext_resource type="PackedScene" uid="uid://cj12ou5to3vmj" path="res://player/player.tscn" id="1_d65yr"]
 [ext_resource type="PackedScene" uid="uid://civpnv0wlmibp" path="res://world/background/background.tscn" id="2_544fm"]
 [ext_resource type="PackedScene" uid="uid://j5jldqfynkjh" path="res://post_processing/RetroPostProcessor.tscn" id="2_u88qc"]
 [ext_resource type="PackedScene" uid="uid://m0dcjcm03xhd" path="res://post_processing/MonochromePostProcessor.tscn" id="2_xqbff"]
-[ext_resource type="PackedScene" uid="uid://bekca22o4mgo" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
+[ext_resource type="PackedScene" path="res://Music/sound_track_manager.tscn" id="6_mwvss"]
 [ext_resource type="PackedScene" uid="uid://bltiv753cmlbe" path="res://world/spawner/Spawner.tscn" id="8_7o178"]
 [ext_resource type="PackedScene" uid="uid://cnpjilxty7u3p" path="res://Enemies/Enemy.tscn" id="9_2v0xw"]
+[ext_resource type="PackedScene" uid="uid://b8os2cbuxdfwh" path="res://Enemies/TankEnemy.tscn" id="9_it1ve"]
 [ext_resource type="PackedScene" uid="uid://bcyqnq0blt2tq" path="res://UI/hud.tscn" id="10_0cis1"]
 [ext_resource type="Script" path="res://UI/game_over.gd" id="10_nagvo"]
 [ext_resource type="PackedScene" uid="uid://vrxukvq56uq3" path="res://HorizontalBorder.tscn" id="11_3covs"]
@@ -60,6 +61,7 @@ visible = false
 [node name="SoundTrackManager" parent="." instance=ExtResource("6_mwvss")]
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+process_mode = 4
 position = Vector2(15, 0)
 spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
 
@@ -124,6 +126,7 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="Spawner4" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+process_mode = 4
 position = Vector2(15, 0)
 spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
 
@@ -188,6 +191,7 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="Spawner2" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+process_mode = 4
 position = Vector2(15, 0)
 spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
 
@@ -252,6 +256,7 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="Spawner3" parent="." node_paths=PackedStringArray("spawnPoints") instance=ExtResource("8_7o178")]
+process_mode = 4
 position = Vector2(-5, 10)
 spawnPoints = [NodePath("SpawnPoint1"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4"), NodePath("SpawnPoint5"), NodePath("SpawnPoint6"), NodePath("SpawnPoint7"), NodePath("SpawnPoint8"), NodePath("SpawnPoint9"), NodePath("SpawnPoint10"), NodePath("SpawnPoint11"), NodePath("SpawnPoint12"), NodePath("SpawnPoint13"), NodePath("SpawnPoint14"), NodePath("SpawnPoint15"), NodePath("SpawnPoint16"), NodePath("SpawnPoint17"), NodePath("SpawnPoint18"), NodePath("SpawnPoint19"), NodePath("SpawnPoint20")]
 
@@ -316,16 +321,20 @@ position = Vector2(-4947, 5198)
 position = Vector2(-1619, 8942)
 
 [node name="Enemy" parent="." instance=ExtResource("9_2v0xw")]
+process_mode = 4
 position = Vector2(-1257, 0)
 
-[node name="Enemy4" parent="." instance=ExtResource("9_2v0xw")]
-position = Vector2(15, 756)
-
 [node name="Enemy2" parent="." instance=ExtResource("9_2v0xw")]
+process_mode = 4
 position = Vector2(1362, -4)
 
 [node name="Enemy3" parent="." instance=ExtResource("9_2v0xw")]
+process_mode = 4
 position = Vector2(-8, -1017)
+
+[node name="TankEnemy" parent="." instance=ExtResource("9_it1ve")]
+position = Vector2(0, 977)
+HEALTH = 1.0
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_0cis1")]
 player = NodePath("../Player")

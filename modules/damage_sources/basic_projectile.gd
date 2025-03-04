@@ -1,7 +1,6 @@
 extends DamageSource
 class_name Projectile
 
-
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -11,6 +10,7 @@ var travled_distance: float = 0.0
 func _ready():
 	$Sprite2D/VisibleOnScreenNotifier2D.connect("screen_exited",destroy_source)
 	sprite.play("default")
+	knockback_strength = 500
 
 	audio.play()
 	
@@ -24,6 +24,8 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	set_knockback_strength(knockback_strength, body)
+
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 	destroy_source()

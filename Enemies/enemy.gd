@@ -4,6 +4,7 @@ class_name Enemy
 
 @export var HEALTH: float = 10.0
 @export var SPEED:float
+@export var MAX_SPEED:float = 1000.0
 
 @onready var player:Player = $"../Player"
 @onready var hitbox: Area2D = $"Hitbox"
@@ -26,10 +27,13 @@ var can_move: bool = true
 
 signal enemy_died(enemy:Enemy)
 
+var knockback_strength = 500
+
 enum{
 	SURROUND,
 	ATTACK,
-	HIT
+	HIT,
+	KNOCKEDBACK
 }
 
 var state = SURROUND
@@ -43,15 +47,15 @@ func _ready():
 	hurt_sound.finished.connect(reset_hurt_sound)
 	#hitbox.area_entered.connect(_on_damage_source_enter)
 	onDeathWeapon = load("res://modules/items/weapon_pickup.tscn")
-	print(onDeathWeapon)
+	# print(onDeathWeapon)
 	onDeathPowerup = load("res://modules/items/powerup_pickup.tscn")
 	sprite.play("default")
 	HEALTH = HEALTH * LevelManager.enemyHealthModifier
 	SPEED = SPEED * LevelManager.enemySpeedModifier
-	print_debug("Health = ",HEALTH,"\nSpeed = ",SPEED)
-
+	# print_debug("Health = ",HEALTH,"\nSpeed = ",SPEED)
 
 func _physics_process(delta: float) -> void:
+	# print_debug(state)
 	match state:
 		SURROUND:
 			move(get_circle_position(randomnum), delta)
@@ -59,13 +63,21 @@ func _physics_process(delta: float) -> void:
 			move(player.global_position, delta)
 		HIT:
 			if can_move:
-				var player_velocity = player.velocity
-				velocity += player_velocity
-				move_and_slide()
-	
-	
+				# knockback
+				var knockback_direction = (global_position - player.global_position).normalized()
+				var knockback = knockback_direction * knockback_strength
+				if velocity.length() < MAX_SPEED:	
+					velocity = velocity + knockback
+				state = KNOCKEDBACK
+		KNOCKEDBACK:
+			move_and_slide()
+			velocity = velocity.lerp(Vector2(0,0), 0.1)
+			if velocity.length() < 0.1:
+				velocity = Vector2(0,0)
+				state = SURROUND
 
-func move(target,delta):
+
+func move(target, delta):
 	if can_move:
 		var direction = (target - global_position).normalized() 
 		var desired_velocity =  direction * SPEED
@@ -95,10 +107,12 @@ func get_circle_position(random):
 
 func take_damage(damage):
 	HEALTH -= damage
+	state = HIT
 	if(can_hurt_sound):
 		can_hurt_sound = false
 		hurt_sound.play()
 	if HEALTH <= 0:
+		print_debug("Enemy died")
 		hitbox.disable_mode = hitbox.DISABLE_MODE_REMOVE
 		# rng to spawn an item or powerup
 		if (!isDeathSpawned):

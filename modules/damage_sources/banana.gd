@@ -11,6 +11,8 @@ var travled_distance: float = 0.0
 func _ready():
 	$VisibleOnScreenNotifier2D.connect("screen_exited",destroy_source)
 	sprite.play("default")
+	knockback_strength = 500
+
 	audio.play()
 	
 func _physics_process(delta):
@@ -23,5 +25,7 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	set_knockback_strength(knockback_strength, body)
+
 	if body.has_method("take_damage"):
 		body.take_damage(damage)

@@ -10,6 +10,7 @@ var travled_distance: float = 0.0
 func _ready():
 	audio.play()
 	sprite.play("default")
+	knockback_strength = 500
 	
 func _physics_process(delta):
 	var move_by : Vector2 = direction*speed*delta
@@ -21,6 +22,8 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	set_knockback_strength(knockback_strength, body)
+
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 		speed = 0

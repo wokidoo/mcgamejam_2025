@@ -9,6 +9,7 @@ var goop_dot: PackedScene = preload("res://modules/damage_sources/goop_dot.tscn"
 func _ready():
 	audio.play()
 	sprite.play("default")
+	knockback_strength = 200
 	
 func _physics_process(delta):
 	var move_by : Vector2 = direction*speed*delta
@@ -20,6 +21,8 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
+	set_knockback_strength(knockback_strength, body)
+
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 		var dot = goop_dot.instantiate()

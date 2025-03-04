@@ -15,6 +15,13 @@ class_name DamageSource
 ## Number of enemies that source can go through before being destroyed
 ## A value of 0 means the source can pierce any number of enemies
 @export var pierce:int = 0
+@export var knockback_strength: float:
+	get:
+		return knockback_strength
+	set(value):
+		knockback_strength = value
+		knockback_strength = max(0,knockback_strength)
+
 var has_pierced: int = 0
 
 var direction : Vector2
@@ -37,3 +44,8 @@ func _set_all_stats(data):
 	range = data.range
 	area = data.area
 	deviation = data.deviation
+
+# Set knock back strength
+func set_knockback_strength(value: float, body: Node):
+	if body.knockback_strength:
+		body.knockback_strength = value

@@ -105,8 +105,7 @@ shape = SubResource("CircleShape2D_xtqbq")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovqvc")
-animation = &"skateboard"
-frame_progress = 0.153165
+animation = &"glasses"
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 5.0
