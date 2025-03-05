@@ -44,8 +44,10 @@ var particle_material: ParticleProcessMaterial
 
 @onready var muzzle_sprite: AnimatedSprite2D = $ArmJoint/SpriteMuzzleFlash
 
-
+var reticle = load("res://assets/Sprites/gui/reticle.png")
 func _ready() -> void:
+	Input.set_custom_mouse_cursor(reticle)
+	
 	hitbox.body_entered.connect(_on_damage_source_enter)
 	DamageCooldown.timeout.connect(_on_timeout)
 	footsteps.finished.connect(_on_footstep_finished)
