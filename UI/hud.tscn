@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcyqnq0blt2tq"]
+[gd_scene load_steps=5 format=3 uid="uid://bcyqnq0blt2tq"]
 
 [ext_resource type="Script" path="res://UI/Scripts/hud.gd" id="1_sa64s"]
 [ext_resource type="Theme" uid="uid://ddsgh7aydhov5" path="res://fonts/HUD_theme.tres" id="2_um3y5"]
+[ext_resource type="PackedScene" uid="uid://dp65cqaeejdx4" path="res://UI/skate_board_power_up_cooldown.tscn" id="3_is7ji"]
+[ext_resource type="PackedScene" uid="uid://oonnfmb3elk8" path="res://UI/Sunglasses_power_up_cooldown.tscn" id="4_233rf"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_sa64s")
@@ -35,7 +37,7 @@ theme_override_font_sizes/font_size = 56
 text = "1"
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="PickupMessage Container" type="HBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,7 +50,7 @@ offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="pickUpMessage" type="Label" parent="HBoxContainer"]
+[node name="pickUpMessage" type="Label" parent="PickupMessage Container"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_um3y5")
@@ -56,5 +58,13 @@ theme_override_font_sizes/font_size = 64
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SkateBoard_PowerUp_Cooldown" parent="." instance=ExtResource("3_is7ji")]
+visible = false
+position = Vector2(278, 960)
+
+[node name="TempPowerUp" parent="." instance=ExtResource("4_233rf")]
+visible = false
+position = Vector2(110, 960)
 
 [connection signal="timeout" from="Message Timer" to="." method="_on_message_timer_timeout"]

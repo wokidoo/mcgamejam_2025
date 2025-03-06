@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bhsueb06y3sny"]
+
+[ext_resource type="Texture2D" uid="uid://yxq5y1gk8mn7" path="res://assets/Sprites/powerups/item_skateboard.png" id="1_5puq7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sgfw"]
+atlas = ExtResource("1_5puq7")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br424"]
+atlas = ExtResource("1_5puq7")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovgre"]
+atlas = ExtResource("1_5puq7")
+region = Rect2(160, 0, 80, 80)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sgfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br424")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovgre")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

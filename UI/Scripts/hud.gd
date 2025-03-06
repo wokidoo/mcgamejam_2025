@@ -4,7 +4,7 @@ extends CanvasLayer
 
 @onready var time:Label = $VBoxContainer/time
 @onready var killCount:Label = $VBoxContainer/killCount
-@onready var pickUpMessage:Label = $HBoxContainer/pickUpMessage
+@onready var pickUpMessage:Label = $"PickupMessage Container/pickUpMessage"
 @onready var HP:Label = $VBoxContainer/HP
 @onready var messageTimer:Timer = $"Message Timer"
 
@@ -16,7 +16,9 @@ func _ready() -> void:
 	time.text = "Lost: " + str(LevelManager.gameTime) + " sec"
 	killCount.text = "Enemies Trashed: " + str(LevelManager.enemyKilled)
 	pickUpMessage.visible = false
-	player.ON_PICKUP.connect(OnPickUp)
+	player.ON_PICKUP_WEAPON.connect(OnPickUp)
+	player.ON_PICKUP_SKATEBOARD.connect(OnPickUp)
+	player.ON_PICKUP_SUNGLASSES.connect(OnPickUp)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

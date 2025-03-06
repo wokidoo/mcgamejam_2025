@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://oonnfmb3elk8"]
+
+[ext_resource type="PackedScene" uid="uid://7ij63jlba0ln" path="res://UI/TempPowerUp.tscn" id="1_7h4w2"]
+[ext_resource type="Script" path="res://UI/sunglasses_power_up_cooldown.gd" id="2_uvo2x"]
+[ext_resource type="SpriteFrames" uid="uid://cqws44rlog6u3" path="res://assets/Sprites/SpriteFrames/Sunglasses.tres" id="2_x85dc"]
+
+[node name="Sunglasses_powerup_cooldown" instance=ExtResource("1_7h4w2")]
+script = ExtResource("2_uvo2x")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_x85dc")
+
+[node name="TimerCooldown" parent="." index="1"]
+offset_left = -89.0
+offset_top = -89.0
+offset_right = 411.0
+offset_bottom = 411.0
+scale = Vector2(0.340001, 0.372)
+
+[node name="Timer" parent="." index="2"]
+wait_time = 10.0

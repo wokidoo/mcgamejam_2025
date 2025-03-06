@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp65cqaeejdx4"]
+
+[ext_resource type="PackedScene" uid="uid://7ij63jlba0ln" path="res://UI/TempPowerUp.tscn" id="1_3011a"]
+[ext_resource type="SpriteFrames" uid="uid://bhsueb06y3sny" path="res://assets/Sprites/SpriteFrames/Skateboard.tres" id="2_ilbih"]
+[ext_resource type="Script" path="res://UI/skate_board_power_up_cooldown.gd" id="2_j6yt0"]
+
+[node name="SkateBoard_PowerUp_Cooldown" instance=ExtResource("1_3011a")]
+script = ExtResource("2_j6yt0")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_ilbih")
+
+[node name="TimerCooldown" parent="." index="1"]
+offset_left = -88.0
+offset_top = -92.0
+offset_right = 412.0
+offset_bottom = 408.0
+scale = Vector2(0.360002, 0.370201)
+
+[node name="Timer" parent="." index="2"]
+wait_time = 10.0

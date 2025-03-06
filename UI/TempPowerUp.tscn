@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://7ij63jlba0ln"]
+
+[ext_resource type="Script" path="res://UI/Scripts/temp_power_up_timer.gd" id="1_k0unh"]
+[ext_resource type="Texture2D" uid="uid://cg8lggs5mi4he" path="res://assets/Sprites/gui/RadialBar.png" id="2_uyrnv"]
+
+[node name="TempPowerUp" type="Node2D"]
+script = ExtResource("1_k0unh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="TimerCooldown" type="TextureProgressBar" parent="."]
+offset_left = -147.0
+offset_top = -127.0
+offset_right = 353.0
+offset_bottom = 373.0
+scale = Vector2(0.580001, 0.532)
+max_value = 1.0
+step = 0.1
+fill_mode = 4
+texture_under = ExtResource("2_uyrnv")
+texture_progress = ExtResource("2_uyrnv")
+tint_under = Color(1, 1, 1, 0.996078)
+tint_progress = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

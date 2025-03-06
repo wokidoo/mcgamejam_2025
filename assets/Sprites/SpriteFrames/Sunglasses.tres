@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://cqws44rlog6u3"]
+
+[ext_resource type="Texture2D" uid="uid://dryadla7qtbun" path="res://assets/Sprites/powerups/item_sunglasses.png" id="1_plf38"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imyof"]
+atlas = ExtResource("1_plf38")
+region = Rect2(0, 0, 78, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glp2l"]
+atlas = ExtResource("1_plf38")
+region = Rect2(78, 0, 78, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5rxf"]
+atlas = ExtResource("1_plf38")
+region = Rect2(156, 0, 78, 60)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imyof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glp2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5rxf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
