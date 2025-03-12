@@ -138,6 +138,7 @@ SPEED = 150.0
 DAMAGE = 2.0
 onDeathWeapon = ExtResource("2_3kyn4")
 onDeathPowerup = ExtResource("3_mdae8")
+knockback_resistance = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.917, 0.88)

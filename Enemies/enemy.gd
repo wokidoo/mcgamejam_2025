@@ -27,7 +27,8 @@ var can_move: bool = true
 
 signal enemy_died(enemy:Enemy)
 
-var knockback_strength = 500
+@export var knockback_strength = 500
+@export var knockback_resistance = 0
 
 enum{
 	SURROUND,
@@ -65,10 +66,11 @@ func _physics_process(delta: float) -> void:
 			if can_move:
 				# knockback
 				var knockback_direction = (global_position - player.global_position).normalized()
-				var knockback = knockback_direction * knockback_strength
+				var knockback = knockback_direction * (knockback_strength-knockback_resistance)
+				
 				if velocity.length() < MAX_SPEED:	
 					velocity = velocity + knockback
-				state = KNOCKEDBACK
+			state = KNOCKEDBACK
 		KNOCKEDBACK:
 			move_and_slide()
 			velocity = velocity.lerp(Vector2(0,0), 0.1)
