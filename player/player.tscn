@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cj12ou5to3vmj"]
+[gd_scene load_steps=45 format=3 uid="uid://cj12ou5to3vmj"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_edvie"]
 [ext_resource type="Texture2D" uid="uid://dodhk25raeh84" path="res://assets/Sprites/player/pom_idle_r.png" id="2_6vm1o"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://g7d5ggqej66i" path="res://assets/SFX/player hit.wav" id="7_d3o5d"]
 [ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="7_oe7g8"]
 [ext_resource type="Texture2D" uid="uid://bvhuknprufse7" path="res://assets/Sprites/effects/particle_dirt.png" id="8_6sui5"]
+[ext_resource type="Texture2D" uid="uid://ctbfc08ck44x7" path="res://assets/Sprites/gui/reticle.png" id="12_u5002"]
+[ext_resource type="Script" path="res://player/reticle.gd" id="13_vs46i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5jgc"]
 atlas = ExtResource("6_3u40n")
@@ -216,7 +218,37 @@ anim_offset_max = 1.0
 radius = 13.4375
 height = 26.875
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdoet"]
+atlas = ExtResource("12_u5002")
+region = Rect2(0, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsj0p"]
+atlas = ExtResource("12_u5002")
+region = Rect2(72, 0, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsgn7"]
+atlas = ExtResource("12_u5002")
+region = Rect2(144, 0, 72, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5t6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdoet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsj0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsgn7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("melee_cooldown")]
+y_sort_enabled = true
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_edvie")
@@ -225,6 +257,7 @@ DECELERATION = 150.0
 melee_cooldown = NodePath("DamageCooldown")
 
 [node name="ArmJoint" type="Node2D" parent="."]
+z_index = -1
 position = Vector2(12, 3)
 
 [node name="SpriteArm" type="AnimatedSprite2D" parent="ArmJoint"]
@@ -242,6 +275,7 @@ frame_progress = 0.356159
 speed_scale = 2.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(0, 77)
 scale = Vector2(0.639999, 1)
 texture = ExtResource("5_jygsg")
@@ -290,5 +324,13 @@ volume_db = 10.0
 
 [node name="Blinker" type="Timer" parent="."]
 wait_time = 0.15
+
+[node name="SpriteReticle" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_c5t6t")
+autoplay = "default"
+frame_progress = 0.359878
+script = ExtResource("13_vs46i")
 
 [connection signal="timeout" from="Blinker" to="." method="_on_blinker_timeout"]

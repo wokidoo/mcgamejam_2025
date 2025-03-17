@@ -6,6 +6,7 @@
 size = Vector2(16.0903, 22.0469)
 
 [node name="HorizontalBorder" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(-99, -961)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

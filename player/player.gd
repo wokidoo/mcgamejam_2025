@@ -45,10 +45,11 @@ var particle_material: ParticleProcessMaterial
 @onready var arm_joint: Node2D = $ArmJoint
 
 @onready var muzzle_sprite: AnimatedSprite2D = $ArmJoint/SpriteMuzzleFlash
+@onready var reticle : AnimatedSprite2D = $SpriteReticle
 
-var reticle = load("res://assets/Sprites/gui/reticle.png")
 func _ready() -> void:
-	Input.set_custom_mouse_cursor(reticle)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	reticle.visible = true
 	
 	hitbox.body_entered.connect(_on_damage_source_enter)
 	DamageCooldown.timeout.connect(_on_timeout)
@@ -128,6 +129,8 @@ func take_damage(source:Enemy):
 	print("Taking ",source.DAMAGE," damage")
 	HEALTH -= source.DAMAGE
 	if(HEALTH<=0):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		reticle.visible = false
 		ON_DEATH.emit()
 
 func _on_timeout():

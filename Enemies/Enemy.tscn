@@ -148,6 +148,7 @@ stream_0/stream = ExtResource("4_j2ykq")
 stream_1/stream = ExtResource("5_jby3a")
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 7
 motion_mode = 1

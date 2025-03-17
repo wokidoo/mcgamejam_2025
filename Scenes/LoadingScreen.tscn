@@ -1,8 +1,46 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpc5knai4eq31"]
+[gd_scene load_steps=22 format=3 uid="uid://cpc5knai4eq31"]
 
 [ext_resource type="Script" path="res://loading_screen.gd" id="1_oosnl"]
 [ext_resource type="Texture2D" uid="uid://ct6hjbfxevgxl" path="res://assets/Sprites/player/pom_run_r.png" id="2_2u3ih"]
 [ext_resource type="Theme" uid="uid://ddsgh7aydhov5" path="res://fonts/HUD_theme.tres" id="2_8pl3s"]
+[ext_resource type="Texture2D" uid="uid://b4saro6l5sehd" path="res://assets/Sprites/player/gun_idle.png" id="2_xcc1p"]
+[ext_resource type="Shader" path="res://shaders/silhouette.gdshader" id="3_84fx4"]
+[ext_resource type="FontFile" uid="uid://di3ydu8wut2p3" path="res://fonts/CaveatBrush-Regular.ttf" id="6_464tn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emvgx"]
+shader = ExtResource("3_84fx4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lyix"]
+atlas = ExtResource("2_xcc1p")
+region = Rect2(0, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yonem"]
+atlas = ExtResource("2_xcc1p")
+region = Rect2(119, 0, 119, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cuas"]
+atlas = ExtResource("2_xcc1p")
+region = Rect2(238, 0, 119, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pexfy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lyix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yonem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cuas")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhf3w"]
+shader = ExtResource("3_84fx4")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16alt"]
 atlas = ExtResource("2_2u3ih")
@@ -51,7 +89,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [sub_resource type="Animation" id="Animation_n18q7"]
@@ -105,10 +143,19 @@ offset_bottom = 808.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+[node name="gun" type="AnimatedSprite2D" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_emvgx")
+position = Vector2(150, -90)
+sprite_frames = SubResource("SpriteFrames_pexfy")
+autoplay = "default"
+frame_progress = 0.134299
+
+[node name="player" type="AnimatedSprite2D" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_uhf3w")
 position = Vector2(82, -77)
 sprite_frames = SubResource("SpriteFrames_4r0b0")
-frame_progress = 0.163867
+autoplay = "default"
+frame_progress = 0.60122
 
 [node name="Label" type="RichTextLabel" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 70)
@@ -120,6 +167,8 @@ text = "LOADING..."
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_464tn")
+theme_override_font_sizes/font_size = 24
 step = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer"]
