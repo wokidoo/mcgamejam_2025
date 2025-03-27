@@ -149,8 +149,6 @@ shape = SubResource("CircleShape2D_8rlcj")
 position = Vector2(1, 1)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_4jsr8")
-animation = &"death"
-frame_progress = 0.567536
 
 [node name="Sprite2DShadow" type="Sprite2D" parent="."]
 z_index = -1

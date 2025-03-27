@@ -2,7 +2,7 @@ extends Control
 
 @onready var loadProgress = $VBoxContainer/ProgressBar
 var nextScenePath = "res://world/world_level.tscn"
-@onready var runningSprite = $VBoxContainer/AnimatedSprite2D
+@onready var runningSprite = $VBoxContainer/player
 
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(nextScenePath)
